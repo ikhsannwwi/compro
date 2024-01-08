@@ -19,6 +19,11 @@ function template_stisla($url)
 	return asset('templateStisla/dist/assets/' . $url);
 }
 
+function template_startup($url)
+{
+	return asset('templateStartup/' . $url);
+}
+
 function template_frontpage($url)
 {
 	return asset('templateFrontpage/' . $url);
