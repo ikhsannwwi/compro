@@ -12,7 +12,6 @@ use App\Http\Controllers\admin\ModuleController;
 use App\Http\Controllers\admin\ContactController;
 use App\Http\Controllers\admin\GalleryController;
 use App\Http\Controllers\admin\ProfileController;
-use App\Http\Controllers\admin\ProjectController;
 use App\Http\Controllers\admin\ServiceController;
 use App\Http\Controllers\admin\SettingController;
 use App\Http\Controllers\admin\DashboardController;
@@ -20,8 +19,6 @@ use App\Http\Controllers\admin\LogSystemController;
 use App\Http\Controllers\admin\UserGroupController;
 use App\Http\Controllers\admin\KategoriBlogController;
 use App\Http\Controllers\admin\KomentarBlogController;
-use App\Http\Controllers\admin\KategoriProjectController;
-use App\Http\Controllers\admin\KomentarProjectController;
 
 /*
 |--------------------------------------------------------------------------
@@ -129,41 +126,6 @@ Route::prefix('admin')->group(function () {
         Route::get('module/delete', [ModuleController::class, 'delete'])->name('admin.module.delete');
         Route::get('module/getDetail-{id}', [ModuleController::class, 'getDetail'])->name('admin.module.getDetail');
 
-        //Kategori Project
-        Route::get('kategori-project', [KategoriProjectController::class, 'index'])->name('admin.kategori_project');
-        Route::get('kategori-project/add', [KategoriProjectController::class, 'add'])->name('admin.kategori_project.add');
-        Route::get('kategori-project/getData', [KategoriProjectController::class, 'getData'])->name('admin.kategori_project.getData');
-        Route::post('kategori-project/save', [KategoriProjectController::class, 'save'])->name('admin.kategori_project.save');
-        Route::get('kategori-project/edit/{id}', [KategoriProjectController::class, 'edit'])->name('admin.kategori_project.edit');
-        Route::put('kategori-project/update', [KategoriProjectController::class, 'update'])->name('admin.kategori_project.update');
-        Route::get('kategori-project/delete', [KategoriProjectController::class, 'delete'])->name('admin.kategori_project.delete');
-        Route::get('kategori-project/getDetail-{id}', [KategoriProjectController::class, 'getDetail'])->name('admin.kategori_project.getDetail');
-        Route::post('kategori-project/checkNama',[KategoriProjectController::class, 'checkNama'])->name('admin.kategori_project.checkNama');
-
-        Route::get('kategori-project/arsip',[KategoriProjectController::class, 'arsip'])->name('admin.kategori_project.arsip');
-        Route::get('kategori-project/arsip/getDataArsip',[KategoriProjectController::class, 'getDataArsip'])->name('admin.kategori_project.getDataArsip');
-        Route::put('kategori-project/arsip/restore',[KategoriProjectController::class, 'restore'])->name('admin.kategori_project.restore');
-        Route::get('kategori-project/arsip/forceDelete',[KategoriProjectController::class, 'forceDelete'])->name('admin.kategori_project.forceDelete');
-
-        //Project
-        Route::get('project', [ProjectController::class, 'index'])->name('admin.project');
-        Route::get('project/add', [ProjectController::class, 'add'])->name('admin.project.add');
-        Route::get('project/getData', [ProjectController::class, 'getData'])->name('admin.project.getData');
-        Route::get('project/getDataKategoriProject', [ProjectController::class, 'getDataKategoriProject'])->name('admin.project.getDataKategoriProject');
-        Route::post('project/save', [ProjectController::class, 'save'])->name('admin.project.save');
-        Route::get('project/edit/{id}', [ProjectController::class, 'edit'])->name('admin.project.edit');
-        Route::get('project/detail/{slug}', [ProjectController::class, 'detail'])->name('admin.project.detail');
-        Route::put('project/update', [ProjectController::class, 'update'])->name('admin.project.update');
-        Route::get('project/delete', [ProjectController::class, 'delete'])->name('admin.project.delete');
-        Route::get('project/deleteImage', [ProjectController::class, 'deleteImage'])->name('admin.project.deleteImage');
-        Route::get('project/getDetail-{id}', [ProjectController::class, 'getDetail'])->name('admin.project.getDetail');
-        Route::post('project/checkNama',[ProjectController::class, 'checkNama'])->name('admin.project.checkNama');
-
-        Route::get('project/arsip',[ProjectController::class, 'arsip'])->name('admin.project.arsip');
-        Route::get('project/arsip/getDataArsip',[ProjectController::class, 'getDataArsip'])->name('admin.project.getDataArsip');
-        Route::put('project/arsip/restore',[ProjectController::class, 'restore'])->name('admin.project.restore');
-        Route::get('project/arsip/forceDelete',[ProjectController::class, 'forceDelete'])->name('admin.project.forceDelete');
-
         //Service
         Route::get('service', [ServiceController::class, 'edit'])->name('admin.service');
         Route::put('service/update', [ServiceController::class, 'update'])->name('admin.service.update');
@@ -211,14 +173,6 @@ Route::prefix('admin')->group(function () {
         Route::get('komentar-blog/detail/getData/{id}', [KomentarBlogController::class, 'getDataDetail'])->name('admin.komentar_blog.detail.getData');
         Route::get('komentar-blog/detail/delete', [KomentarBlogController::class, 'deleteDetail'])->name('admin.komentar_blog.detail.delete');
         
-        //Komentar Project
-        Route::get('komentar-project', [KomentarProjectController::class, 'index'])->name('admin.komentar_project');
-        Route::get('komentar-project/getData', [KomentarProjectController::class, 'getData'])->name('admin.komentar_project.getData');
-        Route::get('komentar-project/delete', [KomentarProjectController::class, 'delete'])->name('admin.komentar_project.delete');
-        Route::get('komentar-project/detail/{id}', [KomentarProjectController::class, 'detail'])->name('admin.komentar_project.detail');
-        Route::get('komentar-project/detail/getData/{id}', [KomentarProjectController::class, 'getDataDetail'])->name('admin.komentar_project.detail.getData');
-        Route::get('komentar-project/detail/delete', [KomentarProjectController::class, 'deleteDetail'])->name('admin.komentar_project.detail.delete');
-
         //About
         Route::get('about', [AboutController::class, 'index'])->name('admin.about');
         Route::get('about/getDataGallery', [AboutController::class, 'getDataGallery'])->name('admin.about.getDataGallery');

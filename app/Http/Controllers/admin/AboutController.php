@@ -38,6 +38,7 @@ class AboutController extends Controller
 
         
         $data_settings = [];
+        $data_settings["title"] = $request->title;
         $data_settings["deskripsi"] = $request->deskripsi;
         $data_settings["image"] = $request->image;
 

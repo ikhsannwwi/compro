@@ -20,6 +20,19 @@
                     @csrf
                     @method('PUT')
                     <div class="row">
+                        <div class="col-md-6 col-12">
+                            <div class="form-group mandatory">
+                                <label for="inputTitle"
+                                    class="form-label">Title</label>
+                                <input type="text" id="inputTitle"
+                                    class="form-control" placeholder="Masukan Title"
+                                    value="{{ array_key_exists('title', $settings) ? $settings['title'] : '' }}"
+                                    name="title" autocomplete="off">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
                         <div class="col-12">
                             <div class="form-group mandatory">
                                 <label for="inputDeskripsi" class="form-label">Deskripsi</label>

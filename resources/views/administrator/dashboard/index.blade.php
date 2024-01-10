@@ -25,7 +25,7 @@
                             <h4>Project</h4>
                         </div>
                         <div class="card-body">
-                            {{ count($Project) }}
+                            {{ count($Blog) }}
                         </div>
                     </div>
                 </div>

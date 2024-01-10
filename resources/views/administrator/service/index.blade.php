@@ -22,7 +22,7 @@
                     @method('PUT')
 
                     <div id="accordion">
-                        @for ($i = 0; $i < 6; $i++)
+                        @for ($i = 0; $i < 5; $i++)
                             <div class="accordion">
                                 <div class="accordion-header" role="button" data-toggle="collapse"
                                     data-target="#service-accordion-{{ $i }}"
@@ -73,70 +73,6 @@
                         @endfor
                     </div>
 
-                    <div class="card">
-                        <div class="card-header">
-                            <h4>Section Other</h4>
-                        </div>
-                        <div class="card-content">
-                            <div class="card-body">
-
-                                <div class="row mb-3">
-                                    <div class="col-md-6 col-12">
-                                        <a href="{{ route('web.service') }}#sectionOther" id="triggerOther"
-                                            class="play-btn window-popup"><i class="fa fa-play"></i> Preview </a>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group mandatory">
-                                            <label for="inputTitle" class="form-label">Title</label>
-                                            <input type="text" id="inputTitle" class="form-control"
-                                                placeholder="Masukan Title"
-                                                value="{{ array_key_exists('title_section_other', $service) ? $service['title_section_other'] : '' }}"
-                                                name="title_section_other" data-parsley-required="true"
-                                                autocomplete="off">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="form-group mandatory">
-                                            <label for="inputBody" class="form-label">Body</label>
-                                            <textarea name="body_section_other" class="form-control" id="inputBody" placeholder="Masukan Body"
-                                                cols="30" rows="100" autocomplete="off" data-parsley-required="true">{{ array_key_exists('body_section_other', $service) ? $service['body_section_other'] : '' }}</textarea>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-6">
-                                        <div class="form-group mandatory">
-                                            <label for="inputTextButton" class="form-label">Text Button</label>
-                                            <input type="text" id="inputTextButton" class="form-control"
-                                                placeholder="Masukan Text Button"
-                                                value="{{ array_key_exists('text_button_section_other', $service) ? $service['text_button_section_other'] : '' }}"
-                                                name="text_button_section_other" data-parsley-required="true"
-                                                autocomplete="off">
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="form-group mandatory">
-                                            <label for="inputUrlButton" class="form-label">Url Button</label>
-                                            <input type="text" id="inputUrlButton" class="form-control"
-                                                placeholder="Masukan Url Button"
-                                                value="{{ array_key_exists('url_button_section_other', $service) ? $service['url_button_section_other'] : '' }}"
-                                                name="url_button_section_other" data-parsley-required="true"
-                                                autocomplete="off">
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-
                     <div class="row">
                         <div class="col-12 d-flex justify-content-end">
                             <button type="submit" id="formSubmit" class="btn btn-primary me-1 mb-1">
@@ -157,12 +93,12 @@
     <!-- Basic Tables end -->
 @endsection
 @push('css')
-    <link rel="stylesheet" href="{{ template_frontpage('css/magnific-popup.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ template_stisla('modules/magnific-popup/magnific-popup.css') }}" type="text/css">
 @endpush
 
 @push('js')
     <!-- Tambahkan FileInput JavaScript -->
-    <script src="{{ template_frontpage('js/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ template_stisla('modules/magnific-popup/jquery.magnific-popup.min.js') }}"></script>
     {{-- <script src="{{ asset('templateAdmin/assets/extensions/parsleyjs/parsley.min.js') }}"></script>
     <script src="{{ asset('templateAdmin/assets/js/pages/parsley.js') }}"></script> --}}
 

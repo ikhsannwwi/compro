@@ -20,7 +20,7 @@ class TrackStatistics
     {
         $url = $request->url();
 
-        if (str_contains($url, '/admin') || str_contains($url, '/getBanner') || str_contains($url, '/getService') || str_contains($url, '/getProject') || str_contains($url, '/getBlog') || str_contains($url, '/getGallery') || str_contains($url, '/count') || str_contains($url, '/{any}/fetchData') || str_contains($url, '/{any}/{any}/comment') || str_contains($url, '/{any}/getService') || str_contains($url, '/service/getClient') || str_contains($url, '/about/getAbout')) {
+        if (str_contains($url, '/admin') || str_contains($url, '/getBanner') || str_contains($url, '/getService') || str_contains($url, '/getBlog') || str_contains($url, '/getGallery') || str_contains($url, '/count') || str_contains($url, '/{any}/fetchData') || str_contains($url, '/{any}/{any}/comment') || str_contains($url, '/{any}/getService') || str_contains($url, '/service/getClient') || str_contains($url, '/about/getAbout')) {
             return $next($request);
         } else {
             $statistics = new Statistic();

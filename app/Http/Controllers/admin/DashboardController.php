@@ -6,14 +6,12 @@ use Carbon\Carbon;
 use App\Models\admin\Blog;
 use App\Models\admin\Client;
 use Illuminate\Http\Request;
-use App\Models\admin\Project;
 use App\Models\admin\Statistic;
 use App\Http\Controllers\Controller;
 
 class DashboardController extends Controller
 {
     public function index() {
-        $Project = Project::all();
         $Blog = Blog::where('status', 1)->get();
         $Client = Client::all();
         $Statistic = Statistic::orderBy('visit_time', 'desc')->get();
@@ -35,7 +33,6 @@ class DashboardController extends Controller
         $chartLabelsYearly = $yearlyStats['chartLabels'];
     
         return view('administrator.dashboard.index', compact(
-            'Project',
             'Blog',
             'Client',
             'Statistic',
@@ -53,7 +50,6 @@ class DashboardController extends Controller
     public function fetchData(Request $request)
     {
         if ($request->ajax()) {
-            $Project = Project::all();
         $Blog = Blog::where('status', 1)->get();
         $Client = Client::all();
         $Statistic = Statistic::orderBy('visit_time', 'desc')->get();
@@ -75,7 +71,6 @@ class DashboardController extends Controller
         $chartLabelsYearly = $yearlyStats['chartLabels'];
     
         return view('administrator.dashboard.fetchData.index', compact(
-            'Project',
             'Blog',
             'Client',
             'Statistic',

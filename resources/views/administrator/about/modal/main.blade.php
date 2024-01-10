@@ -50,7 +50,7 @@
                                 `checkbox_${i}_${index}`; // Atribut unik untuk setiap checkbox
                             body += `<div class="col-6 col-sm-4">` +
                                 `<label class="imagecheck mb-4">` +
-                                `<input name="imagecheck" id="${checkboxId}" type="checkbox" value="${img_url}" class="imagecheck-input" />` +
+                                `<input name="imagecheck" id="${checkboxId}" type="radio" value="${img_url}" class="imagecheck-input" />` +
                                 `<figure class="imagecheck-figure">` +
                                 `<img src="{{ asset_administrator('assets/media/gallery') }}/${img_url}" alt="${img_url}" class="imagecheck-image">` +
                                 `</figure>` +
@@ -81,14 +81,14 @@
                 });
 
                 // Validasi jumlah gambar yang dipilih
-                if (selectedImages.length > 0 && selectedImages.length <= 3) {
+                if (selectedImages.length > 0 && selectedImages.length <= 1) {
                     var selectedImagesJSON = JSON.stringify(selectedImages);
-                    $("#inputImage").val(selectedImagesJSON);
+                    $("#inputImage").val(selectedImages);
                     $('#buttonCloseModuleModal').click();
                 } else {
                     Swal.fire({
                         title: "Peringatan!",
-                        text: "Pilih antara 1 hingga 3 gambar.",
+                        text: "Pilih hanya 1 gambar.",
                         icon: "warning"
                     });
                 }
