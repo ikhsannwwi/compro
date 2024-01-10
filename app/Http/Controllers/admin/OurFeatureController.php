@@ -2,27 +2,25 @@
 
 namespace App\Http\Controllers\admin;
 
-use File;
+use App\Models\OurFeature;
 use Illuminate\Http\Request;
-use App\Models\admin\Service;
 use App\Http\Controllers\Controller;
-use Intervention\Image\Facades\Image;
 
-class ServiceController extends Controller
+class OurFeatureController extends Controller
 {
-    private static $module = "service";
+    private static $module = "our_feature";
 
     public function edit(){
         //Check permission
         if (!isAllowed(static::$module, "edit")) {
             abort(403);
         }
-        $service = Service::get()->toArray();
+        $our_feature = OurFeature::get()->toArray();
         
-        $service = array_column($service, 'value', 'name');
+        $our_feature = array_column($our_feature, 'value', 'name');
 
         // Ambil pengaturan dari database dan tampilkan di halaman
-        return view('administrator.service.index', compact('service'));
+        return view('administrator.our_feature.index', compact('our_feature'));
     }
     
     public function update(Request $request)
@@ -33,35 +31,38 @@ class ServiceController extends Controller
             abort(403);
         }
 
-        $service = Service::get()->toArray();
-        $service = array_column($service, 'value', 'name');
+        $our_feature = OurFeature::get()->toArray();
+        $our_feature = array_column($our_feature, 'value', 'name');
 
         // dd($request);
         
-        $data_service = [];
+        $data_our_feature = [];
+        $data_our_feature["sub_title"] = $request->sub_title;
+        $data_our_feature["title"] = $request->title;
+        $data_our_feature["image"] = $request->image;
         for ($i = 0; $i < 5; $i++) {
             $icon = $request->input('icon_' . $i);
             $title = $request->input('title_' . $i);
             $body = $request->input('body_' . $i);
-
-            $data_service['service_'.$i] = json_encode(['title' => $title, 'body' => $body, 'icon' => $icon]);
+        
+            $data_our_feature['our_feature_'.$i] = json_encode(['title' => $title, 'body' => $body, 'icon' => $icon]);
         }
 
         $logs = []; // Buat array kosong untuk menyimpan log
 
-        foreach ($data_service as $key => $value) {
+        foreach ($data_our_feature as $key => $value) {
             $data = [];
 
-            if (array_key_exists($key, $service)) {
+            if (array_key_exists($key, $our_feature)) {
                 $data["value"] = $value;
-                $set = Service::where('name', $key)->first();
+                $set = OurFeature::where('name', $key)->first();
                 $set->update($data);
 
-                $logs[] = ['---'.$key.'---' => ['Data Sebelumnya' => ['value' => $service[$key]], 'Data terbaru' => ['value' => $value]]];
+                $logs[] = ['---'.$key.'---' => ['Data Sebelumnya' => ['value' => $our_feature[$key]], 'Data terbaru' => ['value' => $value]]];
             } else {
                 $data["name"] = $key;
                 $data["value"] = $value;
-                $set = Service::create($data);
+                $set = OurFeature::create($data);
 
                 $logs[] = $set;
             }
@@ -75,7 +76,7 @@ class ServiceController extends Controller
         //Write log
         createLog(static::$module, __FUNCTION__, 0,$logs);
 
-        return redirect(route('admin.service'))->with(['success' => 'Data berhasil di update.']);
+        return redirect(route('admin.our_feature'))->with(['success' => 'Data berhasil di update.']);
 
     }
 }

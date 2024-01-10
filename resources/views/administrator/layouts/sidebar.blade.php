@@ -17,13 +17,14 @@
             <li class="menu-header">Dashboard</li>
             <li class="{{ Route::is('admin.dashboard*') ? 'active' : '' }}"><a class="nav-link" href="{{route('admin.dashboard')}}"><i class="fas fa-columns"></i><span>Dashboard</span></a></li>
             <li class="menu-header">Menu</li>
-            <li class="dropdown {{ Route::is('admin.service*', 'admin.kategori_blog*', 'admin.about*', 'admin.banner*', 'admin.contact*') ? 'active' : '' }}">
+            <li class="dropdown {{ Route::is('admin.service*', 'admin.kategori_blog*', 'admin.about*', 'admin.banner*', 'admin.contact*', 'admin.our_feature*') ? 'active' : '' }}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-database"></i>
                     <span>Data Master</span></a>
                 <ul class="dropdown-menu">
                     <li class="{{ Route::is('admin.banner*') ? 'active' : '' }}"><a class="nav-link" href="{{route('admin.banner')}}">Banner</a></li>
                     <li class="{{ Route::is('admin.service*') ? 'active' : '' }}"><a class="nav-link" href="{{route('admin.service')}}">Service</a></li>
                     <li class="{{ Route::is('admin.about*') ? 'active' : '' }}"><a class="nav-link" href="{{route('admin.about')}}">About</a></li>
+                    <li class="{{ Route::is('admin.our_feature*') ? 'active' : '' }}"><a class="nav-link" href="{{route('admin.our_feature')}}">Our Feature</a></li>
                     <li class="{{ Route::is('admin.contact*') ? 'active' : '' }}"><a class="nav-link" href="{{route('admin.contact')}}">Contact</a></li>
                     <li class="{{ Route::is('admin.kategori_blog*') ? 'active' : '' }}"><a class="nav-link" href="{{route('admin.kategori_blog')}}">Kategori Blog</a></li>
                 </ul>

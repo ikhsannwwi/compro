@@ -2,35 +2,79 @@
 
 @section('content')
     @push('section_header')
-        <h1>Service</h1>
+        <h1>Our Feature</h1>
         <div class="section-header-breadcrumb">
             <div class="breadcrumb-item active"><a href="{{ route('admin.dashboard') }}">Dashboard</a></div>
-            <div class="breadcrumb-item active"><a href="{{ route('admin.service') }}">Service</a></div>
+            <div class="breadcrumb-item active"><a href="{{ route('admin.our_feature') }}">Our Feature</a></div>
             <div class="breadcrumb-item">Edit</div>
         </div>
     @endpush
     @push('section_title')
-        Service
+        Our Feature
     @endpush
     <!-- Basic Tables start -->
     <div class="card">
         <div class="card-content">
             <div class="card-body">
-                <form action="{{ route('admin.service.update') }}" method="post" enctype="multipart/form-data"
+                <form action="{{ route('admin.our_feature.update') }}" method="post" enctype="multipart/form-data"
                     class="form" id="form" data-parsley-validate>
                     @csrf
                     @method('PUT')
+                    <div class="row">
+                        <div class="col-md-6 col-12">
+                            <div class="form-group mandatory">
+                                <label for="inputSubTitle"
+                                    class="form-label">Sub Title</label>
+                                <input type="text" id="inputSubTitle" data-parsley-required="true"
+                                    class="form-control" placeholder="Masukan Sub Title"
+                                    value="{{ array_key_exists('sub_title', $our_feature) ? $our_feature['sub_title'] : '' }}"
+                                    name="sub_title" autocomplete="off">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-12">
+                            <div class="form-group mandatory">
+                                <label for="inputTitle"
+                                    class="form-label">Title</label>
+                                <input type="text" id="inputTitle" data-parsley-required="true"
+                                    class="form-control" placeholder="Masukan Title"
+                                    value="{{ array_key_exists('title', $our_feature) ? $our_feature['title'] : '' }}"
+                                    name="title" autocomplete="off">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 col-12">
+                            <div class="form-group">
+                                <label for="inputImage" class="form-label">Image</label>
+                                <div class="row">
+                                    <div class="col-8" style="padding-right: 0;">
+                                        <!-- Menggunakan col-8 agar input lebih lebar dan menghapus padding kanan -->
+                                        <input type="text" name="image" class="form-control" value="{{ array_key_exists('image', $our_feature) ? $our_feature['image'] : '' }}" id="inputImage" readonly>
+                                    </div>
+                                    <div class="col-4" style="padding-left: 0;">
+                                        <!-- Menggunakan col-4 agar tombol "Search" lebih kecil dan menghapus padding kiri -->
+                                        <a href="#" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#modalGallery">
+                                            Search
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                     <div id="accordion">
-                        @for ($i = 0; $i < 5; $i++)
+                        @for ($i = 0; $i < 4; $i++)
                             <div class="accordion">
                                 <div class="accordion-header" role="button" data-toggle="collapse"
-                                    data-target="#service-accordion-{{ $i }}"
+                                    data-target="#our_feature-accordion-{{ $i }}"
                                     aria-expanded="{{ $i == 0 ? 'true' : 'false' }}">
-                                    <h4>Service {{ $i + 1 }}</h4>
+                                    <h4>Our Feature {{ $i + 1 }}</h4>
                                 </div>
                                 <div class="accordion-body collapse {{ $i == 0 ? 'show' : '' }}"
-                                    id="service-accordion-{{ $i }}" data-parent="#accordion">
+                                    id="our_feature-accordion-{{ $i }}" data-parent="#accordion">
                                     <input type="hidden" name="id_{{ $i }}" id="inputId_{{ $i }}">
                                     <div class="row">
                                         <div class="col-md-6 col-12">
@@ -39,7 +83,7 @@
                                                     class="form-label">Icon</label>
                                                 <input type="text" id="inputIcon_{{ $i }}"
                                                     class="form-control" placeholder="Masukan Icon"
-                                                    value="{{ array_key_exists('service_' . $i, $service) ? json_decode($service['service_' . $i])->icon : '' }}"
+                                                    value="{{ array_key_exists('our_feature_' . $i, $our_feature) ? json_decode($our_feature['our_feature_' . $i])->icon : '' }}"
                                                     name="icon_{{ $i }}" autocomplete="off">
                                             </div>
                                         </div>
@@ -51,7 +95,7 @@
                                                     class="form-label">Title</label>
                                                 <input type="text" id="inputTitle_{{ $i }}"
                                                     class="form-control" placeholder="Masukan Title"
-                                                    value="{{ array_key_exists('service_' . $i, $service) ? json_decode($service['service_' . $i])->title : '' }}"
+                                                    value="{{ array_key_exists('our_feature_' . $i, $our_feature) ? json_decode($our_feature['our_feature_' . $i])->title : '' }}"
                                                     name="title_{{ $i }}" autocomplete="off">
                                             </div>
                                         </div>
@@ -61,7 +105,7 @@
                                             <div class="form-group mandatory">
                                                 <label for="inputBody_{{ $i }}" class="form-label">Body</label>
                                                 <textarea name="body_{{ $i }}" id="inputBody_{{ $i }}" class="form-control"
-                                                    placeholder="Masukan Body" autocomplete="off">{{ array_key_exists('service_' . $i, $service) ? json_decode($service['service_' . $i])->body : '' }}</textarea>
+                                                    placeholder="Masukan Body" autocomplete="off">{{ array_key_exists('our_feature_' . $i, $our_feature) ? json_decode($our_feature['our_feature_' . $i])->body : '' }}</textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -86,6 +130,8 @@
             </div>
         </div>
     </div>
+
+    @include('administrator.our_feature.modal.main')
 
     <!-- Basic Tables end -->
 @endsection

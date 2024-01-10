@@ -17,6 +17,7 @@ use App\Http\Controllers\admin\SettingController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\LogSystemController;
 use App\Http\Controllers\admin\UserGroupController;
+use App\Http\Controllers\admin\OurFeatureController;
 use App\Http\Controllers\admin\KategoriBlogController;
 use App\Http\Controllers\admin\KomentarBlogController;
 
@@ -129,6 +130,10 @@ Route::prefix('admin')->group(function () {
         //Service
         Route::get('service', [ServiceController::class, 'edit'])->name('admin.service');
         Route::put('service/update', [ServiceController::class, 'update'])->name('admin.service.update');
+        
+        //Service
+        Route::get('our-feature', [OurFeatureController::class, 'edit'])->name('admin.our_feature');
+        Route::put('our-feature/update', [OurFeatureController::class, 'update'])->name('admin.our_feature.update');
         
         //Kategori Blog
         Route::get('kategori-blog', [KategoriBlogController::class, 'index'])->name('admin.kategori_blog');
