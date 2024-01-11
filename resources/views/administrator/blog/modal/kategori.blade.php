@@ -1,5 +1,5 @@
 <!-- Modal Detail Module -->
-<input type="hidden" id="kategori_id" value="{{Route::is('admin.blog.edit') ? $data->kategori_id : ''}}">
+<input type="hidden" id="kategori_id" multiple value="{{ Route::is('admin.blog.edit') ?  $kategoriIds->implode(',')  : '' }}">
 <div class="modal fade" tabindex="-1" role="dialog" id="modalKategori" data-backdrop="false">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
@@ -71,8 +71,11 @@
                 ],
                 "rowCallback": function(row, data) {
                     // Check if inputkategoriProject is not empty and data.id matches
-                    if (inputkategoriProject && data.id == inputkategoriProject) {
-                        $(row).addClass('selected');
+                    if (inputkategoriProject) {
+                        // Check if data.id is in the array
+                        if (inputkategoriProject.includes(data.id.toString())) {
+                            $(row).addClass('selected');
+                        }
                     }
                 }
             });
@@ -80,31 +83,37 @@
 
             // Click event for row selection
             $('#datatableModalKategori tbody').on('click', 'tr', function() {
-                // Remove selection from other rows
-                $('#datatableModalKategori tbody tr').removeClass('selected');
-
-                // Add selection to the clicked row
-                $(this).addClass('selected');
-
-                // var data = data_table_modal_kategori.row(this).data();
-
-                // $("#inputKategori").val(data.id);
-                // $("#inputKategoriName").val(data.nama);
+                // Toggle the 'selected' class on the clicked row
+                $(this).toggleClass('selected');
             });
 
             // Click event for "Pilih" button
             $('#selectDataKategori').on('click', function() {
-                // Get the selected row
-                var selectedRow = $('#datatableModalKategori tbody tr.selected');
+                // Get all selected rows
+                var selectedRows = $('#datatableModalKategori tbody tr.selected');
 
                 // Check if any row is selected
-                if (selectedRow.length > 0) {
-                    // Execute the specified code
-                    var data = data_table_modal_kategori.row(selectedRow).data();
-                    $("#kategori_id").val(data.id);
-                    $("#inputKategori").val(data.id);
-                    $("#inputKategoriName").val(data.nama);
+                if (selectedRows.length > 0) {
+                    // Extract IDs from selected rows
+                    var selectedIds = selectedRows.map(function() {
+                        var data = data_table_modal_kategori.row(this).data();
+                        return data.id;
+                    }).get();
+                    var selectedNames = selectedRows.map(function() {
+                        var data = data_table_modal_kategori.row(this).data();
+                        return data.nama;
+                    }).get();
+                    // Create JSON strings
+                    var selectedIdsJSON = JSON.stringify(selectedIds);
+                    var selectedNamesJSON = JSON.stringify(selectedNames);
+
+                    // Update the input fields with JSON strings
+                    $("#kategori_id").val(selectedIds);
+                    $("#inputKategori").val(selectedIdsJSON);
+                    $("#inputKategoriName").val(selectedNamesJSON);
                     $('#buttonCloseModuleModal').click();
+
+
                 } else {
                     // Inform the user that no row is selected
                     Swal.fire({
@@ -114,6 +123,7 @@
                     });
                 }
             });
+
         });
     </script>
 @endpush

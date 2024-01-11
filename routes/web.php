@@ -29,6 +29,15 @@ use App\Http\Controllers\front\TestimonialController;
 //     return redirect()->route('index');
 // });
 Route::get('/', [HomeController::class, 'index'])->name('web.index');
+Route::get('/getBanner', [HomeController::class, 'getBanner'])->name('web.getBanner');
+Route::get('/getContact', [HomeController::class, 'getContact'])->name('web.getContact');
+Route::get('/getAbout', [HomeController::class, 'getAbout'])->name('web.getAbout');
+Route::get('/getOurFeature', [HomeController::class, 'getOurFeature'])->name('web.getOurFeature');
+Route::get('/getService', [HomeController::class, 'getService'])->name('web.getService');
+Route::get('/getFreeQoute', [HomeController::class, 'getFreeQoute'])->name('web.getFreeQoute');
+Route::get('/getTestimonial', [HomeController::class, 'getTestimonial'])->name('web.getTestimonial');
+Route::get('/getBlog', [HomeController::class, 'getBlog'])->name('web.getBlog');
+Route::get('/getClient', [HomeController::class, 'getClient'])->name('web.getClient');
 
 Route::get('/about', [AboutController::class, 'index'])->name('web.about');
 

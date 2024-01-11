@@ -21,21 +21,23 @@
                     @csrf
                     @method('PUT')
 
-                    <input type="hidden" id="inputId" name="id" value="{{$data->id}}">
+                    {{-- {{dd($kategoriIds)}} --}}
+
+                    <input type="hidden" id="inputId" name="id" value="{{ $data->id }}">
 
                     <div class="row">
                         <div class="col-md-4 col-12">
                             <div class="form-group mandatory">
                                 <label for="inputKategoriName" class="form-label">Kategori</label>
                                 <div class="input-group">
-                                    <input type="text" class="form-control" id="inputKategoriName" value="{{$data->kategori->nama}}" readonly>
+                                    <input type="text" class="form-control" id="inputKategoriName" value="{{$kategoriNames}}" readonly>
                                     <div class="input-group-append">
                                         <a href="#" class="btn btn-primary" data-toggle="modal"
                                             data-target="#modalKategori">
                                             <i class="fas fa-search"></i>
                                         </a>
                                     </div>
-                                    <input type="text" class="d-none" name="kategori" id="inputKategori" value="{{$data->kategori_id}}"
+                                    <input type="text" class="d-none" name="kategori" id="inputKategori" value="{{$kategoriIds}}"
                                         data-parsley-required="true" aria-labelledby="inputKategoriNameLabel">
                                 </div>
                             </div>

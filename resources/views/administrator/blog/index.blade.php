@@ -9,7 +9,7 @@
         </div>
     @endpush
     @push('section_title')
-    Blog
+        Blog
     @endpush
 
     <div class="row">
@@ -27,7 +27,7 @@
                             <a href="{{ route('admin.blog.arsip') }}" class="btn btn-primary mx-3">Arsip</a>
                         @endif
                     </div>
-                    
+
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -72,8 +72,7 @@
                     url: '{{ route('admin.blog.getData') }}',
                     dataType: "JSON",
                     type: "GET",
-                    data: function(d) {
-                    }
+                    data: function(d) {}
 
                 },
                 columns: [{
@@ -82,20 +81,21 @@
                         },
                     },
                     {
-                        data: 'kategori.nama',
-                        name: 'kategori.nama'
+                        data: 'tags',
+                        name: 'tags',
+                        render: function(data, type, row) {
+                            // Assuming tags is an array of tag objects with a 'kategori' property
+                            let tagNames = row.tags.map(tag => tag.kategori.nama).join(', ');
+                            return tagNames;
+                        },
                     },
                     {
                         data: 'judul',
                         name: 'judul'
                     },
                     {
-                        render: function(data, type, row, meta) {
-                            if (row.status == 1) {
-                                return 'Public';
-                            } else {
-                                return 'Private';
-                            }
+                        render: function(data, type, row) {
+                            return row.status == 1 ? 'Public' : 'Private';
                         },
                     },
                     {
@@ -106,6 +106,7 @@
                         class: 'text-center'
                     }
                 ],
+
             });
 
 

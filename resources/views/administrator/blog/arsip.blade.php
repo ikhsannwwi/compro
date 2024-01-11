@@ -75,8 +75,13 @@
                         },
                     },
                     {
-                        data: 'kategori.nama',
-                        name: 'kategori.nama'
+                        data: 'tags',
+                        name: 'tags',
+                        render: function(data, type, row) {
+                            // Assuming tags is an array of tag objects with a 'kategori' property
+                            let tagNames = row.tags.map(tag => tag.kategori.nama).join(', ');
+                            return tagNames;
+                        },
                     },
                     {
                         data: 'judul',

@@ -8,6 +8,7 @@ use App\Models\admin\KomentarBlogReply;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\TagsBlog;
 
 class Blog extends Model
 {
@@ -18,8 +19,8 @@ class Blog extends Model
     protected $guarded = ['id'];
 
     // relasi
-    public function kategori(){
-        return $this->belongsTo(KategoriBlog::class, 'kategori_id');
+    public function tags(){
+        return $this->hasMany(TagsBlog::class, 'blog_id', 'id');
     }
     
     public function komentar_blog(){

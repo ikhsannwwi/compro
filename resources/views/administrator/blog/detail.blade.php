@@ -39,7 +39,7 @@
                                 <label for="inputKategoriProjectName" class="form-label">Kategori</label>
                                 <div class="input-group">
                                     <input type="text" class="form-control" id="inputKategoriProjectName"
-                                        value="{{ $data->kategori->nama }}" readonly>
+                                        value="{{ $kategoriNames }}" readonly>
                                     <div class="input-group-append">
                                         <a href="#" class="btn btn-secondary data_disabled" data-toggle="modal"
                                             data-target="#modalKategoriProject" disabled>
@@ -47,7 +47,7 @@
                                         </a>
                                     </div>
                                     <input type="text" class="d-none" name="kategori" id="inputKategoriProject"
-                                        value="{{ $data->kategori->id }}" data-parsley-required="true"
+                                        value="{{ $kategoriIds }}" data-parsley-required="true"
                                         aria-labelledby="inputKategoriProjectNameLabel">
                                 </div>
                             </div>

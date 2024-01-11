@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\admin;
 
+use DB;
 use File;
 use DataTables;
+use App\Models\TagsBlog;
 use App\Models\admin\Blog;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -25,7 +27,7 @@ class BlogController extends Controller
     }
     
     public function getData(Request $request){
-        $data = Blog::query()->with('kategori');
+        $data = Blog::query()->with('tags.kategori');
 
         $data = $data->get();
 
@@ -108,52 +110,87 @@ class BlogController extends Controller
             $img->setattribute('src', '/administrator/assets/media/blog/'.$image_name);
         }
         $isi = $dom->saveHTML();
+        $imagesJson = '';
 
-        $data = Blog::create([
-            'kategori_id' => $request->kategori,
-            'user_id' => auth()->user()->id,
-            'judul' => $request->judul,
-            'tanggal_posting' => date('Y-m-d', strtotime($request->tanggal_posting)),
-            'slug' => $slug,
-            'isi' => $isi,
-            'status' => $request->status,
-            'img_url' => '[]',
-            'created_by' => auth()->user()->id,
-        ]);
-        if ($request->hasFile('img')) {
-            $dataImgJson = [];
-            foreach ($request->file('img') as $image) {
-                $fileName = 'image_' . Str::slug($data->judul) . '_' . date('Y-m-d-H-i-s') . '_' . uniqid(2) . '.' . $image->getClientOriginalExtension();
-                $path = upload_path('blog') . $fileName;
-                Image::make($image->getRealPath())->save($path, 100);
-                $dataImgJson[] = $fileName;
+        try {
+            DB::beginTransaction();
+            $data = Blog::create([
+                'user_id' => auth()->user()->id,
+                'judul' => $request->judul,
+                'tanggal_posting' => date('Y-m-d', strtotime($request->tanggal_posting)),
+                'slug' => $slug,
+                'isi' => $isi,
+                'status' => $request->status,
+                'img_url' => '[]',
+                'created_by' => auth()->user()->id,
+            ]);
+    
+            if ($request->hasFile('img')) {
+                $dataImgJson = [];
+                foreach ($request->file('img') as $image) {
+                    $fileName = 'image_' . Str::slug($data->judul) . '_' . date('Y-m-d-H-i-s') . '_' . uniqid(2) . '.' . $image->getClientOriginalExtension();
+                    $path = upload_path('blog') . $fileName;
+                    Image::make($image->getRealPath())->save($path, 100);
+                    $dataImgJson[] = $fileName;
+                }
+                
+                $imagesJson .= json_encode($dataImgJson);
+                $data->img_url = $imagesJson;
+                $data->update();
             }
     
-            $data->img_url = json_encode($dataImgJson);
-            $data->update();
+            
+            $joinedString = $request->kategori;
+            $decodedArray = json_decode($joinedString, true);
+    
+            foreach ($decodedArray as $item) {
+                $kategori = TagsBlog::create([
+                    'blog_id' => $data->id,
+                    'kategori_id' => $item,
+                    'created_by' => auth()->user()->id,
+                ]);
+            }
+            
+            // Log the data
+            createLog(static::$module, __FUNCTION__, $data->id, ['Data yang disimpan' => $data]);
+            DB::commit();
+    
+            return redirect()->route('admin.blog')->with('success', 'Data berhasil disimpan.');
+        } catch (\Throwable $th) {
+            DB::rollback();
+            $dataimgdecode = json_decode($imagesJson);
+            if ($dataimgdecode != null) {
+                foreach ($dataimgdecode as $row) {
+                    $image_path = "./administrator/assets/media/blog/" . $row;
+                        if (File::exists($image_path)) {
+                            File::delete($image_path);
+                        }
+                }
+            }
+            return back()->with('error', $th->getMessage());
         }
-
-        // Log the data
-        createLog(static::$module, __FUNCTION__, $data->id, ['Data yang disimpan' => $data]);
-
-        return redirect()->route('admin.blog')->with('success', 'Data berhasil disimpan.');
     }
     
     public function edit($id){
-        //Check permission
+        // Check permission
         if (!isAllowed(static::$module, "edit")) {
             abort(403);
         }
-
-        $data = Blog::find($id);
+    
+        $data = Blog::with('tags.kategori')->find($id);
         if (!$data) {
             abort(404);
         }
-        
+    
+        // Pluck names and ids from the 'kategori' relationship
+        $kategoriNames = $data->tags->pluck('kategori.nama');
+        $kategoriIds = $data->tags->pluck('kategori.id');
+    
         $decodeImg = json_decode($data->img_url);
-        
-        return view('administrator.blog.edit',compact('data','decodeImg'));
+    
+        return view('administrator.blog.edit', compact('data', 'decodeImg', 'kategoriNames', 'kategoriIds'));
     }
+    
     
     public function update(Request $request)
     {
@@ -231,7 +268,6 @@ class BlogController extends Controller
         $isi = $dom->saveHTML();
 
         $updates = [
-            'kategori_id' => $request->kategori,
             'user_id' => auth()->user()->id,
             'judul' => $request->judul,
             'tanggal_posting' => date('Y-m-d', strtotime($request->tanggal_posting)),
@@ -272,6 +308,21 @@ class BlogController extends Controller
         $updatedData = array_intersect_key($updates, $data->getOriginal());
 
         $data->update($updates);
+
+        $joinedString = $request->kategori;
+        $decodedArray = json_decode($joinedString, true);
+
+        $tags = TagsBlog::where('blog_id', $data->id)->get();
+        foreach ($tags as $row) {
+            $row->delete();
+        }
+        foreach ($decodedArray as $item) {
+            $kategori = TagsBlog::create([
+                'blog_id' => $data->id,
+                'kategori_id' => $item,
+                'created_by' => auth()->user()->id,
+            ]);
+        }
 
         createLog(static::$module, __FUNCTION__, $data->id, ['Data sebelum diupdate' => $previousData, 'Data sesudah diupdate' => $updatedData]);
         return redirect()->route('admin.blog')->with('success', 'Data berhasil diupdate.');
@@ -348,7 +399,7 @@ class BlogController extends Controller
 
     public function getDataArsip(Request $request){
         $data = Blog::query()
-                    ->with('kategori')
+                    ->with('tags.kategori')
                     ->onlyTrashed()
                     ->get();
 
@@ -418,7 +469,7 @@ class BlogController extends Controller
         
         $id = $request->id;
 
-        $data = Blog::onlyTrashed()->with('komentar_blog')->with('komentar_blog_reply')->find($id);
+        $data = Blog::onlyTrashed()->with('tags.kategori')->with('komentar_blog')->with('komentar_blog_reply')->find($id);
 
         // Check if data exists in the trash
         if (!$data) {
@@ -462,6 +513,9 @@ class BlogController extends Controller
         }
         
         $data->forceDelete();
+        foreach ($data->tags as $row) {
+            $row->delete();
+        }
         
 
         $dataJson = [
@@ -512,14 +566,18 @@ class BlogController extends Controller
             abort(403);
         }
 
-        $data = Blog::where('slug', $slug)->first();
+        $data = Blog::with('tags.kategori')->where('slug', $slug)->first();
 
         if (!$data) {
             abort(404);
         }
-
+    
+        // Pluck names and ids from the 'kategori' relationship
+        $kategoriNames = $data->tags->pluck('kategori.nama');
+        $kategoriIds = $data->tags->pluck('kategori.id');
+    
         $decodeImg = json_decode($data->img_url);
         
-        return view('administrator.blog.detail',compact('data','decodeImg'));
+        return view('administrator.blog.detail',compact('data','decodeImg', 'kategoriNames', 'kategoriIds'));
     }
 }

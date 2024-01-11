@@ -26,14 +26,14 @@
                             <div class="form-group mandatory">
                                 <label for="inputKategoriName" class="form-label">Kategori</label>
                                 <div class="input-group">
-                                    <input type="text" class="form-control" id="inputKategoriName" readonly>
+                                    <input type="text" class="form-control" multiple id="inputKategoriName" readonly>
                                     <div class="input-group-append">
                                         <a href="#" class="btn btn-primary" data-toggle="modal"
                                             data-target="#modalKategori">
                                             <i class="fas fa-search"></i>
                                         </a>
                                     </div>
-                                    <input type="text" class="d-none" name="kategori" id="inputKategori"
+                                    <input type="text" class="d-none" name="kategori" multiple id="inputKategori"
                                         data-parsley-required="true" aria-labelledby="inputKategoriNameLabel">
                                 </div>
                             </div>
