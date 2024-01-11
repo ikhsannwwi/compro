@@ -2,20 +2,20 @@
 
 @section('content')
     @push('section_header')
-        <h1>About</h1>
+        <h1>Free Qoute</h1>
         <div class="section-header-breadcrumb">
             <div class="breadcrumb-item active"><a href="{{ route('admin.dashboard') }}">Dashboard</a></div>
-            <div class="breadcrumb-item">About</div>
+            <div class="breadcrumb-item">Free Qoute</div>
         </div>
     @endpush
     @push('section_title')
-        About
+        Free Qoute
     @endpush
     <!-- Basic Tables start -->
     <div class="card">
         <div class="card-content">
             <div class="card-body">
-                <form action="{{ route('admin.about.update') }}" method="post" enctype="multipart/form-data" class="form"
+                <form action="{{ route('admin.free_qoute.update') }}" method="post" enctype="multipart/form-data" class="form"
                     id="form" data-parsley-validate>
                     @csrf
                     @method('PUT')
@@ -33,31 +33,24 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-12">
+                        <div class="col-md-6 col-12">
                             <div class="form-group mandatory">
-                                <label for="inputDeskripsi" class="form-label">Deskripsi</label>
-                                <textarea name="deskripsi" class="form-control" id="inputDeskripsi" placeholder="Masukan Deskripsi" cols="30"
-                                    rows="100" autocomplete="off" data-parsley-required="true">{{ array_key_exists('deskripsi', $settings) ? $settings['deskripsi'] : '' }}</textarea>
+                                <label for="inputSubTitle"
+                                    class="form-label">Sub Title</label>
+                                <input type="text" id="inputSubTitle"
+                                    class="form-control" placeholder="Masukan Sub Title" data-parsley-required="true"
+                                    value="{{ array_key_exists('sub_title', $settings) ? $settings['sub_title'] : '' }}"
+                                    name="sub_title" autocomplete="off">
                             </div>
                         </div>
                     </div>
 
                     <div class="row">
-                        <div class="col-md-6 col-12">
+                        <div class="col-12">
                             <div class="form-group mandatory">
-                                <label for="inputImage" class="form-label">Image</label>
-                                <div class="row">
-                                    <div class="col-8" style="padding-right: 0;">
-                                        <!-- Menggunakan col-8 agar input lebih lebar dan menghapus padding kanan -->
-                                        <input type="text" name="image" class="form-control" data-parsley-required="true" value="{{ array_key_exists('image', $settings) ? $settings['image'] : '' }}" id="inputImage" readonly>
-                                    </div>
-                                    <div class="col-4" style="padding-left: 0;">
-                                        <!-- Menggunakan col-4 agar tombol "Search" lebih kecil dan menghapus padding kiri -->
-                                        <a href="#" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#modalGallery">
-                                            Search
-                                        </a>
-                                    </div>
-                                </div>
+                                <label for="inputDeskripsi" class="form-label">Deskripsi</label>
+                                <textarea name="deskripsi" class="form-control" id="inputDeskripsi" placeholder="Masukan Deskripsi" cols="30"
+                                    rows="100" autocomplete="off" data-parsley-required="true">{{ array_key_exists('deskripsi', $settings) ? $settings['deskripsi'] : '' }}</textarea>
                             </div>
                         </div>
                     </div>
@@ -79,14 +72,9 @@
         </div>
     </div>
 
-    @include('administrator.about.modal.main')
-    <!-- Basic Tables end -->
 @endsection
 
 @push('js')
-    <!-- Tambahkan FileInput JavaScript -->
-    <script src="{{ asset_administrator('assets/plugins/form-jasnyupload/fileinput.min.js') }}"></script>
-
     <script type="text/javascript">
         $(document).ready(function() {
 

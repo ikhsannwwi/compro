@@ -72,14 +72,14 @@
 
                     <div class="row">
                         <div class="col-12 d-flex justify-content-end">
-                            <button type="submit" id="formSubmit" class="btn btn-primary me-1 mb-1">
+                            <button type="submit" id="formSubmit" class="btn btn-primary mx-1 mb-1">
                                 <span class="indicator-label">Submit</span>
                                 <span class="indicator-progress" style="display: none;">
                                     Tunggu Sebentar...
                                     <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
                                 </span>
                             </button>
-                            <button type="reset" class="btn btn-secondary mx-2 mb-1">Reset</button>
+                            <button type="reset" class="btn btn-secondary mx-1 mb-1">Reset</button>
                         </div>
                     </div>
                 </form>

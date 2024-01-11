@@ -20,7 +20,7 @@
             <li class="menu-header">Dashboard</li>
             <li class="{{ Route::is('admin.dashboard*') ? 'active' : '' }}"><a class="nav-link" href="{{route('admin.dashboard')}}"><i class="fas fa-columns"></i><span>Dashboard</span></a></li>
             <li class="menu-header">Menu</li>
-            <li class="dropdown {{ Route::is('admin.service*', 'admin.kategori_blog*', 'admin.about*', 'admin.banner*', 'admin.contact*', 'admin.our_feature*') ? 'active' : '' }}">
+            <li class="dropdown {{ Route::is('admin.service*', 'admin.about*', 'admin.banner*', 'admin.contact*', 'admin.our_feature*') ? 'active' : '' }}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-database"></i>
                     <span>Data Master</span></a>
                 <ul class="dropdown-menu">
@@ -29,20 +29,22 @@
                     <li class="{{ Route::is('admin.about*') ? 'active' : '' }}"><a class="nav-link" href="{{route('admin.about')}}">About</a></li>
                     <li class="{{ Route::is('admin.our_feature*') ? 'active' : '' }}"><a class="nav-link" href="{{route('admin.our_feature')}}">Our Feature</a></li>
                     <li class="{{ Route::is('admin.contact*') ? 'active' : '' }}"><a class="nav-link" href="{{route('admin.contact')}}">Contact</a></li>
-                    <li class="{{ Route::is('admin.kategori_blog*') ? 'active' : '' }}"><a class="nav-link" href="{{route('admin.kategori_blog')}}">Kategori Blog</a></li>
+                    <li class="{{ Route::is('admin.free_qoute*') ? 'active' : '' }}"><a class="nav-link" href="{{route('admin.free_qoute')}}">Free Qoute</a></li>
                 </ul>
             </li>
-            <li class="dropdown {{ Route::is('admin.blog*', 'admin.komentar_blog*') ? 'active' : '' }}">
+            <li class="dropdown {{ Route::is('admin.blog*', 'admin.kategori_blog*', 'admin.komentar_blog*') ? 'active' : '' }}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="far fa-newspaper"></i>
                     <span>Blog</span></a>
-                <ul class="dropdown-menu">
+                    <ul class="dropdown-menu">
                     <li class="{{ Route::is('admin.blog*') ? 'active' : '' }}"><a class="nav-link" href="{{route('admin.blog')}}">Post</a></li>
+                    <li class="{{ Route::is('admin.kategori_blog*') ? 'active' : '' }}"><a class="nav-link" href="{{route('admin.kategori_blog')}}">Kategori Blog</a></li>
                     <li class="{{ Route::is('admin.komentar_blog*') ? 'active' : '' }}"><a class="nav-link" href="{{route('admin.komentar_blog')}}">Komentar</a></li>
                 </ul>
             </li>
             <li class="{{ Route::is('admin.gallery*') ? 'active' : '' }}"><a class="nav-link" href="{{route('admin.gallery')}}"><i class="fas fa-images"></i> <span>Gallery</span></a></li>
             <li class="{{ Route::is('admin.client*') ? 'active' : '' }}"><a class="nav-link" href="{{route('admin.client')}}"><i class="fas fa-money-bill-wave"></i> <span>Client</span></a></li>
             <li class="{{ Route::is('admin.team*') ? 'active' : '' }}"><a class="nav-link" href="{{route('admin.team')}}"><i class="fas fa-money-bill-wave"></i> <span>Team</span></a></li>
+            <li class="{{ Route::is('admin.testimonial*') ? 'active' : '' }}"><a class="nav-link" href="{{route('admin.testimonial')}}"><i class="fas fa-money-bill-wave"></i> <span>Testimonial</span></a></li>
             <li class="dropdown {{ Route::is('admin.users*','admin.user_groups*') ? 'active' : '' }}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-users-cog"></i>
                     <span>User Management</span></a>

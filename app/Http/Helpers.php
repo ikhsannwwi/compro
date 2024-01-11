@@ -67,6 +67,9 @@ function upload_path($type = '', $file = '')
 		case 'team':
 			$target_folder = 'team';
 			break;
+		case 'testimonial':
+			$target_folder = 'testimonial';
+			break;
 		default:
 			$target_folder = '';
 			break;
@@ -112,6 +115,8 @@ function img_src($image = '', $img_type = '')
 				break;
 			case 'team':
 				$folder = '/team/';
+			case 'testimonial':
+				$folder = '/testimonial/';
 				break;
 			default:
 				$folder = '/';

@@ -5,16 +5,15 @@ namespace App\Http\Controllers\admin;
 use DB;
 use File;
 use DataTables;
-use App\Models\Team;
+use App\Models\Testimonial;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use App\Models\TeamSosialMedia;
 use App\Http\Controllers\Controller;
 use Intervention\Image\Facades\Image;
 
-class TeamController extends Controller
+class TestimonialController extends Controller
 {
-    private static $module = "team";
+    private static $module = "testimonial";
 
     public function index(){
         //Check permission
@@ -22,11 +21,11 @@ class TeamController extends Controller
             abort(403);
         }
 
-        return view('administrator.team.index');
+        return view('administrator.testimonial.index');
     }
     
     public function getData(Request $request){
-        $data = Team::query();
+        $data = Testimonial::query();
 
         $data = $data->get();
 
@@ -39,12 +38,12 @@ class TeamController extends Controller
                 </a>';
                 endif;
                 if (isAllowed(static::$module, "edit")) : //Check permission
-                    $btn .= '<a href="'.route('admin.team.edit',$row->id).'" class="btn btn-primary btn-sm mx-3 ">
+                    $btn .= '<a href="'.route('admin.testimonial.edit',$row->id).'" class="btn btn-primary btn-sm mx-3 ">
                     Edit
                 </a>';
                 endif;
                 if (isAllowed(static::$module, "detail")) : //Check permission
-                    $btn .= '<a href="'.route('admin.team.detail',$row->id).'" data-id="' . $row->id . '" class="btn btn-secondary btn-sm ">
+                    $btn .= '<a href="#" data-id="' . $row->id . '" class="btn btn-secondary btn-sm " data-toggle="modal" data-target="#detailTestimonial">
                     Detail
                 </a>';
                 endif;
@@ -60,7 +59,7 @@ class TeamController extends Controller
             abort(403);
         }
 
-        return view('administrator.team.add');
+        return view('administrator.testimonial.add');
     }
     
     public function save(Request $request)
@@ -72,52 +71,39 @@ class TeamController extends Controller
 
         $rules = [
             'nama' => 'required',
-            'jabatan' => 'required',
+            'keterangan' => 'required',
         ];
 
         $request->validate($rules);
         $fileName = '';
-
         try {
             DB::beginTransaction();
-            $data = Team::create([
+            $data = Testimonial::create([
                 'nama' => $request->nama,
-                'jabatan' => $request->jabatan,
-                'img_url' => '-',
+                'keterangan' => $request->keterangan,
                 'created_by' => auth()->user()->id,
             ]);
             if ($request->hasFile('img')) {
                 $fileName .= 'image_' . Str::slug($data->nama) . '_' . date('Y-m-d-H-i-s') . '_' . uniqid(2) . '.' . $request->img->getClientOriginalExtension();
-                $path = upload_path('team') . $fileName;
+                $path = upload_path('testimonial') . $fileName;
                 Image::make($request->img->getRealPath())->save($path, 100);
                 
                 $data->img_url = $fileName;
                 $data->update();
             }
             
-            if (!empty($request->sosmed)) {
-                foreach ($request->sosmed as $row) {
-                    $sosmed = TeamSosialMedia::create([
-                        'team_id' => $data->id,
-                        'nama' => $row['nama'],
-                        'url' => $row['url'],
-                        'created_by' => auth()->user()->id,
-                    ]);
-                }
-            }
-            
             // Log the data
             createLog(static::$module, __FUNCTION__, $data->id, ['Data yang disimpan' => $data]);
             
             DB::commit();
-            return redirect()->route('admin.team')->with('success', 'Data berhasil disimpan.');
+            return redirect()->route('admin.testimonial')->with('success', 'Data berhasil disimpan.');
         } catch (\Throwable $th) {
             DB::rollback();
-            $image_path = "./administrator/assets/media/team/" . $fileName;
+            $image_path = "./administrator/assets/media/testimonial/" . $fileName;
             if (File::exists($image_path)) {
                 File::delete($image_path);
             }
-            return back()->with('error', 'Data gagal disimpan.');
+            return back()->with('error', $th->getMessage());
         }
     }
     
@@ -127,9 +113,9 @@ class TeamController extends Controller
             abort(403);
         }
 
-        $data = Team::with('sosial_media')->find($id);
+        $data = Testimonial::find($id);
 
-        return view('administrator.team.edit',compact('data'));
+        return view('administrator.testimonial.edit',compact('data'));
     }
     
     public function update(Request $request)
@@ -140,11 +126,11 @@ class TeamController extends Controller
         }
 
         $id = $request->id;
-        $data = Team::find($id);
+        $data = Testimonial::find($id);
 
         $rules = [
             'nama' => 'required',
-            'jabatan' => 'required',
+            'keterangan' => 'required',
         ];
 
         $request->validate($rules);
@@ -154,43 +140,22 @@ class TeamController extends Controller
 
         $updates = [
             'nama' => $request->nama,
-            'jabatan' => $request->jabatan,
-            'img_url' => '-',
-            'updated_by' => auth()->user()->id,
+            'keterangan' => $request->keterangan,
+            'updated_at' => auth()->user()->id,
         ];
 
         if ($request->hasFile('img')) {
-            $image_path = "./administrator/assets/media/team/" . $data->img_url;
+            $image_path = "./administrator/assets/media/testimonial/" . $data->img_url;
             if (File::exists($image_path)) {
                 File::delete($image_path);
             }
             $fileName = 'image_' . Str::slug($data->nama) . '_' . date('Y-m-d-H-i-s') . '_' . uniqid(2) . '.' . $request->img->getClientOriginalExtension();
-            $path = upload_path('team') . $fileName;
+            $path = upload_path('testimonial') . $fileName;
             Image::make($request->img->getRealPath())->save($path, 100);
 
             $updates['img_url'] = $fileName;
         }else{
             $updates['img_url'] = $data->img_url;
-        }
-
-        if (!empty($request->sosmed)) {
-            foreach ($request->sosmed as $row) {
-                if (!empty($row['id'])) {
-                    $sosmed = TeamSosialMedia::find($row['id'])->update([
-                        'team_id' => $data->id,
-                        'nama' => $row['nama'],
-                        'url' => $row['url'],
-                        'updated_by' => auth()->user()->id,
-                    ]);
-                } else {
-                    $sosmed = TeamSosialMedia::create([
-                        'team_id' => $data->id,
-                        'nama' => $row['nama'],
-                        'url' => $row['url'],
-                        'created_by' => auth()->user()->id,
-                    ]);
-                }
-            }
         }
 
         // Filter only the updated data
@@ -199,7 +164,7 @@ class TeamController extends Controller
         $data->update($updates);
 
         createLog(static::$module, __FUNCTION__, $data->id, ['Data sebelum diupdate' => $previousData, 'Data sesudah diupdate' => $updatedData]);
-        return redirect()->route('admin.team')->with('success', 'Data berhasil diupdate.');
+        return redirect()->route('admin.testimonial')->with('success', 'Data berhasil diupdate.');
     }
     
     public function delete(Request $request)
@@ -212,20 +177,16 @@ class TeamController extends Controller
         $id = $request->id;
 
         // Find the data based on the provided ID or throw a 404 exception.
-        $data = Team::with('sosial_media')->findOrFail($id);
+        $data = Testimonial::findOrFail($id);
 
         // Store the data to be logged before deletion
         $deletedData = $data->toArray();
 
-        $image_path = "./administrator/assets/media/team/" . $data->img_url;
+        $image_path = "./administrator/assets/media/testimonial/" . $data->img_url;
             if (File::exists($image_path)) {
                 File::delete($image_path);
             }
 
-        // Delete the data.
-        foreach ($data->sosial_media as $row) {
-            $row->delete();
-        }
         $data->delete();
 
         // Write logs for soft delete
@@ -237,41 +198,18 @@ class TeamController extends Controller
         ]);
     }
 
-    public function deleteSosmed(Request $request)
-    {
-        // Check permission
-        if (!isAllowed(static::$module, "edit")) {
-            abort(403);
-        }
-
-        $id = $request->id;
-
-        // Find the data based on the provided ID or throw a 404 exception.
-        $data = TeamSosialMedia::findOrFail($id);
-
-        // Store the data to be logged before deletion
-        $deletedData = $data->toArray();
-
-        $data->delete();
-
-        // Write logs for soft delete
-        createLog(static::$module, __FUNCTION__, $id, ['Data yang dihapus' => $deletedData]);
-
-        return response()->json([
-            'status' => 'success',
-            'message' => 'Data telah dihapus.',
-        ]);
-    }
-
-    public function detail($id){
+    public function getDetail($id){
         //Check permission
         if (!isAllowed(static::$module, "detail")) {
             abort(403);
         }
 
-        $data = Team::with('sosial_media')->find($id);
+        $data = Testimonial::find($id);
 
-        
-        return view('administrator.team.detail',compact('data'));
+        return response()->json([
+            'data' => $data,
+            'status' => 'success',
+            'message' => 'Sukses memuat detail user.',
+        ]);
     }
 }

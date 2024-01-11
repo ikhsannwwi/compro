@@ -16,10 +16,12 @@ use App\Http\Controllers\admin\ProfileController;
 use App\Http\Controllers\admin\ServiceController;
 use App\Http\Controllers\admin\SettingController;
 use App\Http\Controllers\admin\DashboardController;
+use App\Http\Controllers\admin\FreeQouteController;
 use App\Http\Controllers\admin\LogSystemController;
 use App\Http\Controllers\admin\StatisticController;
 use App\Http\Controllers\admin\UserGroupController;
 use App\Http\Controllers\admin\OurFeatureController;
+use App\Http\Controllers\admin\TestimonialController;
 use App\Http\Controllers\admin\KategoriBlogController;
 use App\Http\Controllers\admin\KomentarBlogController;
 
@@ -221,10 +223,25 @@ Route::prefix('admin')->group(function () {
         Route::get('team/delete', [TeamController::class, 'delete'])->name('admin.team.delete');
         Route::get('team/deleteSosmed', [TeamController::class, 'deleteSosmed'])->name('admin.team.deleteSosmed');
         Route::get('team/detail/{id}', [TeamController::class, 'detail'])->name('admin.team.detail');
-
+        
         //Statistic
         Route::get('statistic', [StatisticController::class, 'index'])->name('admin.statistic');
         Route::get('statistic/getData', [StatisticController::class, 'getData'])->name('admin.statistic.getData');
         Route::get('statistic/getDetail{id}', [StatisticController::class, 'getDetail'])->name('admin.statistic.getDetail');
+        
+        //Team
+        Route::get('testimonial', [TestimonialController::class, 'index'])->name('admin.testimonial');
+        Route::get('testimonial/add', [TestimonialController::class, 'add'])->name('admin.testimonial.add');
+        Route::get('testimonial/getData', [TestimonialController::class, 'getData'])->name('admin.testimonial.getData');
+        Route::post('testimonial/save', [TestimonialController::class, 'save'])->name('admin.testimonial.save');
+        Route::get('testimonial/edit/{id}', [TestimonialController::class, 'edit'])->name('admin.testimonial.edit');
+        Route::put('testimonial/update', [TestimonialController::class, 'update'])->name('admin.testimonial.update');
+        Route::get('testimonial/delete', [TestimonialController::class, 'delete'])->name('admin.testimonial.delete');
+        Route::get('testimonial/detail/{id}', [TestimonialController::class, 'detail'])->name('admin.testimonial.detail');
+        Route::get('testimonial/getDetail-{id}', [TestimonialController::class, 'getDetail'])->name('admin.testimonial.getDetail');
+        
+        //About
+        Route::get('free-qoute', [FreeQouteController::class, 'index'])->name('admin.free_qoute');
+        Route::put('free-qoute/update', [FreeQouteController::class, 'update'])->name('admin.free_qoute.update');
     });
 });
