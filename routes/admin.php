@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\AuthController;
 use App\Http\Controllers\admin\BlogController;
+use App\Http\Controllers\admin\TeamController;
 use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\admin\viewController;
 use App\Http\Controllers\admin\AboutController;
@@ -16,6 +17,7 @@ use App\Http\Controllers\admin\ServiceController;
 use App\Http\Controllers\admin\SettingController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\LogSystemController;
+use App\Http\Controllers\admin\StatisticController;
 use App\Http\Controllers\admin\UserGroupController;
 use App\Http\Controllers\admin\OurFeatureController;
 use App\Http\Controllers\admin\KategoriBlogController;
@@ -204,10 +206,25 @@ Route::prefix('admin')->group(function () {
         //Banner
         Route::get('banner', [BannerController::class, 'edit'])->name('admin.banner');
         Route::put('banner/update', [BannerController::class, 'update'])->name('admin.banner.update');
-
+        
         //Contact
         Route::get('contact', [ContactController::class, 'index'])->name('admin.contact');
         Route::put('contact/update', [ContactController::class, 'update'])->name('admin.contact.update');
+        
+        //Team
+        Route::get('team', [TeamController::class, 'index'])->name('admin.team');
+        Route::get('team/add', [TeamController::class, 'add'])->name('admin.team.add');
+        Route::get('team/getData', [TeamController::class, 'getData'])->name('admin.team.getData');
+        Route::post('team/save', [TeamController::class, 'save'])->name('admin.team.save');
+        Route::get('team/edit/{id}', [TeamController::class, 'edit'])->name('admin.team.edit');
+        Route::put('team/update', [TeamController::class, 'update'])->name('admin.team.update');
+        Route::get('team/delete', [TeamController::class, 'delete'])->name('admin.team.delete');
+        Route::get('team/deleteSosmed', [TeamController::class, 'deleteSosmed'])->name('admin.team.deleteSosmed');
+        Route::get('team/detail/{id}', [TeamController::class, 'detail'])->name('admin.team.detail');
 
+        //Statistic
+        Route::get('statistic', [StatisticController::class, 'index'])->name('admin.statistic');
+        Route::get('statistic/getData', [StatisticController::class, 'getData'])->name('admin.statistic.getData');
+        Route::get('statistic/getDetail{id}', [StatisticController::class, 'getDetail'])->name('admin.statistic.getDetail');
     });
 });

@@ -13,6 +13,9 @@
                 ?>
             </a>
         </div>
+        @php
+            $permissions = getPermissionModuleGroup();
+        @endphp
         <ul class="sidebar-menu">
             <li class="menu-header">Dashboard</li>
             <li class="{{ Route::is('admin.dashboard*') ? 'active' : '' }}"><a class="nav-link" href="{{route('admin.dashboard')}}"><i class="fas fa-columns"></i><span>Dashboard</span></a></li>
@@ -39,6 +42,7 @@
             </li>
             <li class="{{ Route::is('admin.gallery*') ? 'active' : '' }}"><a class="nav-link" href="{{route('admin.gallery')}}"><i class="fas fa-images"></i> <span>Gallery</span></a></li>
             <li class="{{ Route::is('admin.client*') ? 'active' : '' }}"><a class="nav-link" href="{{route('admin.client')}}"><i class="fas fa-money-bill-wave"></i> <span>Client</span></a></li>
+            <li class="{{ Route::is('admin.team*') ? 'active' : '' }}"><a class="nav-link" href="{{route('admin.team')}}"><i class="fas fa-money-bill-wave"></i> <span>Team</span></a></li>
             <li class="dropdown {{ Route::is('admin.users*','admin.user_groups*') ? 'active' : '' }}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-users-cog"></i>
                     <span>User Management</span></a>
@@ -47,13 +51,23 @@
                     <li class="{{ Route::is('admin.users*') ? 'active' : '' }}"><a class="nav-link" href="{{route('admin.users')}}">User</a></li>
                 </ul>
             </li>
-            <li class="dropdown {{ Route::is('admin.logSystems*') ? 'active' : '' }}">
-                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-bezier-curve"></i>
-                    <span>Systems</span></a>
-                <ul class="dropdown-menu">
-                    <li class="{{ Route::is('admin.logSystems*') ? 'active' : '' }}"><a class="nav-link" href="{{route('admin.logSystems')}}">Logs</a></li>
-                </ul>
-            </li>
+            @if (showModule('log_systems', $permissions) || showModule('statistic', $permissions))
+                <li class="dropdown {{ Route::is('admin.logSystems*','admin.statistic*') ? 'active' : '' }}">
+                    <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
+                            class="fas fa-bezier-curve"></i>
+                        <span>Systems</span></a>
+                    <ul class="dropdown-menu">
+                        @if (showModule('log_systems', $permissions))
+                            <li class="{{ Route::is('admin.logSystems*') ? 'active' : '' }}"><a class="nav-link"
+                                    href="{{ route('admin.logSystems') }}">Logs</a></li>
+                        @endif
+                        @if (showModule('statistic', $permissions))
+                            <li class="{{ Route::is('admin.statistic*') ? 'active' : '' }}"><a class="nav-link"
+                                    href="{{ route('admin.statistic') }}">Statistic</a></li>
+                        @endif
+                    </ul>
+                </li>
+            @endif
             <li class="{{ Route::is('admin.profile*') ? 'active' : '' }}"><a class="nav-link" href="{{route('admin.profile',(auth()->user() ? auth()->user()->kode : ""))}}"><i class="fas fa-solid fa-user"></i> <span>Profile</span></a></li>
             <li class="dropdown {{ Route::is('admin.settings*','admin.module*') ? 'active' : '' }}">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-cogs"></i> <span>Settings</span></a>

@@ -64,6 +64,9 @@ function upload_path($type = '', $file = '')
 		case 'default':
 			$target_folder = 'default';
 			break;
+		case 'team':
+			$target_folder = 'team';
+			break;
 		default:
 			$target_folder = '';
 			break;
@@ -106,6 +109,9 @@ function img_src($image = '', $img_type = '')
 				break;
 			case 'default':
 				$folder = '/default/';
+				break;
+			case 'team':
+				$folder = '/team/';
 				break;
 			default:
 				$folder = '/';
