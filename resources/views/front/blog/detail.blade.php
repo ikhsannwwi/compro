@@ -81,47 +81,51 @@
                     <!-- Comment List Start -->
                     <div class="mb-5">
                         <div class="section-title section-title-sm position-relative pb-3 mb-4">
-                            <h3 class="mb-0"><span id="countComment">{{ count($data->komentar_blog) + count($data->komentar_blog_reply) }}</span>
+                            <h3 class="mb-0"><span
+                                    id="countComment">{{ count($data->komentar_blog) + count($data->komentar_blog_reply) }}</span>
                                 Comments</h3>
                         </div>
                         <div id="sectionCommentHtml">
                             @foreach ($comment as $row)
-                            <div class="comment-section">
-                                <div class="d-flex mb-4">
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar{{ mt_rand(1, 8) }}.png"
-                                        class="img-fluid rounded" style="width: 45px; height: 45px;">
-                                    <div class="ps-3">
-                                        <h6><a href="">Anonymous</a>
-                                            <small><i>{{ Carbon\Carbon::parse($row->created_at)->diffForHumans() }}</i></small>
-                                        </h6>
-                                        <p>{{ $row->isi }}</p>
-                                        <button class="btn btn-sm btn-light triggerReplay">Reply</button>
-                                        <div class="panel sectionReply d-none">
-                                            <div class="panel-body">
-                                                <textarea class="form-control" rows="2" placeholder="What are you thinking?"></textarea>
-                                                <div class="mt-2 clearfix">
-                                                    <a href="javascript:void(0)"
-                                                        data-id="{{ $row->id }}"
-                                                        class="btn btn-sm btn-light triggerCommentReply"><i class="fas fa-pencil-alt"></i>
-                                                        Share</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                @foreach ($row->reply as $item)
-                                    <div class="d-flex ms-5 mb-4">
+                                <div class="comment-section">
+                                    <div class="d-flex mb-4">
                                         <img src="https://bootdey.com/img/Content/avatar/avatar{{ mt_rand(1, 8) }}.png"
                                             class="img-fluid rounded" style="width: 45px; height: 45px;">
                                         <div class="ps-3">
                                             <h6><a href="">Anonymous</a>
-                                                <small><i>{{ Carbon\Carbon::parse($item->created_at)->diffForHumans() }}</i></small>
+                                                <small><i>{{ Carbon\Carbon::parse($row->created_at)->diffForHumans() }}</i></small>
                                             </h6>
-                                            <p>{{ $item->isi }}</p>
+                                            <p>{{ $row->isi }}</p>
+                                            <button class="btn btn-sm btn-light triggerReplay">Reply</button>
+                                            <div class="panel sectionReply d-none">
+                                                <div class="panel-body">
+                                                    <div class="col-12 form-messages">
+                                                        <!-- Tempat untuk menampilkan pesan berhasil atau gagal -->
+                                                    </div>
+                                                    <textarea class="form-control" rows="2" placeholder="What are you thinking?"></textarea>
+                                                    <div class="mt-2 clearfix">
+                                                        <a href="javascript:void(0)" data-id="{{ $row->id }}"
+                                                            class="btn btn-sm btn-light triggerCommentReply"><i
+                                                                class="fas fa-pencil-alt"></i>
+                                                            Share</a>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                @endforeach
-                            </div>
+                                    @foreach ($row->reply as $item)
+                                        <div class="d-flex ms-5 mb-4">
+                                            <img src="https://bootdey.com/img/Content/avatar/avatar{{ mt_rand(1, 8) }}.png"
+                                                class="img-fluid rounded" style="width: 45px; height: 45px;">
+                                            <div class="ps-3">
+                                                <h6><a href="">Anonymous</a>
+                                                    <small><i>{{ Carbon\Carbon::parse($item->created_at)->diffForHumans() }}</i></small>
+                                                </h6>
+                                                <p>{{ $item->isi }}</p>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
                             @endforeach
                         </div>
                     </div>
@@ -133,12 +137,17 @@
                             <h3 class="mb-0">Leave A Comment</h3>
                         </div>
                         <form>
+                            <div class="col-lg-7" id="form-messages">
+                                <!-- Tempat untuk menampilkan pesan berhasil atau gagal -->
+                            </div>
                             <div class="row g-3">
                                 <div class="col-12">
-                                    <textarea class="form-control bg-white border-0" rows="5" placeholder="Comment" name="comment" id="inputComment"></textarea>
+                                    <textarea class="form-control bg-white border-0" rows="5" placeholder="Comment" name="comment"
+                                        id="inputComment"></textarea>
                                 </div>
                                 <div class="col-12">
-                                    <button class="btn btn-primary w-100 py-3" type="submit" id="triggerSubmitCommment">Leave Your Comment</button>
+                                    <button class="btn btn-primary w-100 py-3" type="submit"
+                                        id="triggerSubmitCommment">Leave Your Comment</button>
                                 </div>
                             </div>
                         </form>
@@ -215,12 +224,19 @@
             $('#triggerSubmitCommment').on('click', function(e) {
                 e.preventDefault();
 
-                var submitButton = $(this);
+                let submitButton = $(this);
+                let originalText = submitButton.text();
+                submitButton.prop('disabled', true).text('submiting...');
+
+                $("#form-messages").empty();
+
+                let inputs = ['#inputComment'];
+
+                inputs.forEach(function(input) {
+                    $(input).prop('readonly', true);
+                });
 
                 if ($('#inputComment').val() != '') {
-                    // Disable the submit button and show loading state
-                    submitButton.prop('disabled', true).text('Submitting...');
-
                     $.ajax({
                         type: "POST",
                         url: "{{ route('web.blog.slug.comment', $data->slug) }}",
@@ -231,7 +247,6 @@
                         },
                         success: function(respon) {
                             // Enable the submit button and restore its original text
-                            submitButton.prop('disabled', false).text('Submit');
                             $('#countComment').text(respon.count);
 
                             $.ajax({
@@ -242,15 +257,47 @@
                                 success: function(data) {
                                     $('#sectionCommentHtml').html(data);
                                     $('#inputComment').val('')
+
+                                    submitButton.text(originalText).prop('disabled',
+                                        false);
+
+                                    inputs.forEach(function(input) {
+                                        $(input).prop('readonly', false);
+                                    });
+                                    $("#form-messages").html(
+                                        '<div class="alert alert-success">Formulir berhasil dikirim!</div>'
+                                    );
+                                    setTimeout(function() {
+                                        $("#form-messages").empty();
+                                    }, 10000);
                                 },
                             });
                         }
                     });
+                } else {
+                    setTimeout(function() {
+                        inputs.forEach(function(input) {
+                            $(input).prop('readonly', false);
+                        });
+
+                        submitButton.text(originalText).prop('disabled', false);
+                        $("#form-messages").html(
+                            '<div class="alert alert-danger">Formulir gagal dikirim. Silakan coba lagi!</div>'
+                        );
+                        setTimeout(function() {
+                            $("#form-messages").empty();
+                        }, 10000);
+                    }, 2000);
                 }
             })
 
             $('.triggerCommentReply').on('click', function(e) {
                 e.preventDefault();
+
+                let submitButton = $(this);
+                let originalText = submitButton.html();
+                submitButton.prop('disabled', true).text('submiting...');
+
 
                 var comment_id = $(this).data('id');
 
@@ -259,6 +306,10 @@
 
                 // Find the textarea within the comment section
                 var textarea = commentSection.find('.sectionReply textarea');
+
+                commentSection.find(".form-messages").empty();
+
+                textarea.prop('readonly', true);
 
                 // Your code to handle the reply
                 if (textarea.val() != '') {
@@ -281,10 +332,34 @@
                                 success: function(data) {
                                     $('#sectionCommentHtml').html(data);
                                     textarea.val('');
+
+                                    submitButton.html(originalText).prop('disabled',
+                                        false);
+
+                                    textarea.prop('readonly', false);
+                                    commentSection.find(".form-messages").html(
+                                        '<div class="alert alert-success">Formulir berhasil dikirim!</div>'
+                                    );
+                                    setTimeout(function() {
+                                        commentSection.find(
+                                            ".form-messages").empty();
+                                    }, 10000);
                                 },
                             });
                         }
                     });
+                } else {
+                    setTimeout(function() {
+                        textarea.prop('readonly', false);
+
+                        submitButton.html(originalText).prop('disabled', false);
+                        commentSection.find(".form-messages").html(
+                            '<div class="alert alert-danger">Formulir gagal dikirim. Silakan coba lagi!</div>'
+                        );
+                        setTimeout(function() {
+                            commentSection.find(".form-messages").empty();
+                        }, 10000);
+                    }, 2000);
                 }
             });
 

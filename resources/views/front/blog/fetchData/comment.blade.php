@@ -11,6 +11,9 @@
                 <button class="btn btn-sm btn-light triggerReplay">Reply</button>
                 <div class="panel sectionReply d-none">
                     <div class="panel-body">
+                        <div class="col-12 form-messages">
+                            <!-- Tempat untuk menampilkan pesan berhasil atau gagal -->
+                        </div>
                         <textarea class="form-control" rows="2" placeholder="What are you thinking?"></textarea>
                         <div class="mt-2 clearfix">
                             <a href="javascript:void(0)" data-id="{{ $row->id }}"
@@ -79,6 +82,11 @@
         $('.triggerCommentReply').on('click', function(e) {
             e.preventDefault();
 
+            let submitButton = $(this);
+            let originalText = submitButton.html();
+            submitButton.prop('disabled', true).text('submiting...');
+
+
             var comment_id = $(this).data('id');
 
             // Find the closest comment section
@@ -86,6 +94,10 @@
 
             // Find the textarea within the comment section
             var textarea = commentSection.find('.sectionReply textarea');
+
+            commentSection.find(".form-messages").empty();
+
+            textarea.prop('readonly', true);
 
             // Your code to handle the reply
             if (textarea.val() != '') {
@@ -108,10 +120,34 @@
                             success: function(data) {
                                 $('#sectionCommentHtml').html(data);
                                 textarea.val('');
+
+                                submitButton.html(originalText).prop('disabled',
+                                    false);
+
+                                textarea.prop('readonly', false);
+                                commentSection.find(".form-messages").html(
+                                    '<div class="alert alert-success">Formulir berhasil dikirim!</div>'
+                                );
+                                setTimeout(function() {
+                                    commentSection.find(
+                                        ".form-messages").empty();
+                                }, 10000);
                             },
                         });
                     }
                 });
+            } else {
+                setTimeout(function() {
+                    textarea.prop('readonly', false);
+
+                    submitButton.html(originalText).prop('disabled', false);
+                    commentSection.find(".form-messages").html(
+                        '<div class="alert alert-danger">Formulir gagal dikirim. Silakan coba lagi!</div>'
+                    );
+                    setTimeout(function() {
+                        commentSection.find(".form-messages").empty();
+                    }, 10000);
+                }, 2000);
             }
         });
 
