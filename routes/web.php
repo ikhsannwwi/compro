@@ -43,6 +43,12 @@ Route::get('/getTeam', [HomeController::class, 'getTeam'])->name('web.getTeam');
 Route::get('/about', [AboutController::class, 'index'])->name('web.about');
 
 Route::get('/blog', [BlogController::class, 'index'])->name('web.blog');
+Route::get('/blog/fetchData', [BlogController::class, 'fetchData'])->name('web.blog.fetchData');
+Route::get('/blog/kategori/{slug}', [BlogController::class, 'kategori'])->name('web.blog.kategori');
+Route::get('/blog/{slug}', [BlogController::class, 'slug'])->name('web.blog.slug');
+Route::post('/blog/{slug}/comment', [BlogController::class, 'comment'])->name('web.blog.slug.comment');
+Route::post('/blog/{slug}/comment/reply', [BlogController::class, 'reply'])->name('web.blog.slug.comment.reply');
+Route::get('/blog/fetchData/comment', [BlogController::class, 'fetchDataComment'])->name('web.blog.fetchData.comment');
 
 Route::get('/contact', [ContactController::class, 'index'])->name('web.contact');
 

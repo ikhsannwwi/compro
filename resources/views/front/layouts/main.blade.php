@@ -28,6 +28,7 @@
     <link href="{{ template_startup('lib/animate/animate.min.css') }}" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
+    {{-- <link rel="stylesheet" href="{{template_startup('lib/bootstrap/bootstrap.min.css')}}" type="text/css"> --}}
     <link href="{{ template_startup('css/bootstrap.min.css') }}" rel="stylesheet">
 
     <!-- Template Stylesheet -->
@@ -80,6 +81,7 @@
     <!-- JavaScript Libraries -->
     <script src="{{ asset('jquery/dist/jquery.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{template_startup('lib/bootstrap/bootstrap.min.js')}}"></script>
     <script src="{{ template_startup('lib/wow/wow.min.js') }}"></script>
     <script src="{{ template_startup('lib/easing/easing.min.js') }}"></script>
     <script src="{{ template_startup('lib/waypoints/waypoints.min.js') }}"></script>

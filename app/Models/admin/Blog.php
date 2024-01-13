@@ -2,13 +2,14 @@
 
 namespace App\Models\admin;
 
+use App\Models\TagsBlog;
+use App\Models\admin\User;
 use App\Models\admin\KategoriBlog;
 use App\Models\admin\KomentarBlog;
 use App\Models\admin\KomentarBlogReply;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use App\Models\TagsBlog;
 
 class Blog extends Model
 {
@@ -29,5 +30,9 @@ class Blog extends Model
     
     public function komentar_blog_reply(){
         return $this->hasMany(KomentarBlogReply::class, 'blog_id', 'id');
+    }
+    
+    public function user(){
+        return $this->belongsTo(User::class, 'created_by');
     }
 }
