@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\front;
 
+use App\Models\Team;
 use App\Models\FreeQoute;
 use App\Models\admin\Blog;
 use App\Models\OurFeature;
@@ -22,18 +23,28 @@ class HomeController extends Controller
     }
 
     public function getService(){
-        $data = Service::limit(4)->get();
+        $service = Service::where('name', '!=', 'title')->get();
+        $title = Service::where('name', 'title')->first();
 
+        $freeqoute = FreeQoute::get()->toArray();
+        $freeqoute = array_column($freeqoute, 'value', 'name');
+
+        $contact = Contact::get()->toArray();
+        $contact = array_column($contact, 'value', 'name');
         return response()->json([
-            'data' => $data,
+            'data' => $service,
+            'freeqoute' => $freeqoute,
+            'contact' => $contact,
+            'title' => $title->value,
         ], 200);
     }
     
     public function getBlog(){
-        $data = Blog::with('kategori')->with('komentar_blog')->with('komentar_blog_reply')->where('status', 1)->orderBy('created_at', 'desc')->get();
+        $data = Blog::with('tags.kategori')->with('komentar_blog')->with('komentar_blog_reply')->where('status', 1)->orderBy('created_at', 'desc')->get();
 
         return response()->json([
             'data' => $data,
+            'path' => url('/') . '/administrator/assets/media/blog/',
         ], 200);
     }
     
@@ -54,7 +65,8 @@ class HomeController extends Controller
     }
     
     public function getContact(){
-        $data = Contact::all();
+        $contact = Contact::get()->toArray();
+        $contact = array_column($contact, 'value', 'name');
 
         return response()->json([
             'data' => $data,
@@ -62,10 +74,19 @@ class HomeController extends Controller
     }
     
     public function getAbout(){
-        $data = About::all();
+        $data = About::get()->toArray();
+        $data = array_column($data, 'value', 'name');
+
+        $ourfeature = OurFeature::all();
+
+        $contact = Contact::get()->toArray();
+        $contact = array_column($contact, 'value', 'name');
 
         return response()->json([
             'data' => $data,
+            'ourfeature' => $ourfeature,
+            'contact' => $contact,
+            'path' => url('/') . '/administrator/assets/media/gallery/',
         ], 200);
     }
     
@@ -74,14 +95,22 @@ class HomeController extends Controller
 
         return response()->json([
             'data' => $data,
+            'path' => url('/') . '/administrator/assets/media/gallery/',
         ], 200);
     }
     
     public function getFreeQoute(){
-        $data = FreeQoute::all();
+        $data = FreeQoute::get()->toArray();
+        $data = array_column($data, 'value', 'name');
 
+        $ourfeature = OurFeature::all();
+
+        $contact = Contact::get()->toArray();
+        $contact = array_column($contact, 'value', 'name');
         return response()->json([
             'data' => $data,
+            'contact' => $contact,
+            'ourfeature' => $ourfeature,
         ], 200);
     }
     
@@ -90,6 +119,7 @@ class HomeController extends Controller
 
         return response()->json([
             'data' => $data,
+            'path' => url('/') . '/administrator/assets/media/testimonial/',
         ], 200);
     }
     
@@ -98,6 +128,15 @@ class HomeController extends Controller
 
         return response()->json([
             'data' => $data,
+        ], 200);
+    }
+    
+    public function getTeam(){
+        $data = Team::with('sosial_media')->get();
+
+        return response()->json([
+            'data' => $data,
+            'path' => url('/') . '/administrator/assets/media/team/',
         ], 200);
     }
 }

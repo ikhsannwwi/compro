@@ -38,6 +38,7 @@ Route::get('/getFreeQoute', [HomeController::class, 'getFreeQoute'])->name('web.
 Route::get('/getTestimonial', [HomeController::class, 'getTestimonial'])->name('web.getTestimonial');
 Route::get('/getBlog', [HomeController::class, 'getBlog'])->name('web.getBlog');
 Route::get('/getClient', [HomeController::class, 'getClient'])->name('web.getClient');
+Route::get('/getTeam', [HomeController::class, 'getTeam'])->name('web.getTeam');
 
 Route::get('/about', [AboutController::class, 'index'])->name('web.about');
 

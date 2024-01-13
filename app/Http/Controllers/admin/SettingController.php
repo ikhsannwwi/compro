@@ -299,10 +299,10 @@ class SettingController extends Controller
 
         $data_sosmed = [];
         for ($i = 0; $i < $request->jumlah_sosmed; $i++) {
-            if ($request->{'nama_sosmed_' . $i} || $request->{'icon_sosmed_' . $i}) {
+            if ($request->{'nama_sosmed_' . $i} || $request->{'url_sosmed_' . $i}) {
                 $data_sosmed[] = [
                     'nama_sosmed' => $request->{'nama_sosmed_' . $i},
-                    'icon_sosmed' => $request->{'icon_sosmed_' . $i},
+                    'url_sosmed' => $request->{'url_sosmed_' . $i},
                 ];
             }
         }
@@ -382,7 +382,7 @@ class SettingController extends Controller
             if ($key != intVal($index)) {
                 $dataSosmed[] = [
                     'nama_sosmed' => $value->nama_sosmed,
-                    'icon_sosmed' => $value->icon_sosmed,
+                    'url_sosmed' => $value->url_sosmed,
                 ];
             }
         }

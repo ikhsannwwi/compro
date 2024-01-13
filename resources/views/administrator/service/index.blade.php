@@ -21,6 +21,19 @@
                     @csrf
                     @method('PUT')
 
+                    <div class="row">
+                        <div class="col-md-6 col-12">
+                            <div class="form-group mandatory">
+                                <label for="inputTitle"
+                                    class="form-label">Title</label>
+                                <input type="text" id="inputTitle"
+                                    class="form-control" placeholder="Masukan Title" data-parsley-required="true"
+                                    value="{{ array_key_exists('title', $service) ? $service['title'] : '' }}"
+                                    name="title" autocomplete="off">
+                            </div>
+                        </div>
+                    </div>
+
                     <div id="accordion">
                         @for ($i = 0; $i < 5; $i++)
                             <div class="accordion">

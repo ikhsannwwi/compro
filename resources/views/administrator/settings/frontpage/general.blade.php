@@ -61,44 +61,48 @@
                                     $sosmed = array_key_exists('general_sosmed', $settings) ? json_decode($settings['general_sosmed']) : '';
                                     if (!empty($sosmed)) {
                                         $jumlah_sosmed = count($sosmed);
-                                    }else {
+                                    } else {
                                         $jumlah_sosmed = 1;
                                     }
                                 @endphp
                                 <div class="sosmed-list" index-element="{{ $jumlah_sosmed - 1 }}">
                                     @if (!empty($sosmed))
-                                    @foreach ($sosmed as $i => $row)
-                                        <div class="row rowSosmed_{{ $i }}">
-                                            {{-- {{dd($sosmed)}} --}}
-                                            <div class="col-md-5 col-11">
-                                                <div class="form-group">
-                                                    <label for="inputNamaSosmed_{{ $i }}"
-                                                        class="form-label">Sosial Media (url)</label>
-                                                    <input type="text" name="nama_sosmed_{{ $i }}"
-                                                        value="{{ $row->nama_sosmed }}" class="form-control"
-                                                        id="inputNamaSosmed_{{ $i }}" data-parsley-required="true"
-                                                        placeholder="Masukan Nama Sosial Media" autocomplete="off">
+                                        @foreach ($sosmed as $i => $row)
+                                            <div class="row rowSosmed_{{ $i }}">
+                                                {{-- {{dd($sosmed)}} --}}
+                                                <div class="col-md-5 col-11">
+                                                    <div class="form-group">
+                                                        <label for="inputUrlSosmed_{{ $i }}"
+                                                            class="form-label">Sosial Media (url)</label>
+                                                        <input type="text" name="url_sosmed_{{ $i }}"
+                                                            value="{{ $row->url_sosmed }}" class="form-control"
+                                                            id="inputUrlSosmed_{{ $i }}"
+                                                            data-parsley-required="true"
+                                                            placeholder="ex : 'https://instagram.com/ikhsannwwi'"
+                                                            autocomplete="off">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-11">
+                                                    <div class="form-group">
+                                                        <label for="inputNamaSosmed_{{ $i }}"
+                                                            class="form-label">Nama Sosial
+                                                            Media </label>
+                                                        <input type="text" name="nama_sosmed_{{ $i }}"
+                                                            value="{{ $row->nama_sosmed }}" class="form-control"
+                                                            id="inputNamaSosmed_{{ $i }}"
+                                                            data-parsley-required="true" placeholder="ex : 'instagram'"
+                                                            autocomplete="off">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-1 col-1">
+                                                    <button class="btn btn-danger btn-sm delete-sosmed"
+                                                        @if ($i === 0) style="display: none" @endif
+                                                        data-sosmed="{{ $row->url_sosmed }}"
+                                                        data-index="{{ $i }}" type="button"><i
+                                                            class="fa fa-trash"></i></button>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6 col-11">
-                                                <div class="form-group">
-                                                    <label for="inputFontAawesomeSosmed_{{ $i }}"
-                                                        class="form-label">Icon Sosial
-                                                        Media (fontawesome 4)</label>
-                                                    <input type="text" name="icon_sosmed_{{ $i }}"
-                                                        value="{{ $row->icon_sosmed }}" class="form-control"
-                                                        id="inputFontAawesomeSosmed_{{ $i }}" data-parsley-required="true"
-                                                        placeholder="Masukan Icon Sosial Media (contoh 'fa fa-instagram')" autocomplete="off">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-1 col-1">
-                                                <button class="btn btn-danger btn-sm delete-sosmed"
-                                                    @if ($i === 0) style="display: none" @endif
-                                                    data-sosmed="{{$row->nama_sosmed}}" data-index="{{ $i }}" type="button"><i
-                                                        class="fa fa-trash"></i></button>
-                                            </div>
-                                        </div>
-                                    @endforeach
+                                        @endforeach
                                     @endif
                                 </div>
                                 <input type="hidden" name="jumlah_sosmed" value="{{ $jumlah_sosmed }}" id="jumlah_sosmed">
@@ -116,8 +120,7 @@
                                 <div class="input-group colorpickerinput">
                                     <input type="text" class="form-control" name="general_main_text_color"
                                         value="{{ array_key_exists('general_main_text_color', $settings) ? $settings['general_main_text_color'] : '' }}"
-                                        id="main-text-color" placeholder="Masukan Kode Warna" autocomplete="off"
-                                        data-parsley-required="true">
+                                        id="main-text-color" placeholder="Masukan Kode Warna" autocomplete="off">
                                     <div class="input-group-append">
                                         <div class="input-group-text">
                                             <i class="fas fa-fill-drip"></i>
@@ -135,8 +138,7 @@
                                 <div class="input-group colorpickerinput">
                                     <input type="text" class="form-control" name="general_breadcrumb_color"
                                         value="{{ array_key_exists('general_breadcrumb_color', $settings) ? $settings['general_breadcrumb_color'] : '' }}"
-                                        id="breadcrumb-color" placeholder="Masukan Kode Warna" autocomplete="off"
-                                        data-parsley-required="true">
+                                        id="breadcrumb-color" placeholder="Masukan Kode Warna" autocomplete="off">
                                     <div class="input-group-append">
                                         <div class="input-group-text">
                                             <i class="fas fa-fill-drip"></i>
@@ -154,8 +156,7 @@
                                 <div class="input-group colorpickerinput">
                                     <input type="text" class="form-control" name="general_primary_color"
                                         value="{{ array_key_exists('general_primary_color', $settings) ? $settings['general_primary_color'] : '' }}"
-                                        id="primary-color" placeholder="Masukan Kode Warna" autocomplete="off"
-                                        data-parsley-required="true">
+                                        id="primary-color" placeholder="Masukan Kode Warna" autocomplete="off">
                                     <div class="input-group-append">
                                         <div class="input-group-text">
                                             <i class="fas fa-fill-drip"></i>
@@ -173,8 +174,7 @@
                                 <div class="input-group colorpickerinput">
                                     <input type="text" class="form-control" name="general_background_color"
                                         value="{{ array_key_exists('general_background_color', $settings) ? $settings['general_background_color'] : '' }}"
-                                        id="background-color" placeholder="Masukan Kode Warna" autocomplete="off"
-                                        data-parsley-required="true">
+                                        id="background-color" placeholder="Masukan Kode Warna" autocomplete="off">
                                     <div class="input-group-append">
                                         <div class="input-group-text">
                                             <i class="fas fa-fill-drip"></i>
@@ -192,8 +192,7 @@
                                 <div class="input-group colorpickerinput">
                                     <input type="text" class="form-control" name="general_counter_color"
                                         value="{{ array_key_exists('general_counter_color', $settings) ? $settings['general_counter_color'] : '' }}"
-                                        id="counter-color" placeholder="Masukan Kode Warna" autocomplete="off"
-                                        data-parsley-required="true">
+                                        id="counter-color" placeholder="Masukan Kode Warna" autocomplete="off">
                                     <div class="input-group-append">
                                         <div class="input-group-text">
                                             <i class="fas fa-fill-drip"></i>
@@ -211,8 +210,7 @@
                                 <div class="input-group colorpickerinput">
                                     <input type="text" class="form-control" name="general_service_item_icon_color"
                                         value="{{ array_key_exists('general_service_item_icon_color', $settings) ? $settings['general_service_item_icon_color'] : '' }}"
-                                        id="service-item-icon-color" placeholder="Masukan Kode Warna" autocomplete="off"
-                                        data-parsley-required="true">
+                                        id="service-item-icon-color" placeholder="Masukan Kode Warna" autocomplete="off">
                                     <div class="input-group-append">
                                         <div class="input-group-text">
                                             <i class="fas fa-fill-drip"></i>
@@ -244,17 +242,18 @@
     <div class="template-sosmed d-none">
         <div class="col-md-5 col-11">
             <div class="form-group">
-                <label for="inputNamaSosmed_0" class="form-label">Sosial Media</label>
-                <input type="text" name="nama_sosmed_0" class="form-control" id="inputNamaSosmed_0" data-parsley-required="true"
-                    placeholder="Masukan Nama Sosial Media" autocomplete="off">
+                <label for="inputUrlSosmed_0" class="form-label">Sosial Media (url)</label>
+                <input type="text" name="url_sosmed_0" class="form-control" id="inputUrlSosmed_0"
+                    data-parsley-required="true" placeholder="ex : 'https://instagram.com/ikhsannwwi'"
+                    autocomplete="off">
             </div>
         </div>
         <div class="col-md-6 col-11">
             <div class="form-group">
-                <label for="inputFontAawesomeSosmed_0" class="form-label">Icon Sosial
+                <label for="inputNamaSosmed_0" class="form-label">Nama Sosial
                     Media</label>
-                <input type="text" name="icon_sosmed_0" class="form-control" id="inputFontAawesomeSosmed_0" data-parsley-required="true"
-                    placeholder="contoh = 'fa fa-instagram'" autocomplete="off">
+                <input type="text" name="nama_sosmed_0" class="form-control" id="inputNamaSosmed_0"
+                    data-parsley-required="true" placeholder="ex = 'instagram'" autocomplete="off">
             </div>
         </div>
         <div class="col-md-1 col-1">
@@ -290,17 +289,17 @@
                 clonedElement.attr("index-element", currentIndex);
 
                 // Update IDs and "for" attributes of cloned elements
-                clonedElement.find("[id^='inputNamaSosmed_']").attr("id", "inputNamaSosmed_" + currentIndex);
-                clonedElement.find("[id^='inputFontAawesomeSosmed_']").attr("id", "inputFontAawesomeSosmed_" +
+                clonedElement.find("[id^='inputUrlSosmed_']").attr("id", "inputUrlSosmed_" + currentIndex);
+                clonedElement.find("[id^='inputNamaSosmed_']").attr("id", "inputNamaSosmed_" +
                     currentIndex);
 
-                clonedElement.find("[for^='inputNamaSosmed_']").attr("for", "inputNamaSosmed_" + currentIndex);
-                clonedElement.find("[for^='inputFontAawesomeSosmed_']").attr("for", "inputFontAawesomeSosmed_" +
+                clonedElement.find("[for^='inputUrlSosmed_']").attr("for", "inputUrlSosmed_" + currentIndex);
+                clonedElement.find("[for^='inputNamaSosmed_']").attr("for", "inputNamaSosmed_" +
                     currentIndex);
 
                 // Update name attributes of cloned input elements
+                clonedElement.find("[name^='url_sosmed_']").attr("name", "url_sosmed_" + currentIndex);
                 clonedElement.find("[name^='nama_sosmed_']").attr("name", "nama_sosmed_" + currentIndex);
-                clonedElement.find("[name^='icon_sosmed_']").attr("name", "icon_sosmed_" + currentIndex);
 
                 clonedElement.find(".delete-sosmed").attr("data-index", currentIndex);
 
@@ -471,8 +470,8 @@
                 // Validate the form using Parsley
                 if ($(form).parsley().validate()) {
                     indicatorSubmit();
-                        // Submit the form
-                        form.submit();
+                    // Submit the form
+                    form.submit();
                 } else {
                     // Handle validation errors
                     const validationErrors = [];

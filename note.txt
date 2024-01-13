@@ -14,3 +14,12 @@ grandline.jagoweb.org
 
         // Mendapatkan alamat email dari user agent
         $email = $request->header('User-Agent');
+
+
+https://i.giphy.com/hRLz2uLh5AX1zPsjOS.webp
+
+https://ezgif.com/crop/ezgif-1-47b2f209ae.webp
+
+https://im.ezgif.com/tmp/ezgif-1-58620f9e80.webp
+
+https://im.ezgif.com/tmp/ezgif-1-6095c8ecd0.webp

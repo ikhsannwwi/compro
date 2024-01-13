@@ -39,6 +39,7 @@ class ServiceController extends Controller
         // dd($request);
         
         $data_service = [];
+        $data_service["title"] = $request->title;
         for ($i = 0; $i < 5; $i++) {
             $icon = $request->input('icon_' . $i);
             $title = $request->input('title_' . $i);

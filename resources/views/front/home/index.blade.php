@@ -25,13 +25,14 @@
 
 @push('head')
     <div id="header-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
-        <div class="carousel-inner">
+        <div class="carousel-inner" id="bannerSection">
             <div class="carousel-item active">
-                <img class="w-100" src="{{ template_startup('img/carousel-1.jpg') }}" alt="Image">
+                <img class="w-100" src="{{ img_src('golden_ratio.webp', 'default') }}" alt="Image">
                 <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                     <div class="p-3" style="max-width: 900px;">
-                        <h5 class="text-white text-uppercase mb-3 animated slideInDown">Creative & Innovative</h5>
-                        <h1 class="display-1 text-white mb-md-4 animated zoomIn">Creative & Innovative Digital Solution</h1>
+                        <h5 class="text-white text-uppercase mb-3 animated slideInDown">Lorem ipsum dolor sit amet</h5>
+                        <h1 class="display-1 text-white mb-md-4 animated zoomIn">Lorem ipsum dolor sit amet, consectetur
+                            adipiscing elit.</h1>
                         <a href="quote.html" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Free
                             Quote</a>
                         <a href="" class="btn btn-outline-light py-md-3 px-md-5 animated slideInRight">Contact Us</a>
@@ -39,11 +40,12 @@
                 </div>
             </div>
             <div class="carousel-item">
-                <img class="w-100" src="{{ template_startup('img/carousel-2.jpg') }}" alt="Image">
+                <img class="w-100" src="{{ img_src('golden_ratio.webp', 'default') }}" alt="Image">
                 <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                     <div class="p-3" style="max-width: 900px;">
-                        <h5 class="text-white text-uppercase mb-3 animated slideInDown">Creative & Innovative</h5>
-                        <h1 class="display-1 text-white mb-md-4 animated zoomIn">Creative & Innovative Digital Solution</h1>
+                        <h5 class="text-white text-uppercase mb-3 animated slideInDown">Lorem ipsum dolor sit amet</h5>
+                        <h1 class="display-1 text-white mb-md-4 animated zoomIn">Creative & Innovative, consectetur
+                            adipiscing elit.</h1>
                         <a href="quote.html" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Free
                             Quote</a>
                         <a href="" class="btn btn-outline-light py-md-3 px-md-5 animated slideInRight">Contact Us</a>
@@ -115,23 +117,30 @@
     <!-- About Start -->
     <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container py-5">
-            <div class="row g-5">
+            <div class="row g-5" id="aboutSection">
                 <div class="col-lg-7">
                     <div class="section-title position-relative pb-3 mb-5">
                         <h5 class="fw-bold text-primary text-uppercase">About Us</h5>
-                        <h1 class="mb-0">The Best IT Solution With 10 Years of Experience</h1>
+                        <h1 class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h1>
                     </div>
-                    <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum et tempor sit. Aliqu diam amet
-                        diam et eos labore. Clita erat ipsum et lorem et sit, sed stet no labore lorem sit. Sanctus clita
-                        duo justo et tempor eirmod magna dolore erat amet</p>
+                    <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed elit euismod ex
+                        tincidunt semper vel ut enim. Suspendisse pharetra nulla a lobortis dictum. Donec iaculis laoreet
+                        justo sed lacinia. Nam mollis quam vitae vehicula ultricies. Pellentesque habitant morbi tristique
+                        senectus et netus et malesuada fames ac turpis egestas. Fusce sem elit, tincidunt ac ultricies eget,
+                        porttitor quis nisi. Mauris vel risus nulla. Sed eu nisl eros. Sed in diam et nulla vulputate
+                        vestibulum eu semper augue.</p>
                     <div class="row g-0 mb-3">
                         <div class="col-sm-6 wow zoomIn" data-wow-delay="0.2s">
-                            <h5 class="mb-3"><i class="fa fa-check text-primary me-3"></i>Award Winning</h5>
-                            <h5 class="mb-3"><i class="fa fa-check text-primary me-3"></i>Professional Staff</h5>
+                            <h5 class="mb-3"><i class="fa fa-check text-primary me-3"></i>Lorem ipsum dolor sit amet
+                            </h5>
+                            <h5 class="mb-3"><i class="fa fa-check text-primary me-3"></i>Lorem ipsum dolor sit amet
+                            </h5>
                         </div>
                         <div class="col-sm-6 wow zoomIn" data-wow-delay="0.4s">
-                            <h5 class="mb-3"><i class="fa fa-check text-primary me-3"></i>24/7 Support</h5>
-                            <h5 class="mb-3"><i class="fa fa-check text-primary me-3"></i>Fair Prices</h5>
+                            <h5 class="mb-3"><i class="fa fa-check text-primary me-3"></i>Lorem ipsum dolor sit amet
+                            </h5>
+                            <h5 class="mb-3"><i class="fa fa-check text-primary me-3"></i>Lorem ipsum dolor sit amet
+                            </h5>
                         </div>
                     </div>
                     <div class="d-flex align-items-center mb-4 wow fadeIn" data-wow-delay="0.6s">
@@ -141,7 +150,7 @@
                         </div>
                         <div class="ps-4">
                             <h5 class="mb-2">Call to ask any question</h5>
-                            <h4 class="text-primary mb-0">+012 345 6789</h4>
+                            <h4 class="text-primary mb-0">+62 345 6789</h4>
                         </div>
                     </div>
                     <a href="quote.html" class="btn btn-primary py-3 px-5 mt-3 wow zoomIn" data-wow-delay="0.9s">Request
@@ -150,7 +159,7 @@
                 <div class="col-lg-5" style="min-height: 500px;">
                     <div class="position-relative h-100">
                         <img class="position-absolute w-100 h-100 rounded wow zoomIn" data-wow-delay="0.9s"
-                            src="{{ template_startup('img/about.jpg') }}" style="object-fit: cover;">
+                            src="{{ img_src('1-1 360.webp', 'default') }}" style="object-fit: cover;">
                     </div>
                 </div>
             </div>
@@ -164,9 +173,9 @@
         <div class="container py-5">
             <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
                 <h5 class="fw-bold text-primary text-uppercase">Why Choose Us</h5>
-                <h1 class="mb-0">We Are Here to Grow Your Business Exponentially</h1>
+                <h1 class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h1>
             </div>
-            <div class="row g-5">
+            <div class="row g-5" id="ourFeatureSection">
                 <div class="col-lg-4">
                     <div class="row g-5">
                         <div class="col-12 wow zoomIn" data-wow-delay="0.2s">
@@ -190,7 +199,7 @@
                 <div class="col-lg-4  wow zoomIn" data-wow-delay="0.9s" style="min-height: 350px;">
                     <div class="position-relative h-100">
                         <img class="position-absolute w-100 h-100 rounded wow zoomIn" data-wow-delay="0.1s"
-                            src="{{ template_startup('img/feature.jpg') }}" style="object-fit: cover;">
+                            src="{{ img_src('1-1 480.webp', 'default') }}" style="object-fit: cover;">
                     </div>
                 </div>
                 <div class="col-lg-4">
@@ -224,17 +233,17 @@
         <div class="container py-5">
             <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
                 <h5 class="fw-bold text-primary text-uppercase">Our Services</h5>
-                <h1 class="mb-0">Custom IT Solutions for Your Successful Business</h1>
+                <h1 class="mb-0" id="serviceTitleSection">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h1>
             </div>
-            <div class="row g-5">
+            <div class="row g-5" id="serviceSection">
                 <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.3s">
                     <div
                         class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
                         <div class="service-icon">
                             <i class="fa fa-shield-alt text-white"></i>
                         </div>
-                        <h4 class="mb-3">Cyber Security</h4>
-                        <p class="m-0">Amet justo dolor lorem kasd amet magna sea stet eos vero lorem ipsum dolore sed
+                        <h4 class="mb-3">Fusce sem elit</h4>
+                        <p class="m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                         </p>
                         <a class="btn btn-lg btn-primary rounded" href="">
                             <i class="bi bi-arrow-right"></i>
@@ -247,8 +256,8 @@
                         <div class="service-icon">
                             <i class="fa fa-chart-pie text-white"></i>
                         </div>
-                        <h4 class="mb-3">Data Analytics</h4>
-                        <p class="m-0">Amet justo dolor lorem kasd amet magna sea stet eos vero lorem ipsum dolore sed
+                        <h4 class="mb-3">tincidunt ac ultricies eget</h4>
+                        <p class="m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                         </p>
                         <a class="btn btn-lg btn-primary rounded" href="">
                             <i class="bi bi-arrow-right"></i>
@@ -261,8 +270,8 @@
                         <div class="service-icon">
                             <i class="fa fa-code text-white"></i>
                         </div>
-                        <h4 class="mb-3">Web Development</h4>
-                        <p class="m-0">Amet justo dolor lorem kasd amet magna sea stet eos vero lorem ipsum dolore sed
+                        <h4 class="mb-3">porttitor quis nisi</h4>
+                        <p class="m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                         </p>
                         <a class="btn btn-lg btn-primary rounded" href="">
                             <i class="bi bi-arrow-right"></i>
@@ -275,8 +284,8 @@
                         <div class="service-icon">
                             <i class="fab fa-android text-white"></i>
                         </div>
-                        <h4 class="mb-3">Apps Development</h4>
-                        <p class="m-0">Amet justo dolor lorem kasd amet magna sea stet eos vero lorem ipsum dolore sed
+                        <h4 class="mb-3">Fusce sem elit</h4>
+                        <p class="m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                         </p>
                         <a class="btn btn-lg btn-primary rounded" href="">
                             <i class="bi bi-arrow-right"></i>
@@ -289,8 +298,8 @@
                         <div class="service-icon">
                             <i class="fa fa-search text-white"></i>
                         </div>
-                        <h4 class="mb-3">SEO Optimization</h4>
-                        <p class="m-0">Amet justo dolor lorem kasd amet magna sea stet eos vero lorem ipsum dolore sed
+                        <h4 class="mb-3">tincidunt ac ultricies eget</h4>
+                        <p class="m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                         </p>
                         <a class="btn btn-lg btn-primary rounded" href="">
                             <i class="bi bi-arrow-right"></i>
@@ -301,8 +310,8 @@
                     <div
                         class="position-relative bg-primary rounded h-100 d-flex flex-column align-items-center justify-content-center text-center p-5">
                         <h3 class="text-white mb-3">Call Us For Quote</h3>
-                        <p class="text-white mb-3">Clita ipsum magna kasd rebum at ipsum amet dolor justo dolor est magna
-                            stet eirmod</p>
+                        <p class="text-white mb-3">Vivamus enim erat, sodales quis sagittis non, hendrerit sed ligula.
+                            Proin nec ex sapien.</p>
                         <h2 class="text-white mb-0">+012 345 6789</h2>
                     </div>
                 </div>
@@ -319,21 +328,24 @@
                 <div class="col-lg-7">
                     <div class="section-title position-relative pb-3 mb-5">
                         <h5 class="fw-bold text-primary text-uppercase">Request A Quote</h5>
-                        <h1 class="mb-0">Need A Free Quote? Please Feel Free to Contact Us</h1>
+                        <h1 class="mb-0" id="titleFreeQoute">Class aptent taciti sociosqu ad litora torquent per conubia
+                            nostra, per inceptos himenaeos. Ut lobortis aliquam consequat.</h1>
                     </div>
-                    <div class="row gx-3">
+                    <div class="row gx-3" id="featureFreeQouteSection">
                         <div class="col-sm-6 wow zoomIn" data-wow-delay="0.2s">
-                            <h5 class="mb-4"><i class="fa fa-reply text-primary me-3"></i>Reply within 24 hours</h5>
+                            <h5 class="mb-4"><i class="fa fa-reply text-primary me-3"></i>Lorem ipsum dolor sit amet
+                            </h5>
                         </div>
                         <div class="col-sm-6 wow zoomIn" data-wow-delay="0.4s">
-                            <h5 class="mb-4"><i class="fa fa-phone-alt text-primary me-3"></i>24 hrs telephone support
+                            <h5 class="mb-4"><i class="fa fa-phone-alt text-primary me-3"></i>Lorem ipsum dolor sit amet
                             </h5>
                         </div>
                     </div>
-                    <p class="mb-4">Eirmod sed tempor lorem ut dolores. Aliquyam sit sadipscing kasd ipsum. Dolor ea et
-                        dolore et at sea ea at dolor, justo ipsum duo rebum sea invidunt voluptua. Eos vero eos vero ea et
-                        dolore eirmod et. Dolores diam duo invidunt lorem. Elitr ut dolores magna sit. Sea dolore sanctus
-                        sed et. Takimata takimata sanctus sed.</p>
+                    <p class="mb-4" id="deskripsiFreeQoute">Vestibulum lobortis viverra lorem non maximus. Interdum et
+                        malesuada fames ac ante
+                        ipsum primis in faucibus. Curabitur vestibulum sapien quis cursus vestibulum. Mauris volutpat, magna
+                        finibus viverra scelerisque, felis arcu pretium augue, maximus sollicitudin elit augue quis augue.
+                    </p>
                     <div class="d-flex align-items-center mt-2 wow zoomIn" data-wow-delay="0.6s">
                         <div class="bg-primary d-flex align-items-center justify-content-center rounded"
                             style="width: 60px; height: 60px;">
@@ -341,7 +353,7 @@
                         </div>
                         <div class="ps-4">
                             <h5 class="mb-2">Call to ask any question</h5>
-                            <h4 class="text-primary mb-0">+012 345 6789</h4>
+                            <h4 class="text-primary mb-0" id="teleponFreeQoute">+012 345 6789</h4>
                         </div>
                     </div>
                 </div>
@@ -386,59 +398,64 @@
         <div class="container py-5">
             <div class="section-title text-center position-relative pb-3 mb-4 mx-auto" style="max-width: 600px;">
                 <h5 class="fw-bold text-primary text-uppercase">Testimonial</h5>
-                <h1 class="mb-0">What Our Clients Say About Our Digital Services</h1>
+                <h1 class="mb-0" id="testimonialTitleSection">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </h1>
             </div>
-            <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.6s">
+            <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.6s" id="testimonialSection">
                 <div class="testimonial-item bg-light my-4">
                     <div class="d-flex align-items-center border-bottom pt-5 pb-4 px-5">
-                        <img class="img-fluid rounded" src="{{ template_startup('img/testimonial-1.jpg') }}"
+                        <img class="img-fluid rounded" src="{{ img_src('1-1 360.webp', 'default') }}"
                             style="width: 60px; height: 60px;">
                         <div class="ps-4">
-                            <h4 class="text-primary mb-1">Client Name</h4>
-                            <small class="text-uppercase">Profession</small>
+                            <h4 class="text-primary mb-1">Lorem ipsum</h4>
+                            <small class="text-uppercase">dolor sit amet</small>
                         </div>
                     </div>
                     <div class="pt-4 pb-5 px-5">
-                        Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam
+                        Vivamus enim erat, sodales quis sagittis non, hendrerit sed ligula. Proin nec ex sapien. Donec nec
+                        ipsum non est tristique tristique sed ac justo.
                     </div>
                 </div>
                 <div class="testimonial-item bg-light my-4">
                     <div class="d-flex align-items-center border-bottom pt-5 pb-4 px-5">
-                        <img class="img-fluid rounded" src="{{ template_startup('img/testimonial-2.jpg') }}"
+                        <img class="img-fluid rounded" src="{{ img_src('1-1 360.webp', 'default') }}"
                             style="width: 60px; height: 60px;">
                         <div class="ps-4">
-                            <h4 class="text-primary mb-1">Client Name</h4>
-                            <small class="text-uppercase">Profession</small>
+                            <h4 class="text-primary mb-1">Lorem ipsum</h4>
+                            <small class="text-uppercase">dolor sit amet</small>
                         </div>
                     </div>
                     <div class="pt-4 pb-5 px-5">
-                        Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam
+                        Vivamus enim erat, sodales quis sagittis non, hendrerit sed ligula. Proin nec ex sapien. Donec nec
+                        ipsum non est tristique tristique sed ac justo.
                     </div>
                 </div>
                 <div class="testimonial-item bg-light my-4">
                     <div class="d-flex align-items-center border-bottom pt-5 pb-4 px-5">
-                        <img class="img-fluid rounded" src="{{ template_startup('img/testimonial-3.jpg') }}"
+                        <img class="img-fluid rounded" src="{{ img_src('1-1 360.webp', 'default') }}"
                             style="width: 60px; height: 60px;">
                         <div class="ps-4">
-                            <h4 class="text-primary mb-1">Client Name</h4>
-                            <small class="text-uppercase">Profession</small>
+                            <h4 class="text-primary mb-1">Lorem ipsum</h4>
+                            <small class="text-uppercase">dolor sit amet</small>
                         </div>
                     </div>
                     <div class="pt-4 pb-5 px-5">
-                        Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam
+                        Vivamus enim erat, sodales quis sagittis non, hendrerit sed ligula. Proin nec ex sapien. Donec nec
+                        ipsum non est tristique tristique sed ac justo.
                     </div>
                 </div>
                 <div class="testimonial-item bg-light my-4">
                     <div class="d-flex align-items-center border-bottom pt-5 pb-4 px-5">
-                        <img class="img-fluid rounded" src="{{ template_startup('img/testimonial-4.jpg') }}"
+                        <img class="img-fluid rounded" src="{{ img_src('1-1 360.webp', 'default') }}"
                             style="width: 60px; height: 60px;">
                         <div class="ps-4">
-                            <h4 class="text-primary mb-1">Client Name</h4>
-                            <small class="text-uppercase">Profession</small>
+                            <h4 class="text-primary mb-1">Lorem ipsum</h4>
+                            <small class="text-uppercase">dolor sit amet</small>
                         </div>
                     </div>
                     <div class="pt-4 pb-5 px-5">
-                        Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam
+                        Vivamus enim erat, sodales quis sagittis non, hendrerit sed ligula. Proin nec ex sapien. Donec nec
+                        ipsum non est tristique tristique sed ac justo.
                     </div>
                 </div>
             </div>
@@ -452,13 +469,13 @@
         <div class="container py-5">
             <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
                 <h5 class="fw-bold text-primary text-uppercase">Team Members</h5>
-                <h1 class="mb-0">Professional Stuffs Ready to Help Your Business</h1>
+                <h1 class="mb-0">Donec nec ipsum non est tristique tristique sed ac justo.</h1>
             </div>
-            <div class="row g-5">
+            <div class="row g-5" id="teamSection">
                 <div class="col-lg-4 wow slideInUp" data-wow-delay="0.3s">
                     <div class="team-item bg-light rounded overflow-hidden">
                         <div class="team-img position-relative overflow-hidden">
-                            <img class="img-fluid w-100" src="{{ template_startup('img/team-1.jpg') }}" alt="">
+                            <img class="img-fluid w-100" src="{{ img_src('1-1 480.webp', 'default') }}" alt="">
                             <div class="team-social">
                                 <a class="btn btn-lg btn-primary btn-lg-square rounded" href=""><i
                                         class="fab fa-twitter fw-normal"></i></a>
@@ -471,15 +488,15 @@
                             </div>
                         </div>
                         <div class="text-center py-4">
-                            <h4 class="text-primary">Full Name</h4>
-                            <p class="text-uppercase m-0">Designation</p>
+                            <h4 class="text-primary">Lorem ipsum</h4>
+                            <p class="text-uppercase m-0">dolor sit amet</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 wow slideInUp" data-wow-delay="0.6s">
                     <div class="team-item bg-light rounded overflow-hidden">
                         <div class="team-img position-relative overflow-hidden">
-                            <img class="img-fluid w-100" src="{{ template_startup('img/team-2.jpg') }}" alt="">
+                            <img class="img-fluid w-100" src="{{ img_src('1-1 480.webp', 'default') }}" alt="">
                             <div class="team-social">
                                 <a class="btn btn-lg btn-primary btn-lg-square rounded" href=""><i
                                         class="fab fa-twitter fw-normal"></i></a>
@@ -492,15 +509,15 @@
                             </div>
                         </div>
                         <div class="text-center py-4">
-                            <h4 class="text-primary">Full Name</h4>
-                            <p class="text-uppercase m-0">Designation</p>
+                            <h4 class="text-primary">Lorem ipsum</h4>
+                            <p class="text-uppercase m-0">dolor sit amet</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 wow slideInUp" data-wow-delay="0.9s">
                     <div class="team-item bg-light rounded overflow-hidden">
                         <div class="team-img position-relative overflow-hidden">
-                            <img class="img-fluid w-100" src="{{ template_startup('img/team-3.jpg') }}" alt="">
+                            <img class="img-fluid w-100" src="{{ img_src('1-1 480.webp', 'default') }}" alt="">
                             <div class="team-social">
                                 <a class="btn btn-lg btn-primary btn-lg-square rounded" href=""><i
                                         class="fab fa-twitter fw-normal"></i></a>
@@ -513,8 +530,8 @@
                             </div>
                         </div>
                         <div class="text-center py-4">
-                            <h4 class="text-primary">Full Name</h4>
-                            <p class="text-uppercase m-0">Designation</p>
+                            <h4 class="text-primary">Lorem ipsum</h4>
+                            <p class="text-uppercase m-0">dolor sit amet</p>
                         </div>
                     </div>
                 </div>
@@ -531,21 +548,22 @@
                 <h5 class="fw-bold text-primary text-uppercase">Latest Blog</h5>
                 <h1 class="mb-0">Read The Latest Articles from Our Blog Post</h1>
             </div>
-            <div class="row g-5">
+            <div class="row g-5" id="blogSection">
                 <div class="col-lg-4 wow slideInUp" data-wow-delay="0.3s">
                     <div class="blog-item bg-light rounded overflow-hidden">
                         <div class="blog-img position-relative overflow-hidden">
-                            <img class="img-fluid" src="{{ template_startup('img/blog-1.jpg') }}" alt="">
+                            <img class="img-fluid" src="{{ img_src('4-3.webp', 'default') }}" alt="">
                             <a class="position-absolute top-0 start-0 bg-primary text-white rounded-end mt-5 py-2 px-4"
                                 href="">Web Design</a>
                         </div>
                         <div class="p-4">
                             <div class="d-flex mb-3">
-                                <small class="me-3"><i class="far fa-user text-primary me-2"></i>John Doe</small>
+                                <small class="me-3"><i class="far fa-user text-primary me-2"></i>Lorem ipsum</small>
                                 <small><i class="far fa-calendar-alt text-primary me-2"></i>01 Jan, 2045</small>
                             </div>
-                            <h4 class="mb-3">How to build a website</h4>
-                            <p>Dolor et eos labore stet justo sed est sed sed sed dolor stet amet</p>
+                            <h4 class="mb-3">Lorem ipsum dolor sit amet</h4>
+                            <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
+                                Ut lobortis aliquam consequat. Quisque ac elementum mauris.</p>
                             <a class="text-uppercase" href="">Read More <i class="bi bi-arrow-right"></i></a>
                         </div>
                     </div>
@@ -553,17 +571,18 @@
                 <div class="col-lg-4 wow slideInUp" data-wow-delay="0.6s">
                     <div class="blog-item bg-light rounded overflow-hidden">
                         <div class="blog-img position-relative overflow-hidden">
-                            <img class="img-fluid" src="{{ template_startup('img/blog-2.jpg') }}" alt="">
+                            <img class="img-fluid" src="{{ img_src('4-3.webp', 'default') }}" alt="">
                             <a class="position-absolute top-0 start-0 bg-primary text-white rounded-end mt-5 py-2 px-4"
                                 href="">Web Design</a>
                         </div>
                         <div class="p-4">
                             <div class="d-flex mb-3">
-                                <small class="me-3"><i class="far fa-user text-primary me-2"></i>John Doe</small>
+                                <small class="me-3"><i class="far fa-user text-primary me-2"></i>Lorem ipsum</small>
                                 <small><i class="far fa-calendar-alt text-primary me-2"></i>01 Jan, 2045</small>
                             </div>
-                            <h4 class="mb-3">How to build a website</h4>
-                            <p>Dolor et eos labore stet justo sed est sed sed sed dolor stet amet</p>
+                            <h4 class="mb-3">Lorem ipsum dolor sit amet</h4>
+                            <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
+                                Ut lobortis aliquam consequat. Quisque ac elementum mauris.</p>
                             <a class="text-uppercase" href="">Read More <i class="bi bi-arrow-right"></i></a>
                         </div>
                     </div>
@@ -571,17 +590,18 @@
                 <div class="col-lg-4 wow slideInUp" data-wow-delay="0.9s">
                     <div class="blog-item bg-light rounded overflow-hidden">
                         <div class="blog-img position-relative overflow-hidden">
-                            <img class="img-fluid" src="{{ template_startup('img/blog-3.jpg') }}" alt="">
+                            <img class="img-fluid" src="{{ img_src('4-3.webp', 'default') }}" alt="">
                             <a class="position-absolute top-0 start-0 bg-primary text-white rounded-end mt-5 py-2 px-4"
                                 href="">Web Design</a>
                         </div>
                         <div class="p-4">
                             <div class="d-flex mb-3">
-                                <small class="me-3"><i class="far fa-user text-primary me-2"></i>John Doe</small>
+                                <small class="me-3"><i class="far fa-user text-primary me-2"></i>Lorem ipsum</small>
                                 <small><i class="far fa-calendar-alt text-primary me-2"></i>01 Jan, 2045</small>
                             </div>
-                            <h4 class="mb-3">How to build a website</h4>
-                            <p>Dolor et eos labore stet justo sed est sed sed sed dolor stet amet</p>
+                            <h4 class="mb-3">Lorem ipsum dolor sit amet</h4>
+                            <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
+                                Ut lobortis aliquam consequat. Quisque ac elementum mauris.</p>
                             <a class="text-uppercase" href="">Read More <i class="bi bi-arrow-right"></i></a>
                         </div>
                     </div>
@@ -591,3 +611,523 @@
     </div>
     <!-- Blog Start -->
 @endsection
+
+@push('js')
+    <script type="text/javascript">
+        $(document).ready(function() {
+            //Banner
+            $.ajax({
+                type: "GET",
+                url: "{{ route('web.getBanner') }}",
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    "_method": "GET",
+                },
+                success: function(respon) {
+                    let bannerHtml = ''
+
+                    if (respon.data.length !== 0) {
+                        for (let i = 0; i < respon.data.length; i++) {
+                            const data = respon.data[i];
+
+                            let bannerJsonDecode = JSON.parse(data.value);
+                            if (bannerJsonDecode.img_url !== '') {
+                                bannerHtml += `<div class="carousel-item ` + (i === 0 ? 'active' : '') +
+                                    `">` +
+                                    `<img class="w-100" src="{{ asset('administrator/assets/media/banner') }}/` +
+                                    bannerJsonDecode.img_url + `" alt="Image">` +
+                                    `<div class="carousel-caption d-flex flex-column align-items-center justify-content-center">` +
+                                    `<div class="p-3" style="max-width: 900px;">` +
+                                    `<h5 class="text-white text-uppercase mb-3 animated slideInDown">` +
+                                    bannerJsonDecode.title + `</h5>` +
+                                    `<h1 class="display-1 text-white mb-md-4 animated zoomIn">` +
+                                    bannerJsonDecode.body + `</h1>` +
+                                    `<a href="{{ route('web.free_qoute') }}" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Free` +
+                                    `Quote</a>` +
+                                    `<a href="{{ route('web.contact') }}" class="btn btn-outline-light py-md-3 px-md-5 animated slideInRight">Contact Us</a>` +
+                                    `</div>` +
+                                    `</div>` +
+                                    `                                </div>`;
+                            }
+                        }
+                        $('#bannerSection').html(
+                            bannerHtml
+                        )
+                    }
+                }
+            });
+
+            //About
+            $.ajax({
+                type: "GET",
+                url: "{{ route('web.getAbout') }}",
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    "_method": "GET",
+                },
+                success: function(respon) {
+                    let aboutHtml = ''
+                    let ourFeatureHtmlUp = ''
+                    let ourFeatureHtmlDown = ''
+                    let contact_telepon = ''
+
+
+                    if (respon.ourfeature) {
+                        for (let i = 0; i < respon.ourfeature.length; i++) {
+                            const ourfeature = respon.ourfeature[i];
+
+                            if (ourfeature.name === 'our_feature_0' || ourfeature.name ===
+                                'our_feature_1') {
+                                let ourFeatureJsonDecode = JSON.parse(ourfeature.value);
+                                if ((ourFeatureJsonDecode.title !== null) || (ourFeatureJsonDecode
+                                        .icon !== null)) {
+                                    ourFeatureHtmlUp +=
+                                        `<h5 class="mb-3"><i class="` + ourFeatureJsonDecode
+                                        .icon + ` text-primary me-3"></i>` +
+                                        ourFeatureJsonDecode.title + `</h5>`;
+                                }
+                            } else if (ourfeature.name === 'our_feature_2' || ourfeature.name ===
+                                'our_feature_3') {
+                                let ourFeatureJsonDecode = JSON.parse(ourfeature.value);
+                                if ((ourFeatureJsonDecode.title !== null) || (ourFeatureJsonDecode
+                                        .icon !== null)) {
+                                    ourFeatureHtmlDown +=
+                                        `<h5 class="mb-3"><i class="` + ourFeatureJsonDecode
+                                        .icon + ` text-primary me-3"></i>` +
+                                        ourFeatureJsonDecode.title + `</h5>`;
+                                }
+                            }
+                        }
+                    }
+
+                    if (respon.contact) {
+                        let contact = respon.contact;
+                        contact_telepon += contact.telepon;
+                    }
+
+
+                    if (respon.data !== '') {
+                        let data = respon.data;
+                        aboutHtml += `<div class="col-lg-7">` +
+                            `<div class="section-title position-relative pb-3 mb-5">` +
+                            `<h5 class="fw-bold text-primary text-uppercase">About Us</h5>` +
+                            `<h1 class="mb-0">` + data.title + `</h1>` +
+                            `</div>` +
+                            `<p class="mb-4">` + data.deskripsi + `</p>` +
+                            `<div class="row g-0 mb-3">` +
+                            `<div class="col-sm-6 wow zoomIn" data-wow-delay="0.2s">` +
+                            ourFeatureHtmlUp +
+                            `</div>` +
+                            `<div class="col-sm-6 wow zoomIn" data-wow-delay="0.4s">` +
+                            ourFeatureHtmlDown +
+                            `</div>` +
+                            `</div>` +
+                            `<div class="d-flex align-items-center mb-4 wow fadeIn" data-wow-delay="0.6s">` +
+                            `<div class="bg-primary d-flex align-items-center justify-content-center rounded"` +
+                            `style="width: 60px; height: 60px;">` +
+                            `<i class="fa fa-phone-alt text-white"></i>` +
+                            `</div>` +
+                            `<div class="ps-4">` +
+                            `<h5 class="mb-2">Call to ask any question</h5>` +
+                            `<h4 class="text-primary mb-0">` + contact_telepon + `</h4>` +
+                            `</div>` +
+                            `</div>` +
+                            `<a href="{{ route('web.free_qoute') }}" class="btn btn-primary py-3 px-5 mt-3 wow zoomIn" data-wow-delay="0.9s">Request` +
+                            `A Quote</a>` +
+                            `</div>` +
+                            `<div class="col-lg-5" style="min-height: 500px;">` +
+                            `<div class="position-relative h-100">` +
+                            `<img class="position-absolute w-100 h-100 rounded wow zoomIn" data-wow-delay="0.9s"` +
+                            `src="` + (respon.path + data.image) + `" style="object-fit: cover;">` +
+                            `</div>` +
+                            `</div>`;
+                    }
+                    $('#aboutSection').html(
+                        aboutHtml
+                    )
+                    console.log()
+                },
+                error: function(error) {
+                    console.error("Error in inner AJAX call:", error);
+                }
+            });
+
+            //Service
+            $.ajax({
+                type: "GET",
+                url: "{{ route('web.getService') }}",
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    "_method": "GET",
+                },
+                success: function(respon) {
+                    let serviceHtml = ''
+
+                    for (let i = 0; i < respon.data.length; i++) {
+                        const data = respon.data[i];
+
+                        let serviceJsonDecode = JSON.parse(data.value);
+                        if ((serviceJsonDecode.icon !== null) || (serviceJsonDecode.title !== null) || (
+                                serviceJsonDecode.body !== null)) {
+                            serviceHtml +=
+                                `<div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.3s">` +
+                                `<div ` +
+                                `class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">` +
+                                `<div class="service-icon">` +
+                                `<i class="` + serviceJsonDecode.icon + ` text-white"></i>` +
+                                `</div>` +
+                                `<h4 class="mb-3">` + serviceJsonDecode.title + `</h4>` +
+                                `<p class="m-0">` + serviceJsonDecode.body +
+                                `</p>` +
+                                `<a class="btn btn-lg btn-primary rounded" href="{{ route('web.service') }}">` +
+                                `<i class="bi bi-arrow-right"></i>` +
+                                `</a>` +
+                                `</div>` +
+                                `</div>`;
+                        }
+                        new WOW().init();
+                    }
+                    if (respon.freeqoute) {
+                        let freeqoute = respon.freeqoute;
+                        let contact = respon.contact;
+                        serviceHtml +=
+                        `<div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.9s">`+
+                            `<div`+
+                                ` class="position-relative bg-primary rounded h-100 d-flex flex-column align-items-center justify-content-center text-center p-5">`+
+                                `<h3 class="text-white mb-3">Telepon untuk Penawaran</h3>`+
+                                `<p class="text-white mb-3">`+freeqoute.deskripsi+`</p>`+
+                                `<h2 class="text-white mb-0">`+contact.telepon+`</h2>`+
+                            `</div>`+
+                        `</div>`;
+                    }
+                    $('#serviceSection').html(
+                        serviceHtml
+                    )
+                    if (respon.title !== null) {
+                        $('#serviceTitleSection').text(
+                            respon.title
+                        )
+                    }
+                }
+            });
+
+            // Testimonial
+            $.ajax({
+                type: "GET",
+                url: "{{ route('web.getTestimonial') }}",
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    "_method": "GET",
+                },
+                success: function(respon) {
+                    let testimonialHtml = ''
+
+                    for (let i = 0; i < respon.data.length; i++) {
+                        const data = respon.data[i];
+
+                        if ((data.nama !== null) || (
+                                data.keterangan !== null)) {
+                            testimonialHtml +=
+                                `<div class="testimonial-item bg-light my-4">` +
+                                `<div class="d-flex align-items-center border-bottom pt-5 pb-4 px-5">` +
+                                `<img class="img-fluid rounded" src="` + (respon.path + data.img_url) +
+                                `"` +
+                                `style="width: 60px; height: 60px;">` +
+                                `<div class="ps-4">` +
+                                `<h4 class="text-primary mb-1">` + data.nama + `</h4>` +
+                                `<small class="text-uppercase">__________</small>` +
+                                `</div>` +
+                                `</div>` +
+                                `<div class="pt-4 pb-5 px-5">` +
+                                data.keterangan +
+                                `</div>` +
+                                `</div>`;
+                        }
+                    }
+                    $('#testimonialSection').html(
+                        testimonialHtml
+                    )
+                    if (respon.title !== null) {
+                        $('#testimonialTitleSection').text(
+                            respon.title
+                        )
+                    }
+                    // Destroy the Owl Carousel instance if it exists
+                    $("#testimonialSection").owlCarousel('destroy');
+
+                    // Reinitialize the Owl Carousel
+                    $("#testimonialSection").owlCarousel({
+                        autoplay: true,
+                        smartSpeed: 1500,
+                        dots: true,
+                        loop: true,
+                        center: true,
+                        responsive: {
+                            0: {
+                                items: 1
+                            },
+                            576: {
+                                items: 1
+                            },
+                            768: {
+                                items: 2
+                            },
+                            992: {
+                                items: 3
+                            }
+                        }
+                    });
+
+                }
+            });
+
+            // OurFeature
+            $.ajax({
+                type: "GET",
+                url: "{{ route('web.getOurFeature') }}",
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    "_method": "GET",
+                },
+                success: function(respon) {
+                    let ourFeatureHtmlUp = ''
+                    let ourFeatureHtmlDown = ''
+                    let ourFeatureHtmlImg = ''
+                    let title = ''
+
+                    for (let i = 0; i < respon.data.length; i++) {
+                        const data = respon.data[i];
+
+                        if (data.name === 'our_feature_0' || data.name === 'our_feature_1') {
+                            let ourFeatureJsonDecode = JSON.parse(data.value);
+                            ourFeatureHtmlUp +=
+                                `<div class="col-12 wow zoomIn" data-wow-delay="0.2s">` +
+                                `<div class="bg-primary rounded d-flex align-items-center justify-content-center mb-3"` +
+                                `style="width: 60px; height: 60px;">` +
+                                `<i class="` + ourFeatureJsonDecode.icon + ` text-white"></i>` +
+                                `</div>` +
+                                `<h4>` + ourFeatureJsonDecode.title + `</h4>` +
+                                `<p class="mb-0">` + ourFeatureJsonDecode.body + `</p>` +
+                                `</div>`;
+                        } else if (data.name === 'our_feature_2' || data.name === 'our_feature_3') {
+                            let ourFeatureJsonDecode = JSON.parse(data.value);
+                            ourFeatureHtmlDown +=
+                                `<div class="col-12 wow zoomIn" data-wow-delay="0.4s">` +
+                                `<div class="bg-primary rounded d-flex align-items-center justify-content-center mb-3"` +
+                                `style="width: 60px; height: 60px;">` +
+                                `<i class="` + ourFeatureJsonDecode.icon + ` text-white"></i>` +
+                                `</div>` +
+                                `<h4>` + ourFeatureJsonDecode.title + `</h4>` +
+                                `<p class="mb-0">` + ourFeatureJsonDecode.body + `</p>` +
+                                `</div>`;
+                        } else if (data.name === 'image') {
+                            ourFeatureHtmlImg +=
+                                `<img class="position-absolute w-100 h-100 rounded wow zoomIn" data-wow-delay="0.1s"` +
+                                `src="` + (data.value ? (respon.path +
+                                        data.value) :
+                                    "{{ img_src('1-1 480.webp', 'default') }}") +
+                                `" style="object-fit: cover;">`;
+                        } else if (data.val === 'title') {
+                            title += data.value;
+
+                        }
+                    }
+                    $('#ourFeatureSection').html(
+                        `<div class="col-lg-4">` +
+                        `<div class="row g-5">` +
+                        ourFeatureHtmlUp +
+                        `</div>` +
+                        `</div>` +
+                        `<div class="col-lg-4  wow zoomIn" data-wow-delay="0.9s" style="min-height: 350px;">` +
+                        `<div class="position-relative h-100">` +
+                        ourFeatureHtmlImg +
+                        `</div>` +
+                        `</div>` +
+                        `<div class="col-lg-4">` +
+                        `<div class="row g-5">` +
+                        ourFeatureHtmlDown +
+                        `</div>` +
+                        `</div>`
+                    )
+                    if (title !== null) {
+                        $('#ourFeatureTitleSection').text(
+                            title
+                        )
+                    }
+                }
+            });
+
+            //FreeQoute
+            $.ajax({
+                type: "GET",
+                url: "{{ route('web.getFreeQoute') }}",
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    "_method": "GET",
+                },
+                success: function(respon) {
+                    let aboutHtml = ''
+                    if (respon.contact != '') {
+                        let contact = respon.contact;
+                        $('#teleponFreeQoute').text(
+                            contact.telepon
+                        )
+                    }
+
+                    if (respon.ourfeature != '') {
+                        let ourFeatureHtmlUp = ''
+                        for (let i = 0; i < respon.ourfeature.length; i++) {
+                            const ourfeature = respon.ourfeature[i];
+
+                            if (ourfeature.name === 'our_feature_0' || ourfeature.name ===
+                                'our_feature_1') {
+                                let ourFeatureJsonDecode = JSON.parse(ourfeature.value);
+                                if ((ourFeatureJsonDecode.title !== null) || (ourFeatureJsonDecode
+                                        .icon !== null)) {
+                                    ourFeatureHtmlUp +=
+                                        `<div class="col-sm-6 wow zoomIn" data-wow-delay="0.2s">` +
+                                        `<h5 class="mb-4"><i class="` + ourFeatureJsonDecode
+                                        .icon + ` text-primary me-3"></i>` + ourFeatureJsonDecode
+                                        .title +
+                                        `</h5>` +
+                                        `</div>`;
+                                }
+                            }
+                        }
+                        $('#featureFreeQouteSection').html(
+                            ourFeatureHtmlUp
+                        )
+                    }
+
+                    if (respon.data !== '') {
+                        let data = respon.data;
+                        $('#titleFreeQoute').text(
+                            data.title
+                        )
+                        $('#deskripsiFreeQoute').text(
+                            data.deskripsi
+                        )
+                    }
+                }
+            });
+
+            // Team
+            $.ajax({
+                type: "GET",
+                url: "{{ route('web.getTeam') }}",
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    "_method": "GET",
+                },
+                success: function(respon) {
+                    let teamHtml = ''
+
+                    for (let i = 0; i < respon.data.length; i++) {
+                        const data = respon.data[i];
+
+                        let sosialMedia = ''
+                        for (let z = 0; z < data.sosial_media.length; z++) {
+                            const sosmed = data.sosial_media[z];
+
+                            sosialMedia +=
+                                `<a class="btn btn-lg btn-primary btn-lg-square rounded" href="` +
+                                sosmed.url + `"><i ` +
+                                `class="fab fa-` + sosmed.nama + ` fw-normal"></i></a>`;
+                        }
+
+                        teamHtml +=
+                            `<div class="col-lg-4 wow slideInUp" data-wow-delay="0.3s">` +
+                            `<div class="team-item bg-light rounded overflow-hidden">` +
+                            `<div class="team-img position-relative overflow-hidden">` +
+                            `<img class="img-fluid w-100" src="` + (respon.path + data.img_url) +
+                            `" alt="">` +
+                            `<div class="team-social">` +
+                            sosialMedia +
+                            `</div>` +
+                            `</div>` +
+                            `<div class="text-center py-4">` +
+                            `<h4 class="text-primary">` + data.nama + `</h4>` +
+                            `<p class="text-uppercase m-0">` + data.jabatan + `</p>` +
+                            `</div>` +
+                            `</div>` +
+                            `</div>`;
+                    }
+                    $('#teamSection').html(
+                        teamHtml
+                    )
+                }
+            });
+
+            function formatDate(inputDate) {
+                const months = [
+                    "Jan", "Feb", "Mar", "Apr",
+                    "May", "Jun", "Jul", "Aug",
+                    "Sep", "Oct", "Nov", "Dec"
+                ];
+
+                const parts = inputDate.split("-");
+                const year = parts[0];
+                const month = months[parseInt(parts[1]) - 1];
+                const day = parts[2];
+
+                return `${day} ${month}, ${year}`;
+            }
+
+            // Blog
+            $.ajax({
+                type: "GET",
+                url: "{{ route('web.getBlog') }}",
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    "_method": "GET",
+                },
+                success: function(respon) {
+                    let blogHtml = '';
+
+                    for (let i = 0; i < respon.data.length; i++) {
+                        const data = respon.data[i];
+                        let imgJsonDecode = JSON.parse(data.img_url);
+
+                        // Assuming data.isi contains the text with HTML tags
+                        let contentWithHTML = data.isi;
+
+                        // Remove HTML tags
+                        let contentWithoutHTML = contentWithHTML.replace(/<\/?[^>]+(>|$)/g, '');
+
+                        // Limit the content to 200 characters
+                        const maxLength = 200;
+                        let truncatedContent = contentWithoutHTML.length > maxLength ?
+                            contentWithoutHTML.substring(0, maxLength) + '...' :
+                            contentWithoutHTML;
+
+                        blogHtml +=
+                            `<div class="col-lg-4 wow slideInUp" data-wow-delay="0.3s">` +
+                            `<div class="blog-item bg-light rounded overflow-hidden">` +
+                            `<div class="blog-img position-relative overflow-hidden">` +
+                            `<img class="img-fluid" src="` + (respon.path + imgJsonDecode[0]) +
+                            `" alt="">` +
+                            `<a class="position-absolute top-0 start-0 bg-primary text-white rounded-end mt-5 py-2 px-4"` +
+                            `href="">` + data.tags[0].kategori.nama + `</a>` +
+                            `</div>` +
+                            `<div class="p-4">` +
+                            `<div class="d-flex mb-3">` +
+                            `<small><i class="far fa-calendar-alt text-primary me-2"></i>` + formatDate(
+                                data.tanggal_posting) + `</small>` +
+                            `</div>` +
+                            `<h4 class="mb-3">` + data.judul + `</h4>` +
+                            `<p>` + truncatedContent +
+                            `</p> <a class="text-uppercase" href="{{ route('web.blog') }}">Read More <i class="bi bi-arrow-right"></i></a>` +
+                            `</div>` +
+                            `</div>` +
+                            `</div>`;
+                    }
+
+                    // Move this line inside the success callback
+                    $('#blogSection').html(blogHtml);
+
+                }
+            });
+
+        });
+    </script>
+@endpush

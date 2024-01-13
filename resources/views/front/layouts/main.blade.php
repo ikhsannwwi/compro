@@ -9,7 +9,8 @@
     @yield('meta')
 
     <!-- Favicon -->
-    <link href="{{ template_startup('img/favicon.ico') }}" rel="icon">
+    {{-- <title>{{ array_key_exists('general_nama_app', $settings) ? $settings['general_nama_app'] : '' }}</title> --}}
+    <link rel="icon" type="image/x-icon" href="{{ array_key_exists('general_frontpage_favicon', $settings) ? img_src($settings['general_frontpage_favicon'], 'settings') : '' }}">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -77,7 +78,7 @@
 
 
     <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="{{ asset('jquery/dist/jquery.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ template_startup('lib/wow/wow.min.js') }}"></script>
     <script src="{{ template_startup('lib/easing/easing.min.js') }}"></script>
