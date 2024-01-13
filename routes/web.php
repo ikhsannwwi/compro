@@ -51,6 +51,7 @@ Route::post('/blog/{slug}/comment/reply', [BlogController::class, 'reply'])->nam
 Route::get('/blog/fetchData/comment', [BlogController::class, 'fetchDataComment'])->name('web.blog.fetchData.comment');
 
 Route::get('/contact', [ContactController::class, 'index'])->name('web.contact');
+Route::post('/contact/serverside/sendMessage', [ContactController::class, 'sendMessage'])->name('web.contact.serverside.sendMessage');
 
 Route::get('/service', [ServiceController::class, 'index'])->name('web.service');
 
@@ -61,3 +62,4 @@ Route::get('/testimonial', [TestimonialController::class, 'index'])->name('web.t
 Route::get('/our-feature', [OurFeatureController::class, 'index'])->name('web.our_feature');
 
 Route::get('/free-qoute', [FreeQouteController::class, 'index'])->name('web.free_qoute');
+Route::post('/free-qoute/serverside/sendMessage', [FreeQouteController::class, 'sendMessage'])->name('web.free_qoute.serverside.sendMessage');

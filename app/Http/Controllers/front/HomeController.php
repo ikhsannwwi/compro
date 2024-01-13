@@ -107,10 +107,13 @@ class HomeController extends Controller
 
         $contact = Contact::get()->toArray();
         $contact = array_column($contact, 'value', 'name');
+
+        $service = Service::where('name', '!=', 'title')->get();
         return response()->json([
             'data' => $data,
             'contact' => $contact,
             'ourfeature' => $ourfeature,
+            'service' => $service,
         ], 200);
     }
     

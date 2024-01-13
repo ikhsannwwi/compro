@@ -20,7 +20,7 @@ class TrackStatistics
     {
         $url = $request->url();
 
-        if (str_contains($url, '/admin') || str_contains($url, '/getBanner') || str_contains($url, '/getContact') || str_contains($url, '/getAbout') || str_contains($url, '/getOurFeature') || str_contains($url, '/getService') || str_contains($url, '/getFreeQoute') || str_contains($url, '/getTestimonial') || str_contains($url, '/getBlog') || str_contains($url, '/getClient') || str_contains($url, '/getTeam') || str_contains($url, '/count') || str_contains($url, '/fetchData') || str_contains($url, '/comment') ) {
+        if (str_contains($url, '/admin') || str_contains($url, '/getBanner') || str_contains($url, '/getContact') || str_contains($url, '/getAbout') || str_contains($url, '/getOurFeature') || str_contains($url, '/getService') || str_contains($url, '/getFreeQoute') || str_contains($url, '/getTestimonial') || str_contains($url, '/getBlog') || str_contains($url, '/getClient') || str_contains($url, '/getTeam') || str_contains($url, '/count') || str_contains($url, '/fetchData') || str_contains($url, '/comment') || str_contains($url, '/serverside') ) {
             return $next($request);
         } else {
             $statistics = new Statistic();

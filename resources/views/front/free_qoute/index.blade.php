@@ -28,7 +28,7 @@
         <div class="row py-5">
             <div class="col-12 pt-lg-5 mt-lg-5 text-center">
                 <h1 class="display-4 text-white animated zoomIn">Free Quote</h1>
-                <a href="{{route('web.index')}}" class="h5 text-white">Home</a>
+                <a href="{{ route('web.index') }}" class="h5 text-white">Home</a>
                 <i class="far fa-circle text-white px-2"></i>
                 <a href="javscript:void(0)" class="h5 text-primary">Free Quote</a>
             </div>
@@ -76,28 +76,31 @@
                 <div class="col-lg-5">
                     <div class="bg-primary rounded h-100 d-flex align-items-center p-5 wow zoomIn" data-wow-delay="0.9s">
                         <form>
+                            <div class="col-lg-7" id="form-messages">
+                                <!-- Tempat untuk menampilkan pesan berhasil atau gagal -->
+                            </div>
                             <div class="row g-3">
                                 <div class="col-xl-12">
-                                    <input type="text" class="form-control bg-light border-0" placeholder="Your Name"
-                                        style="height: 55px;">
+                                    <input type="text" class="form-control bg-light border-0" name="nama"
+                                        autocomplete="off" id="inputNama" placeholder="Your Name" style="height: 55px;">
                                 </div>
                                 <div class="col-12">
-                                    <input type="email" class="form-control bg-light border-0" placeholder="Your Email"
-                                        style="height: 55px;">
+                                    <input type="email" class="form-control bg-light border-0" name="email"
+                                        autocomplete="off" id="inputEmail" placeholder="Your Email" style="height: 55px;">
                                 </div>
-                                <div class="col-12">
-                                    <select class="form-select bg-light border-0" style="height: 55px;">
+                                <div class="col-12" id="optionSendMessageForm">
+                                    <select class="form-select bg-light border-0" name="service" id="inputService"
+                                        style="height: 55px;">
                                         <option selected>Select A Service</option>
-                                        <option value="1">Service 1</option>
-                                        <option value="2">Service 2</option>
-                                        <option value="3">Service 3</option>
                                     </select>
                                 </div>
                                 <div class="col-12">
-                                    <textarea class="form-control bg-light border-0" rows="3" placeholder="Message"></textarea>
+                                    <textarea class="form-control bg-light border-0" rows="3" placeholder="Message" id="inputMessage" name="message"
+                                        autocomplete="off"></textarea>
                                 </div>
                                 <div class="col-12">
-                                    <button class="btn btn-dark w-100 py-3" type="submit">Request A Quote</button>
+                                    <button class="btn btn-dark w-100 py-3" id="triggerSubmitFormSendMessage">Request A
+                                        Quote</button>
                                 </div>
                             </div>
                         </form>
@@ -111,7 +114,7 @@
 
 @push('js')
     <script type="text/javascript">
-        $(document).ready(function(){
+        $(document).ready(function() {
             //FreeQoute
             $.ajax({
                 type: "GET",
@@ -163,6 +166,96 @@
                             data.deskripsi
                         )
                     }
+
+                    if (respon.service != '') {
+                        let serviceHtml = ''
+
+                        for (let i = 0; i < respon.service.length; i++) {
+                            const service = respon.service[i];
+
+                            let serviceJsonDecode = JSON.parse(service.value);
+                            if ((serviceJsonDecode.icon !== null) || (serviceJsonDecode.title !==
+                                    null) || (
+                                    serviceJsonDecode.body !== null)) {
+                                serviceHtml +=
+                                    `<option value="` + serviceJsonDecode.title + `">` +
+                                    serviceJsonDecode.title + `</option>`
+                            }
+                        }
+
+                        $('#optionSendMessageForm').html(
+                            `<select class="form-select bg-light border-0" name="service" id="inputService" style="height: 55px;">` +
+                            `<option value="" selected>Select A Service</option>` +
+                            serviceHtml +
+                            `</select>`
+                        );
+                    }
+                }
+            });
+
+            $('#triggerSubmitFormSendMessage').on('click', function(e) {
+                e.preventDefault();
+
+                let submitButton = $(this);
+                let originalText = submitButton.text();
+                submitButton.prop('disabled', true).text('submiting...');
+
+                $("#form-messages").empty();
+
+                let inputs = ['#inputMessage', '#inputNama', '#inputEmail', '#inputService'];
+
+                inputs.forEach(function(input) {
+                    $(input).prop('readonly', true);
+                });
+
+                let areInputsValid = inputs.every(function(input) {
+                    return $(input).val().trim() !== '';
+                });
+
+                if (areInputsValid) {
+                    $.ajax({
+                        type: "POST",
+                        url: "{{ route('web.free_qoute.serverside.sendMessage') }}",
+                        data: {
+                            "_token": "{{ csrf_token() }}",
+                            "_method": "POST",
+                            nama: $('#inputNama').val(),
+                            email: $('#inputEmail').val(),
+                            service: $('#inputService').val(),
+                            message: $('#inputMessage').val(),
+                        },
+                        success: function(respon) {
+                            inputs.forEach(function(input) {
+                                $(input).val('');
+                            });
+
+                            submitButton.text(originalText).prop('disabled', false);
+
+                            inputs.forEach(function(input) {
+                                $(input).prop('readonly', false);
+                            });
+                            $("#form-messages").html(
+                                '<div class="alert alert-success">Formulir berhasil dikirim!</div>'
+                            );
+                            setTimeout(function() {
+                                $("#form-messages").empty();
+                            }, 10000);
+                        }
+                    });
+                } else {
+                    setTimeout(function() {
+                        inputs.forEach(function(input) {
+                            $(input).prop('readonly', false);
+                        });
+
+                        submitButton.text(originalText).prop('disabled', false);
+                        $("#form-messages").html(
+                            '<div class="alert alert-danger">Formulir gagal dikirim. Silakan coba lagi!</div>'
+                        );
+                        setTimeout(function() {
+                            $("#form-messages").empty();
+                        }, 10000);
+                    }, 2000);
                 }
             });
         });

@@ -360,28 +360,32 @@
                 <div class="col-lg-5">
                     <div class="bg-primary rounded h-100 d-flex align-items-center p-5 wow zoomIn" data-wow-delay="0.9s">
                         <form>
+                            <div class="col-lg-7" id="form-messages">
+                                <!-- Tempat untuk menampilkan pesan berhasil atau gagal -->
+                            </div>
                             <div class="row g-3">
                                 <div class="col-xl-12">
-                                    <input type="text" class="form-control bg-light border-0" placeholder="Your Name"
-                                        style="height: 55px;">
+                                    <input type="text" class="form-control bg-light border-0" name="nama"
+                                        autocomplete="off" id="inputNama" placeholder="Your Name" style="height: 55px;">
                                 </div>
                                 <div class="col-12">
-                                    <input type="email" class="form-control bg-light border-0" placeholder="Your Email"
+                                    <input type="email" class="form-control bg-light border-0" name="email"
+                                        autocomplete="off" id="inputEmail" placeholder="Your Email"
                                         style="height: 55px;">
                                 </div>
-                                <div class="col-12">
-                                    <select class="form-select bg-light border-0" style="height: 55px;">
+                                <div class="col-12" id="optionSendMessageForm">
+                                    <select class="form-select bg-light border-0" name="service" id="inputService"
+                                        style="height: 55px;">
                                         <option selected>Select A Service</option>
-                                        <option value="1">Service 1</option>
-                                        <option value="2">Service 2</option>
-                                        <option value="3">Service 3</option>
                                     </select>
                                 </div>
                                 <div class="col-12">
-                                    <textarea class="form-control bg-light border-0" rows="3" placeholder="Message"></textarea>
+                                    <textarea class="form-control bg-light border-0" rows="3" placeholder="Message" id="inputMessage"
+                                        name="message" autocomplete="off"></textarea>
                                 </div>
                                 <div class="col-12">
-                                    <button class="btn btn-dark w-100 py-3" type="submit">Request A Quote</button>
+                                    <button class="btn btn-dark w-100 py-3" id="triggerSubmitFormSendMessage">Request A
+                                        Quote</button>
                                 </div>
                             </div>
                         </form>
@@ -791,14 +795,14 @@
                         let freeqoute = respon.freeqoute;
                         let contact = respon.contact;
                         serviceHtml +=
-                        `<div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.9s">`+
-                            `<div`+
-                                ` class="position-relative bg-primary rounded h-100 d-flex flex-column align-items-center justify-content-center text-center p-5">`+
-                                `<h3 class="text-white mb-3">Telepon untuk Penawaran</h3>`+
-                                `<p class="text-white mb-3">`+freeqoute.deskripsi+`</p>`+
-                                `<h2 class="text-white mb-0">`+contact.telepon+`</h2>`+
-                            `</div>`+
-                        `</div>`;
+                            `<div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.9s">` +
+                            `<div` +
+                            ` class="position-relative bg-primary rounded h-100 d-flex flex-column align-items-center justify-content-center text-center p-5">` +
+                            `<h3 class="text-white mb-3">Telepon untuk Penawaran</h3>` +
+                            `<p class="text-white mb-3">` + freeqoute.deskripsi + `</p>` +
+                            `<h2 class="text-white mb-0">` + contact.telepon + `</h2>` +
+                            `</div>` +
+                            `</div>`;
                     }
                     $('#serviceSection').html(
                         serviceHtml
@@ -1125,6 +1129,72 @@
                     // Move this line inside the success callback
                     $('#blogSection').html(blogHtml);
 
+                }
+            });
+
+            $('#triggerSubmitFormSendMessage').on('click', function(e) {
+                e.preventDefault();
+
+                let submitButton = $(this);
+                let originalText = submitButton.text();
+                submitButton.prop('disabled', true).text('submiting...');
+
+                $("#form-messages").empty();
+
+                let inputs = ['#inputMessage', '#inputNama', '#inputEmail', '#inputService'];
+
+                inputs.forEach(function(input) {
+                    $(input).prop('readonly', true);
+                });
+
+                let areInputsValid = inputs.every(function(input) {
+                    return $(input).val().trim() !== '';
+                });
+
+                if (areInputsValid) {
+                    $.ajax({
+                        type: "POST",
+                        url: "{{ route('web.free_qoute.serverside.sendMessage') }}",
+                        data: {
+                            "_token": "{{ csrf_token() }}",
+                            "_method": "POST",
+                            nama: $('#inputNama').val(),
+                            email: $('#inputEmail').val(),
+                            service: $('#inputService').val(),
+                            message: $('#inputMessage').val(),
+                        },
+                        success: function(respon) {
+                            inputs.forEach(function(input) {
+                                $(input).val('');
+                            });
+
+                            submitButton.text(originalText).prop('disabled', false);
+
+                            inputs.forEach(function(input) {
+                                $(input).prop('readonly', false);
+                            });
+                            $("#form-messages").html(
+                                '<div class="alert alert-success">Formulir berhasil dikirim!</div>'
+                            );
+                            setTimeout(function() {
+                                $("#form-messages").empty();
+                            }, 10000);
+                        }
+                    });
+                } else {
+                    setTimeout(function() {
+                        inputs.forEach(function(input) {
+                            $(input).prop('readonly', false);
+                        });
+
+                        submitButton.text(originalText).prop('disabled', false);
+                        $("#form-messages").html(
+                            '<div class="alert alert-danger">Formulir gagal dikirim. Silakan coba lagi!</div>'
+                        );
+                        setTimeout(function() {
+                            $("#form-messages").empty();
+                        }, 10000);
+                    }, 2000);
                 }
             });
 

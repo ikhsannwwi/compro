@@ -32,6 +32,8 @@ class DataServiceProvider extends ServiceProvider
             'front.layouts.topbar',
             'front.layouts.footer',
             'front.home.index',
+            'front.free_qoute.mail.template',
+            'front.contact.mail.template',
             'administrator.layouts.main',
             'administrator.authentication.main',
             'administrator.authentication.login',
@@ -47,6 +49,8 @@ class DataServiceProvider extends ServiceProvider
             'front.layouts.topbar',
             'front.layouts.footer',
             'front.contact.index',
+            'front.free_qoute.mail.template',
+            'front.contact.mail.template',
         ], function ($view) {
             $contact = Contact::get()->toArray();
         
