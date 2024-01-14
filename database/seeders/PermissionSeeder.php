@@ -109,6 +109,16 @@ class PermissionSeeder extends Seeder
                 ]
             ],
             [
+                "identifiers"   => "free_qoute",
+                "name"          => "Free Qoute",
+                "access"        => [
+                    [
+                        "identifiers" => "edit",
+                        "name"        => "Edit",
+                    ],
+                ]
+            ],
+            [
                 "identifiers"   => "gallery",
                 "name"          => "Gallery",
                 "access"        => [
@@ -161,60 +171,8 @@ class PermissionSeeder extends Seeder
                 ]
             ],
             [
-                "identifiers"   => "kategori_project",
-                "name"          => "Kategori Project",
-                "access"        => [
-                    [
-                        "identifiers" => "view",
-                        "name"        => "View",
-                    ],
-                    [
-                        "identifiers" => "add",
-                        "name"        => "Add",
-                    ],
-                    [
-                        "identifiers" => "edit",
-                        "name"        => "Edit",
-                    ],
-                    [
-                        "identifiers" => "delete",
-                        "name"        => "Delete",
-                    ],
-                    [
-                        "identifiers" => "detail",
-                        "name"        => "Detail",
-                    ],
-                    [
-                        "identifiers" => "arsip",
-                        "name"        => "Arsip",
-                    ],
-                    [
-                        "identifiers" => "restore",
-                        "name"        => "Restore",
-                    ],
-                ]
-            ],
-            [
                 "identifiers"   => "komentar_blog",
                 "name"          => "Komentar Blog",
-                "access"        => [
-                    [
-                        "identifiers" => "view",
-                        "name"        => "View",
-                    ],
-                    [
-                        "identifiers" => "delete",
-                        "name"        => "Delete",
-                    ],
-                    [
-                        "identifiers" => "detail",
-                        "name"        => "Detail",
-                    ],
-                ]
-            ],
-            [
-                "identifiers"   => "komentar_project",
-                "name"          => "Komentar Project",
                 "access"        => [
                     [
                         "identifiers" => "view",
@@ -259,40 +217,6 @@ class PermissionSeeder extends Seeder
                 ]
             ],
             [
-                "identifiers"   => "project",
-                "name"          => "Project",
-                "access"        => [
-                    [
-                        "identifiers" => "view",
-                        "name"        => "View",
-                    ],
-                    [
-                        "identifiers" => "add",
-                        "name"        => "Add",
-                    ],
-                    [
-                        "identifiers" => "edit",
-                        "name"        => "Edit",
-                    ],
-                    [
-                        "identifiers" => "delete",
-                        "name"        => "Delete",
-                    ],
-                    [
-                        "identifiers" => "detail",
-                        "name"        => "Detail",
-                    ],
-                    [
-                        "identifiers" => "arsip",
-                        "name"        => "Arsip",
-                    ],
-                    [
-                        "identifiers" => "restore",
-                        "name"        => "Restore",
-                    ],
-                ]
-            ],
-            [
                 "identifiers"   => "service",
                 "name"          => "Service",
                 "access"        => [
@@ -329,10 +253,6 @@ class PermissionSeeder extends Seeder
                     [
                         "identifiers" => "frontpage_footer",
                         "name"        => "Frontpage_footer",
-                    ],
-                    [
-                        "identifiers" => "frontpage_homepage",
-                        "name"        => "Frontpage_homepage",
                     ],
                 ]
             ],
@@ -407,6 +327,82 @@ class PermissionSeeder extends Seeder
             [
                 "identifiers"   => "module_management",
                 "name"          => "Module Management",
+                "access"        => [
+                    [
+                        "identifiers" => "view",
+                        "name"        => "View",
+                    ],
+                    [
+                        "identifiers" => "add",
+                        "name"        => "Add",
+                    ],
+                    [
+                        "identifiers" => "edit",
+                        "name"        => "Edit",
+                    ],
+                    [
+                        "identifiers" => "delete",
+                        "name"        => "Delete",
+                    ],
+                    [
+                        "identifiers" => "detail",
+                        "name"        => "Detail",
+                    ],
+                ]
+            ],
+            [
+                "identifiers"   => "our_feature",
+                "name"          => "Our Feature",
+                "access"        => [
+                    [
+                        "identifiers" => "edit",
+                        "name"        => "Edit",
+                    ],
+                ]
+            ],
+            [
+                "identifiers"   => "statistic",
+                "name"          => "Statistic",
+                "access"        => [
+                    [
+                        "identifiers" => "view",
+                        "name"        => "View",
+                    ],
+                    [
+                        "identifiers" => "detail",
+                        "name"        => "Detail",
+                    ],
+                ]
+            ],
+            [
+                "identifiers"   => "team",
+                "name"          => "Team",
+                "access"        => [
+                    [
+                        "identifiers" => "view",
+                        "name"        => "View",
+                    ],
+                    [
+                        "identifiers" => "add",
+                        "name"        => "Add",
+                    ],
+                    [
+                        "identifiers" => "edit",
+                        "name"        => "Edit",
+                    ],
+                    [
+                        "identifiers" => "delete",
+                        "name"        => "Delete",
+                    ],
+                    [
+                        "identifiers" => "detail",
+                        "name"        => "Detail",
+                    ],
+                ]
+            ],
+            [
+                "identifiers"   => "testimonial",
+                "name"          => "Testimonial",
                 "access"        => [
                     [
                         "identifiers" => "view",

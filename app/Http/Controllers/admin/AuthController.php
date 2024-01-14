@@ -16,7 +16,7 @@ class AuthController extends Controller
 
     public function checkEmail(Request $request){
         if($request->ajax()){
-            $data = User::where('email', $request->email);
+            $data = User::where('email', $request->email)->first();
     
             if(empty($data)){
                 return response()->json([
