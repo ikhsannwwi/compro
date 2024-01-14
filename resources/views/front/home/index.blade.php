@@ -33,7 +33,7 @@
                         <h5 class="text-white text-uppercase mb-3 animated slideInDown">Lorem ipsum dolor sit amet</h5>
                         <h1 class="display-1 text-white mb-md-4 animated zoomIn">Lorem ipsum dolor sit amet, consectetur
                             adipiscing elit.</h1>
-                        <a href="quote.html" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Free
+                        <a href="{{route('web.free_qoute')}}" class="btn btn-main py-md-3 px-md-5 me-3 animated slideInLeft">Free
                             Quote</a>
                         <a href="" class="btn btn-outline-light py-md-3 px-md-5 animated slideInRight">Contact Us</a>
                     </div>
@@ -46,7 +46,7 @@
                         <h5 class="text-white text-uppercase mb-3 animated slideInDown">Lorem ipsum dolor sit amet</h5>
                         <h1 class="display-1 text-white mb-md-4 animated zoomIn">Creative & Innovative, consectetur
                             adipiscing elit.</h1>
-                        <a href="quote.html" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Free
+                        <a href="{{route('web.free_qoute')}}" class="btn btn-main py-md-3 px-md-5 me-3 animated slideInLeft">Free
                             Quote</a>
                         <a href="" class="btn btn-outline-light py-md-3 px-md-5 animated slideInRight">Contact Us</a>
                     </div>
@@ -70,41 +70,39 @@
         <div class="container py-5 pt-lg-0">
             <div class="row gx-0">
                 <div class="col-lg-4 wow zoomIn" data-wow-delay="0.1s">
-                    <div class="bg-primary shadow d-flex align-items-center justify-content-center p-4"
-                        style="height: 150px;">
+                    <div class="bg-main shadow d-flex align-items-center justify-content-center p-4" style="height: 150px;">
                         <div class="bg-white d-flex align-items-center justify-content-center rounded mb-2"
                             style="width: 60px; height: 60px;">
-                            <i class="fa fa-users text-primary"></i>
+                            <i class="fa fa-users text-main"></i>
                         </div>
                         <div class="ps-4">
                             <h5 class="text-white mb-0">Happy Clients</h5>
-                            <h1 class="text-white mb-0" data-toggle="counter-up">12345</h1>
+                            <h1 class="text-white mb-0" data-toggle="counter-up" id="countTestimonial">225</h1>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 wow zoomIn" data-wow-delay="0.3s">
                     <div class="bg-light shadow d-flex align-items-center justify-content-center p-4"
                         style="height: 150px;">
-                        <div class="bg-primary d-flex align-items-center justify-content-center rounded mb-2"
+                        <div class="bg-main d-flex align-items-center justify-content-center rounded mb-2"
                             style="width: 60px; height: 60px;">
                             <i class="fa fa-check text-white"></i>
                         </div>
                         <div class="ps-4">
-                            <h5 class="text-primary mb-0">Projects Done</h5>
-                            <h1 class="mb-0" data-toggle="counter-up">12345</h1>
+                            <h5 class="text-main mb-0">Post</h5>
+                            <h1 class="mb-0" data-toggle="counter-up" id="countBlog">84</h1>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 wow zoomIn" data-wow-delay="0.6s">
-                    <div class="bg-primary shadow d-flex align-items-center justify-content-center p-4"
-                        style="height: 150px;">
+                    <div class="bg-main shadow d-flex align-items-center justify-content-center p-4" style="height: 150px;">
                         <div class="bg-white d-flex align-items-center justify-content-center rounded mb-2"
                             style="width: 60px; height: 60px;">
-                            <i class="fa fa-award text-primary"></i>
+                            <i class="fa fa-award text-main"></i>
                         </div>
                         <div class="ps-4">
-                            <h5 class="text-white mb-0">Win Awards</h5>
-                            <h1 class="text-white mb-0" data-toggle="counter-up">12345</h1>
+                            <h5 class="text-white mb-0">Client</h5>
+                            <h1 class="text-white mb-0" data-toggle="counter-up" id="countClient">134</h1>
                         </div>
                     </div>
                 </div>
@@ -120,7 +118,7 @@
             <div class="row g-5" id="aboutSection">
                 <div class="col-lg-7">
                     <div class="section-title position-relative pb-3 mb-5">
-                        <h5 class="fw-bold text-primary text-uppercase">About Us</h5>
+                        <h5 class="fw-bold text-main text-uppercase">About Us</h5>
                         <h1 class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h1>
                     </div>
                     <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed elit euismod ex
@@ -131,29 +129,29 @@
                         vestibulum eu semper augue.</p>
                     <div class="row g-0 mb-3">
                         <div class="col-sm-6 wow zoomIn" data-wow-delay="0.2s">
-                            <h5 class="mb-3"><i class="fa fa-check text-primary me-3"></i>Lorem ipsum dolor sit amet
+                            <h5 class="mb-3"><i class="fa fa-check text-main me-3"></i>Lorem ipsum dolor sit amet
                             </h5>
-                            <h5 class="mb-3"><i class="fa fa-check text-primary me-3"></i>Lorem ipsum dolor sit amet
+                            <h5 class="mb-3"><i class="fa fa-check text-main me-3"></i>Lorem ipsum dolor sit amet
                             </h5>
                         </div>
                         <div class="col-sm-6 wow zoomIn" data-wow-delay="0.4s">
-                            <h5 class="mb-3"><i class="fa fa-check text-primary me-3"></i>Lorem ipsum dolor sit amet
+                            <h5 class="mb-3"><i class="fa fa-check text-main me-3"></i>Lorem ipsum dolor sit amet
                             </h5>
-                            <h5 class="mb-3"><i class="fa fa-check text-primary me-3"></i>Lorem ipsum dolor sit amet
+                            <h5 class="mb-3"><i class="fa fa-check text-main me-3"></i>Lorem ipsum dolor sit amet
                             </h5>
                         </div>
                     </div>
                     <div class="d-flex align-items-center mb-4 wow fadeIn" data-wow-delay="0.6s">
-                        <div class="bg-primary d-flex align-items-center justify-content-center rounded"
+                        <div class="bg-main d-flex align-items-center justify-content-center rounded"
                             style="width: 60px; height: 60px;">
                             <i class="fa fa-phone-alt text-white"></i>
                         </div>
                         <div class="ps-4">
                             <h5 class="mb-2">Call to ask any question</h5>
-                            <h4 class="text-primary mb-0">+62 345 6789</h4>
+                            <h4 class="text-main mb-0">+62 345 6789</h4>
                         </div>
                     </div>
-                    <a href="quote.html" class="btn btn-primary py-3 px-5 mt-3 wow zoomIn" data-wow-delay="0.9s">Request
+                    <a href="{{route('web.free_qoute')}}" class="btn btn-main py-3 px-5 mt-3 wow zoomIn" data-wow-delay="0.9s">Request
                         A Quote</a>
                 </div>
                 <div class="col-lg-5" style="min-height: 500px;">
@@ -172,14 +170,14 @@
     <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container py-5">
             <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
-                <h5 class="fw-bold text-primary text-uppercase">Why Choose Us</h5>
+                <h5 class="fw-bold text-main text-uppercase">Why Choose Us</h5>
                 <h1 class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h1>
             </div>
             <div class="row g-5" id="ourFeatureSection">
                 <div class="col-lg-4">
                     <div class="row g-5">
                         <div class="col-12 wow zoomIn" data-wow-delay="0.2s">
-                            <div class="bg-primary rounded d-flex align-items-center justify-content-center mb-3"
+                            <div class="bg-main rounded d-flex align-items-center justify-content-center mb-3"
                                 style="width: 60px; height: 60px;">
                                 <i class="fa fa-cubes text-white"></i>
                             </div>
@@ -187,7 +185,7 @@
                             <p class="mb-0">Magna sea eos sit dolor, ipsum amet lorem diam dolor eos et diam dolor</p>
                         </div>
                         <div class="col-12 wow zoomIn" data-wow-delay="0.6s">
-                            <div class="bg-primary rounded d-flex align-items-center justify-content-center mb-3"
+                            <div class="bg-main rounded d-flex align-items-center justify-content-center mb-3"
                                 style="width: 60px; height: 60px;">
                                 <i class="fa fa-award text-white"></i>
                             </div>
@@ -205,7 +203,7 @@
                 <div class="col-lg-4">
                     <div class="row g-5">
                         <div class="col-12 wow zoomIn" data-wow-delay="0.4s">
-                            <div class="bg-primary rounded d-flex align-items-center justify-content-center mb-3"
+                            <div class="bg-main rounded d-flex align-items-center justify-content-center mb-3"
                                 style="width: 60px; height: 60px;">
                                 <i class="fa fa-users-cog text-white"></i>
                             </div>
@@ -213,7 +211,7 @@
                             <p class="mb-0">Magna sea eos sit dolor, ipsum amet lorem diam dolor eos et diam dolor</p>
                         </div>
                         <div class="col-12 wow zoomIn" data-wow-delay="0.8s">
-                            <div class="bg-primary rounded d-flex align-items-center justify-content-center mb-3"
+                            <div class="bg-main rounded d-flex align-items-center justify-content-center mb-3"
                                 style="width: 60px; height: 60px;">
                                 <i class="fa fa-phone-alt text-white"></i>
                             </div>
@@ -232,7 +230,7 @@
     <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container py-5">
             <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
-                <h5 class="fw-bold text-primary text-uppercase">Our Services</h5>
+                <h5 class="fw-bold text-main text-uppercase">Our Services</h5>
                 <h1 class="mb-0" id="serviceTitleSection">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h1>
             </div>
             <div class="row g-5" id="serviceSection">
@@ -245,7 +243,7 @@
                         <h4 class="mb-3">Fusce sem elit</h4>
                         <p class="m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                         </p>
-                        <a class="btn btn-lg btn-primary rounded" href="">
+                        <a class="btn btn-lg btn-main rounded" href="">
                             <i class="bi bi-arrow-right"></i>
                         </a>
                     </div>
@@ -259,7 +257,7 @@
                         <h4 class="mb-3">tincidunt ac ultricies eget</h4>
                         <p class="m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                         </p>
-                        <a class="btn btn-lg btn-primary rounded" href="">
+                        <a class="btn btn-lg btn-main rounded" href="">
                             <i class="bi bi-arrow-right"></i>
                         </a>
                     </div>
@@ -273,7 +271,7 @@
                         <h4 class="mb-3">porttitor quis nisi</h4>
                         <p class="m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                         </p>
-                        <a class="btn btn-lg btn-primary rounded" href="">
+                        <a class="btn btn-lg btn-main rounded" href="">
                             <i class="bi bi-arrow-right"></i>
                         </a>
                     </div>
@@ -287,7 +285,7 @@
                         <h4 class="mb-3">Fusce sem elit</h4>
                         <p class="m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                         </p>
-                        <a class="btn btn-lg btn-primary rounded" href="">
+                        <a class="btn btn-lg btn-main rounded" href="">
                             <i class="bi bi-arrow-right"></i>
                         </a>
                     </div>
@@ -301,14 +299,14 @@
                         <h4 class="mb-3">tincidunt ac ultricies eget</h4>
                         <p class="m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                         </p>
-                        <a class="btn btn-lg btn-primary rounded" href="">
+                        <a class="btn btn-lg btn-main rounded" href="">
                             <i class="bi bi-arrow-right"></i>
                         </a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.9s">
                     <div
-                        class="position-relative bg-primary rounded h-100 d-flex flex-column align-items-center justify-content-center text-center p-5">
+                        class="position-relative bg-main rounded h-100 d-flex flex-column align-items-center justify-content-center text-center p-5">
                         <h3 class="text-white mb-3">Call Us For Quote</h3>
                         <p class="text-white mb-3">Vivamus enim erat, sodales quis sagittis non, hendrerit sed ligula.
                             Proin nec ex sapien.</p>
@@ -327,17 +325,17 @@
             <div class="row g-5">
                 <div class="col-lg-7">
                     <div class="section-title position-relative pb-3 mb-5">
-                        <h5 class="fw-bold text-primary text-uppercase">Request A Quote</h5>
+                        <h5 class="fw-bold text-main text-uppercase">Request A Quote</h5>
                         <h1 class="mb-0" id="titleFreeQoute">Class aptent taciti sociosqu ad litora torquent per conubia
                             nostra, per inceptos himenaeos. Ut lobortis aliquam consequat.</h1>
                     </div>
                     <div class="row gx-3" id="featureFreeQouteSection">
                         <div class="col-sm-6 wow zoomIn" data-wow-delay="0.2s">
-                            <h5 class="mb-4"><i class="fa fa-reply text-primary me-3"></i>Lorem ipsum dolor sit amet
+                            <h5 class="mb-4"><i class="fa fa-reply text-main me-3"></i>Lorem ipsum dolor sit amet
                             </h5>
                         </div>
                         <div class="col-sm-6 wow zoomIn" data-wow-delay="0.4s">
-                            <h5 class="mb-4"><i class="fa fa-phone-alt text-primary me-3"></i>Lorem ipsum dolor sit amet
+                            <h5 class="mb-4"><i class="fa fa-phone-alt text-main me-3"></i>Lorem ipsum dolor sit amet
                             </h5>
                         </div>
                     </div>
@@ -347,18 +345,18 @@
                         finibus viverra scelerisque, felis arcu pretium augue, maximus sollicitudin elit augue quis augue.
                     </p>
                     <div class="d-flex align-items-center mt-2 wow zoomIn" data-wow-delay="0.6s">
-                        <div class="bg-primary d-flex align-items-center justify-content-center rounded"
+                        <div class="bg-main d-flex align-items-center justify-content-center rounded"
                             style="width: 60px; height: 60px;">
                             <i class="fa fa-phone-alt text-white"></i>
                         </div>
                         <div class="ps-4">
                             <h5 class="mb-2">Call to ask any question</h5>
-                            <h4 class="text-primary mb-0" id="teleponFreeQoute">+012 345 6789</h4>
+                            <h4 class="text-main mb-0" id="teleponFreeQoute">+012 345 6789</h4>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-5">
-                    <div class="bg-primary rounded h-100 d-flex align-items-center p-5 wow zoomIn" data-wow-delay="0.9s">
+                    <div class="bg-main rounded h-100 d-flex align-items-center p-5 wow zoomIn" data-wow-delay="0.9s">
                         <form>
                             <div class="col-lg-7" id="form-messages">
                                 <!-- Tempat untuk menampilkan pesan berhasil atau gagal -->
@@ -384,7 +382,8 @@
                                         name="message" autocomplete="off"></textarea>
                                 </div>
                                 <div class="col-12">
-                                    <button class="btn btn-dark w-100 py-3" id="triggerSubmitFormSendMessage">Request A
+                                    <button class="btn btn--dark-main w-100 py-3"
+                                        id="triggerSubmitFormSendMessage">Request A
                                         Quote</button>
                                 </div>
                             </div>
@@ -401,7 +400,7 @@
     <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container py-5">
             <div class="section-title text-center position-relative pb-3 mb-4 mx-auto" style="max-width: 600px;">
-                <h5 class="fw-bold text-primary text-uppercase">Testimonial</h5>
+                <h5 class="fw-bold text-main text-uppercase">Testimonial</h5>
                 <h1 class="mb-0" id="testimonialTitleSection">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 </h1>
             </div>
@@ -411,7 +410,7 @@
                         <img class="img-fluid rounded" src="{{ img_src('1-1 360.webp', 'default') }}"
                             style="width: 60px; height: 60px;">
                         <div class="ps-4">
-                            <h4 class="text-primary mb-1">Lorem ipsum</h4>
+                            <h4 class="text-main mb-1">Lorem ipsum</h4>
                             <small class="text-uppercase">dolor sit amet</small>
                         </div>
                     </div>
@@ -425,7 +424,7 @@
                         <img class="img-fluid rounded" src="{{ img_src('1-1 360.webp', 'default') }}"
                             style="width: 60px; height: 60px;">
                         <div class="ps-4">
-                            <h4 class="text-primary mb-1">Lorem ipsum</h4>
+                            <h4 class="text-main mb-1">Lorem ipsum</h4>
                             <small class="text-uppercase">dolor sit amet</small>
                         </div>
                     </div>
@@ -439,7 +438,7 @@
                         <img class="img-fluid rounded" src="{{ img_src('1-1 360.webp', 'default') }}"
                             style="width: 60px; height: 60px;">
                         <div class="ps-4">
-                            <h4 class="text-primary mb-1">Lorem ipsum</h4>
+                            <h4 class="text-main mb-1">Lorem ipsum</h4>
                             <small class="text-uppercase">dolor sit amet</small>
                         </div>
                     </div>
@@ -453,7 +452,7 @@
                         <img class="img-fluid rounded" src="{{ img_src('1-1 360.webp', 'default') }}"
                             style="width: 60px; height: 60px;">
                         <div class="ps-4">
-                            <h4 class="text-primary mb-1">Lorem ipsum</h4>
+                            <h4 class="text-main mb-1">Lorem ipsum</h4>
                             <small class="text-uppercase">dolor sit amet</small>
                         </div>
                     </div>
@@ -472,7 +471,7 @@
     <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container py-5">
             <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
-                <h5 class="fw-bold text-primary text-uppercase">Team Members</h5>
+                <h5 class="fw-bold text-main text-uppercase">Team Members</h5>
                 <h1 class="mb-0">Donec nec ipsum non est tristique tristique sed ac justo.</h1>
             </div>
             <div class="row g-5" id="teamSection">
@@ -481,18 +480,18 @@
                         <div class="team-img position-relative overflow-hidden">
                             <img class="img-fluid w-100" src="{{ img_src('1-1 480.webp', 'default') }}" alt="">
                             <div class="team-social">
-                                <a class="btn btn-lg btn-primary btn-lg-square rounded" href=""><i
+                                <a class="btn btn-lg btn-main btn-lg-square rounded" href=""><i
                                         class="fab fa-twitter fw-normal"></i></a>
-                                <a class="btn btn-lg btn-primary btn-lg-square rounded" href=""><i
+                                <a class="btn btn-lg btn-main btn-lg-square rounded" href=""><i
                                         class="fab fa-facebook-f fw-normal"></i></a>
-                                <a class="btn btn-lg btn-primary btn-lg-square rounded" href=""><i
+                                <a class="btn btn-lg btn-main btn-lg-square rounded" href=""><i
                                         class="fab fa-instagram fw-normal"></i></a>
-                                <a class="btn btn-lg btn-primary btn-lg-square rounded" href=""><i
+                                <a class="btn btn-lg btn-main btn-lg-square rounded" href=""><i
                                         class="fab fa-linkedin-in fw-normal"></i></a>
                             </div>
                         </div>
                         <div class="text-center py-4">
-                            <h4 class="text-primary">Lorem ipsum</h4>
+                            <h4 class="text-main">Lorem ipsum</h4>
                             <p class="text-uppercase m-0">dolor sit amet</p>
                         </div>
                     </div>
@@ -502,18 +501,18 @@
                         <div class="team-img position-relative overflow-hidden">
                             <img class="img-fluid w-100" src="{{ img_src('1-1 480.webp', 'default') }}" alt="">
                             <div class="team-social">
-                                <a class="btn btn-lg btn-primary btn-lg-square rounded" href=""><i
+                                <a class="btn btn-lg btn-main btn-lg-square rounded" href=""><i
                                         class="fab fa-twitter fw-normal"></i></a>
-                                <a class="btn btn-lg btn-primary btn-lg-square rounded" href=""><i
+                                <a class="btn btn-lg btn-main btn-lg-square rounded" href=""><i
                                         class="fab fa-facebook-f fw-normal"></i></a>
-                                <a class="btn btn-lg btn-primary btn-lg-square rounded" href=""><i
+                                <a class="btn btn-lg btn-main btn-lg-square rounded" href=""><i
                                         class="fab fa-instagram fw-normal"></i></a>
-                                <a class="btn btn-lg btn-primary btn-lg-square rounded" href=""><i
+                                <a class="btn btn-lg btn-main btn-lg-square rounded" href=""><i
                                         class="fab fa-linkedin-in fw-normal"></i></a>
                             </div>
                         </div>
                         <div class="text-center py-4">
-                            <h4 class="text-primary">Lorem ipsum</h4>
+                            <h4 class="text-main">Lorem ipsum</h4>
                             <p class="text-uppercase m-0">dolor sit amet</p>
                         </div>
                     </div>
@@ -523,18 +522,18 @@
                         <div class="team-img position-relative overflow-hidden">
                             <img class="img-fluid w-100" src="{{ img_src('1-1 480.webp', 'default') }}" alt="">
                             <div class="team-social">
-                                <a class="btn btn-lg btn-primary btn-lg-square rounded" href=""><i
+                                <a class="btn btn-lg btn-main btn-lg-square rounded" href=""><i
                                         class="fab fa-twitter fw-normal"></i></a>
-                                <a class="btn btn-lg btn-primary btn-lg-square rounded" href=""><i
+                                <a class="btn btn-lg btn-main btn-lg-square rounded" href=""><i
                                         class="fab fa-facebook-f fw-normal"></i></a>
-                                <a class="btn btn-lg btn-primary btn-lg-square rounded" href=""><i
+                                <a class="btn btn-lg btn-main btn-lg-square rounded" href=""><i
                                         class="fab fa-instagram fw-normal"></i></a>
-                                <a class="btn btn-lg btn-primary btn-lg-square rounded" href=""><i
+                                <a class="btn btn-lg btn-main btn-lg-square rounded" href=""><i
                                         class="fab fa-linkedin-in fw-normal"></i></a>
                             </div>
                         </div>
                         <div class="text-center py-4">
-                            <h4 class="text-primary">Lorem ipsum</h4>
+                            <h4 class="text-main">Lorem ipsum</h4>
                             <p class="text-uppercase m-0">dolor sit amet</p>
                         </div>
                     </div>
@@ -549,7 +548,7 @@
     <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container py-5">
             <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
-                <h5 class="fw-bold text-primary text-uppercase">Latest Blog</h5>
+                <h5 class="fw-bold text-main text-uppercase">Latest Blog</h5>
                 <h1 class="mb-0">Read The Latest Articles from Our Blog Post</h1>
             </div>
             <div class="row g-5" id="blogSection">
@@ -557,13 +556,13 @@
                     <div class="blog-item bg-light rounded overflow-hidden">
                         <div class="blog-img position-relative overflow-hidden">
                             <img class="img-fluid" src="{{ img_src('4-3.webp', 'default') }}" alt="">
-                            <a class="position-absolute top-0 start-0 bg-primary text-white rounded-end mt-5 py-2 px-4"
+                            <a class="position-absolute top-0 start-0 bg-main text-white rounded-end mt-5 py-2 px-4"
                                 href="">Web Design</a>
                         </div>
                         <div class="p-4">
                             <div class="d-flex mb-3">
-                                <small class="me-3"><i class="far fa-user text-primary me-2"></i>Lorem ipsum</small>
-                                <small><i class="far fa-calendar-alt text-primary me-2"></i>01 Jan, 2045</small>
+                                <small class="me-3"><i class="far fa-user text-main me-2"></i>Lorem ipsum</small>
+                                <small><i class="far fa-calendar-alt text-main me-2"></i>01 Jan, 2045</small>
                             </div>
                             <h4 class="mb-3">Lorem ipsum dolor sit amet</h4>
                             <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
@@ -576,13 +575,13 @@
                     <div class="blog-item bg-light rounded overflow-hidden">
                         <div class="blog-img position-relative overflow-hidden">
                             <img class="img-fluid" src="{{ img_src('4-3.webp', 'default') }}" alt="">
-                            <a class="position-absolute top-0 start-0 bg-primary text-white rounded-end mt-5 py-2 px-4"
+                            <a class="position-absolute top-0 start-0 bg-main text-white rounded-end mt-5 py-2 px-4"
                                 href="">Web Design</a>
                         </div>
                         <div class="p-4">
                             <div class="d-flex mb-3">
-                                <small class="me-3"><i class="far fa-user text-primary me-2"></i>Lorem ipsum</small>
-                                <small><i class="far fa-calendar-alt text-primary me-2"></i>01 Jan, 2045</small>
+                                <small class="me-3"><i class="far fa-user text-main me-2"></i>Lorem ipsum</small>
+                                <small><i class="far fa-calendar-alt text-main me-2"></i>01 Jan, 2045</small>
                             </div>
                             <h4 class="mb-3">Lorem ipsum dolor sit amet</h4>
                             <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
@@ -595,13 +594,13 @@
                     <div class="blog-item bg-light rounded overflow-hidden">
                         <div class="blog-img position-relative overflow-hidden">
                             <img class="img-fluid" src="{{ img_src('4-3.webp', 'default') }}" alt="">
-                            <a class="position-absolute top-0 start-0 bg-primary text-white rounded-end mt-5 py-2 px-4"
+                            <a class="position-absolute top-0 start-0 bg-main text-white rounded-end mt-5 py-2 px-4"
                                 href="">Web Design</a>
                         </div>
                         <div class="p-4">
                             <div class="d-flex mb-3">
-                                <small class="me-3"><i class="far fa-user text-primary me-2"></i>Lorem ipsum</small>
-                                <small><i class="far fa-calendar-alt text-primary me-2"></i>01 Jan, 2045</small>
+                                <small class="me-3"><i class="far fa-user text-main me-2"></i>Lorem ipsum</small>
+                                <small><i class="far fa-calendar-alt text-main me-2"></i>01 Jan, 2045</small>
                             </div>
                             <h4 class="mb-3">Lorem ipsum dolor sit amet</h4>
                             <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
@@ -646,7 +645,7 @@
                                     bannerJsonDecode.title + `</h5>` +
                                     `<h1 class="display-1 text-white mb-md-4 animated zoomIn">` +
                                     bannerJsonDecode.body + `</h1>` +
-                                    `<a href="{{ route('web.free_qoute') }}" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Free` +
+                                    `<a href="{{ route('web.free_qoute') }}" class="btn btn-main py-md-3 px-md-5 me-3 animated slideInLeft">Free` +
                                     `Quote</a>` +
                                     `<a href="{{ route('web.contact') }}" class="btn btn-outline-light py-md-3 px-md-5 animated slideInRight">Contact Us</a>` +
                                     `</div>` +
@@ -687,7 +686,7 @@
                                         .icon !== null)) {
                                     ourFeatureHtmlUp +=
                                         `<h5 class="mb-3"><i class="` + ourFeatureJsonDecode
-                                        .icon + ` text-primary me-3"></i>` +
+                                        .icon + ` text-main me-3"></i>` +
                                         ourFeatureJsonDecode.title + `</h5>`;
                                 }
                             } else if (ourfeature.name === 'our_feature_2' || ourfeature.name ===
@@ -697,7 +696,7 @@
                                         .icon !== null)) {
                                     ourFeatureHtmlDown +=
                                         `<h5 class="mb-3"><i class="` + ourFeatureJsonDecode
-                                        .icon + ` text-primary me-3"></i>` +
+                                        .icon + ` text-main me-3"></i>` +
                                         ourFeatureJsonDecode.title + `</h5>`;
                                 }
                             }
@@ -714,7 +713,7 @@
                         let data = respon.data;
                         aboutHtml += `<div class="col-lg-7">` +
                             `<div class="section-title position-relative pb-3 mb-5">` +
-                            `<h5 class="fw-bold text-primary text-uppercase">About Us</h5>` +
+                            `<h5 class="fw-bold text-main text-uppercase">About Us</h5>` +
                             `<h1 class="mb-0">` + data.title + `</h1>` +
                             `</div>` +
                             `<p class="mb-4">` + data.deskripsi + `</p>` +
@@ -727,22 +726,22 @@
                             `</div>` +
                             `</div>` +
                             `<div class="d-flex align-items-center mb-4 wow fadeIn" data-wow-delay="0.6s">` +
-                            `<div class="bg-primary d-flex align-items-center justify-content-center rounded"` +
+                            `<div class="bg-main d-flex align-items-center justify-content-center rounded"` +
                             `style="width: 60px; height: 60px;">` +
                             `<i class="fa fa-phone-alt text-white"></i>` +
                             `</div>` +
                             `<div class="ps-4">` +
                             `<h5 class="mb-2">Call to ask any question</h5>` +
-                            `<h4 class="text-primary mb-0">` + contact_telepon + `</h4>` +
+                            `<h4 class="text-main mb-0">` + contact_telepon + `</h4>` +
                             `</div>` +
                             `</div>` +
-                            `<a href="{{ route('web.free_qoute') }}" class="btn btn-primary py-3 px-5 mt-3 wow zoomIn" data-wow-delay="0.9s">Request` +
+                            `<a href="{{ route('web.free_qoute') }}" class="btn btn-main py-3 px-5 mt-3 wow zoomIn" data-wow-delay="0.9s">Request` +
                             `A Quote</a>` +
                             `</div>` +
                             `<div class="col-lg-5" style="min-height: 500px;">` +
                             `<div class="position-relative h-100">` +
                             `<img class="position-absolute w-100 h-100 rounded wow zoomIn" data-wow-delay="0.9s"` +
-                            `src="` + (respon.path + data.image) + `" style="object-fit: cover;">` +
+                            `src="` + (data.image ? (respon.path + data.image) : "{{ img_src('1-1 360.webp', 'default') }}") + `" style="object-fit: cover;">` +
                             `</div>` +
                             `</div>`;
                     }
@@ -783,7 +782,7 @@
                                 `<h4 class="mb-3">` + serviceJsonDecode.title + `</h4>` +
                                 `<p class="m-0">` + serviceJsonDecode.body +
                                 `</p>` +
-                                `<a class="btn btn-lg btn-primary rounded" href="{{ route('web.service') }}">` +
+                                `<a class="btn btn-lg btn-main rounded" href="{{ route('web.service') }}">` +
                                 `<i class="bi bi-arrow-right"></i>` +
                                 `</a>` +
                                 `</div>` +
@@ -797,7 +796,7 @@
                         serviceHtml +=
                             `<div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.9s">` +
                             `<div` +
-                            ` class="position-relative bg-primary rounded h-100 d-flex flex-column align-items-center justify-content-center text-center p-5">` +
+                            ` class="position-relative bg-main rounded h-100 d-flex flex-column align-items-center justify-content-center text-center p-5">` +
                             `<h3 class="text-white mb-3">Telepon untuk Penawaran</h3>` +
                             `<p class="text-white mb-3">` + freeqoute.deskripsi + `</p>` +
                             `<h2 class="text-white mb-0">` + contact.telepon + `</h2>` +
@@ -838,7 +837,7 @@
                                 `"` +
                                 `style="width: 60px; height: 60px;">` +
                                 `<div class="ps-4">` +
-                                `<h4 class="text-primary mb-1">` + data.nama + `</h4>` +
+                                `<h4 class="text-main mb-1">` + data.nama + `</h4>` +
                                 `<small class="text-uppercase">__________</small>` +
                                 `</div>` +
                                 `</div>` +
@@ -906,7 +905,7 @@
                             let ourFeatureJsonDecode = JSON.parse(data.value);
                             ourFeatureHtmlUp +=
                                 `<div class="col-12 wow zoomIn" data-wow-delay="0.2s">` +
-                                `<div class="bg-primary rounded d-flex align-items-center justify-content-center mb-3"` +
+                                `<div class="bg-main rounded d-flex align-items-center justify-content-center mb-3"` +
                                 `style="width: 60px; height: 60px;">` +
                                 `<i class="` + ourFeatureJsonDecode.icon + ` text-white"></i>` +
                                 `</div>` +
@@ -917,7 +916,7 @@
                             let ourFeatureJsonDecode = JSON.parse(data.value);
                             ourFeatureHtmlDown +=
                                 `<div class="col-12 wow zoomIn" data-wow-delay="0.4s">` +
-                                `<div class="bg-primary rounded d-flex align-items-center justify-content-center mb-3"` +
+                                `<div class="bg-main rounded d-flex align-items-center justify-content-center mb-3"` +
                                 `style="width: 60px; height: 60px;">` +
                                 `<i class="` + ourFeatureJsonDecode.icon + ` text-white"></i>` +
                                 `</div>` +
@@ -991,7 +990,7 @@
                                     ourFeatureHtmlUp +=
                                         `<div class="col-sm-6 wow zoomIn" data-wow-delay="0.2s">` +
                                         `<h5 class="mb-4"><i class="` + ourFeatureJsonDecode
-                                        .icon + ` text-primary me-3"></i>` + ourFeatureJsonDecode
+                                        .icon + ` text-main me-3"></i>` + ourFeatureJsonDecode
                                         .title +
                                         `</h5>` +
                                         `</div>`;
@@ -1034,7 +1033,7 @@
                             const sosmed = data.sosial_media[z];
 
                             sosialMedia +=
-                                `<a class="btn btn-lg btn-primary btn-lg-square rounded" href="` +
+                                `<a class="btn btn-lg btn-main btn-lg-square rounded" href="` +
                                 sosmed.url + `"><i ` +
                                 `class="fab fa-` + sosmed.nama + ` fw-normal"></i></a>`;
                         }
@@ -1050,7 +1049,7 @@
                             `</div>` +
                             `</div>` +
                             `<div class="text-center py-4">` +
-                            `<h4 class="text-primary">` + data.nama + `</h4>` +
+                            `<h4 class="text-main">` + data.nama + `</h4>` +
                             `<p class="text-uppercase m-0">` + data.jabatan + `</p>` +
                             `</div>` +
                             `</div>` +
@@ -1110,17 +1109,19 @@
                             `<div class="blog-img position-relative overflow-hidden">` +
                             `<img class="img-fluid" src="` + (respon.path + imgJsonDecode[0]) +
                             `" alt="">` +
-                            `<a class="position-absolute top-0 start-0 bg-primary text-white rounded-end mt-5 py-2 px-4"` +
-                            `href="">` + data.tags[0].kategori.nama + `</a>` +
+                            `<a class="position-absolute top-0 start-0 bg-main text-white rounded-end mt-5 py-2 px-4"` +
+                            `href="{{ route('web.blog') }}/kategori/` + data.tags[0].kategori.slug +
+                            `">` + data.tags[0].kategori.nama + `</a>` +
                             `</div>` +
                             `<div class="p-4">` +
                             `<div class="d-flex mb-3">` +
-                            `<small><i class="far fa-calendar-alt text-primary me-2"></i>` + formatDate(
+                            `<small><i class="far fa-calendar-alt text-main me-2"></i>` + formatDate(
                                 data.tanggal_posting) + `</small>` +
                             `</div>` +
                             `<h4 class="mb-3">` + data.judul + `</h4>` +
                             `<p>` + truncatedContent +
-                            `</p> <a class="text-uppercase" href="{{ route('web.blog') }}">Read More <i class="bi bi-arrow-right"></i></a>` +
+                            `</p> <a class="text-uppercase" href="{{ route('web.blog') }}/` + data
+                            .slug + `">Read More <i class="bi bi-arrow-right"></i></a>` +
                             `</div>` +
                             `</div>` +
                             `</div>`;
@@ -1195,6 +1196,33 @@
                             $("#form-messages").empty();
                         }, 10000);
                     }, 2000);
+                }
+            });
+
+            //Count
+            $.ajax({
+                type: "GET",
+                url: "{{ route('web.serverside.count') }}",
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    "_method": "GET",
+                },
+                success: function(respon) {
+                    $('#countTestimonial').text(
+                        respon.testimonial
+                    )
+                    $('#countBlog').text(
+                        respon.blog
+                    )
+                    $('#countClient').text(
+                        respon.client
+                    )
+                    setTimeout(function() {
+                        $('[data-toggle="counter-up"]').counterUp({
+                            delay: 10,
+                            time: 2000
+                        });
+                    }, 1000);
                 }
             });
 

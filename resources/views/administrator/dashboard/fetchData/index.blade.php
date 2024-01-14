@@ -6,7 +6,7 @@
             </div>
             <div class="card-wrap">
                 <div class="card-header">
-                    <h4>Project</h4>
+                    <h4>Post</h4>
                 </div>
                 <div class="card-body">
                     {{ count($Blog) }}
@@ -21,10 +21,10 @@
             </div>
             <div class="card-wrap">
                 <div class="card-header">
-                    <h4>Post</h4>
+                    <h4>Testimonial</h4>
                 </div>
                 <div class="card-body">
-                    {{ count($Blog) }}
+                    {{ count($Testimonial) }}
                 </div>
             </div>
         </div>

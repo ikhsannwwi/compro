@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use Carbon\Carbon;
 use App\Models\admin\Blog;
+use App\Models\Testimonial;
 use App\Models\admin\Client;
 use Illuminate\Http\Request;
 use App\Models\admin\Statistic;
@@ -12,6 +13,7 @@ use App\Http\Controllers\Controller;
 class DashboardController extends Controller
 {
     public function index() {
+        $Testimonial = Testimonial::all();
         $Blog = Blog::where('status', 1)->get();
         $Client = Client::all();
         $Statistic = Statistic::orderBy('visit_time', 'desc')->get();
@@ -33,6 +35,7 @@ class DashboardController extends Controller
         $chartLabelsYearly = $yearlyStats['chartLabels'];
     
         return view('administrator.dashboard.index', compact(
+            'Testimonial',
             'Blog',
             'Client',
             'Statistic',
@@ -50,6 +53,7 @@ class DashboardController extends Controller
     public function fetchData(Request $request)
     {
         if ($request->ajax()) {
+        $Testimonial = Testimonial::all();
         $Blog = Blog::where('status', 1)->get();
         $Client = Client::all();
         $Statistic = Statistic::orderBy('visit_time', 'desc')->get();
@@ -71,6 +75,7 @@ class DashboardController extends Controller
         $chartLabelsYearly = $yearlyStats['chartLabels'];
     
         return view('administrator.dashboard.fetchData.index', compact(
+            'Testimonial',
             'Blog',
             'Client',
             'Statistic',

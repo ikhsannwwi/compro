@@ -24,7 +24,7 @@
 @endsection
 
 @push('head')
-    <div class="container-fluid bg-primary py-5 bg-header" style="margin-bottom: 90px;">
+    <div class="container-fluid bg-main py-5 bg-header" style="margin-bottom: 90px;">
         <div class="row py-5">
             <div class="col-12 pt-lg-5 mt-lg-5 text-center">
                 <h1 class="display-4 text-white animated zoomIn">Blog</h1>
@@ -33,10 +33,10 @@
                 <i class="far fa-circle text-white px-2"></i>
                 <a href="{{route('web.blog')}}" class="h5 text-white">Blog</a>
                 <i class="far fa-circle text-white px-2"></i>
-                <a href="javscript:void(0)" class="h5 text-primary">{{$kategoriSlug->nama}}</a>
+                <a href="javscript:void(0)" class="h5 text-main">{{$kategoriSlug->nama}}</a>
                 @else
                 <i class="far fa-circle text-white px-2"></i>
-                <a href="javscript:void(0)" class="h5 text-primary">Blog</a>
+                <a href="javscript:void(0)" class="h5 text-main">Blog</a>
                 @endif
             </div>
         </div>
@@ -60,16 +60,16 @@
                                     <div class="blog-img position-relative overflow-hidden">
                                         <img class="img-fluid" src="{{ img_src($jsonParse[0], 'blog') }}" alt="">
                                         @if (Route::is('web.blog'))
-                                        <a class="position-absolute top-0 start-0 bg-primary text-white rounded-end mt-5 py-2 px-4"
+                                        <a class="position-absolute top-0 start-0 bg-main text-white rounded-end mt-5 py-2 px-4"
                                             href="">{{ $row->tags[0]->kategori->nama }}</a>
                                         @endif
                                     </div>
                                     <div class="p-4">
                                         <div class="d-flex mb-3">
                                             <small class="me-3"><i
-                                                    class="far fa-user text-primary me-2"></i>{{ $row->user->name }}</small>
+                                                    class="far fa-user text-main me-2"></i>{{ $row->user->name }}</small>
                                             <small><i
-                                                    class="far fa-calendar-alt text-primary me-2"></i>{{ date('d F, Y', strtotime($row->tanggal_posting)) }}</small>
+                                                    class="far fa-calendar-alt text-main me-2"></i>{{ date('d F, Y', strtotime($row->tanggal_posting)) }}</small>
                                         </div>
                                         <h4 class="mb-3">{{ $row->judul }}</h4>
                                         <p>{{ Str::limit(strip_tags($row->isi), 100) }}</p>
@@ -93,7 +93,7 @@
                     <div class="mb-5 wow slideInUp" data-wow-delay="0.1s">
                         <div class="input-group">
                             <input type="text" class="form-control p-3" placeholder="Keyword">
-                            <button class="btn btn-primary px-4"><i class="bi bi-search"></i></button>
+                            <button class="btn btn-main px-4"><i class="bi bi-search"></i></button>
                         </div>
                     </div>
                     <!-- Search Form End -->
@@ -136,7 +136,7 @@
 
                     <!-- Image Start -->
                     @php
-                        $imgRandomPost = json_decode($random->img_url);
+                        $imgRandomPost = $random ? json_decode($random->img_url) : [0=>''];
                     @endphp
                     <div class="mb-5 wow slideInUp" data-wow-delay="0.1s">
                         <img src="{{ img_src($imgRandomPost[0], 'blog') }}" alt="" class="img-fluid rounded">
@@ -174,7 +174,7 @@
                             <p>Vero sea et accusam justo dolor accusam lorem consetetur, dolores sit amet sit dolor clita
                                 kasd justo, diam accusam no sea ut tempor magna takimata, amet sit et diam dolor ipsum amet
                                 diam</p>
-                            <a href="" class="btn btn-primary py-2 px-4">Read More</a>
+                            <a href="" class="btn btn-main py-2 px-4">Read More</a>
                         </div>
                     </div>
                     <!-- Plain Text End --> --}}

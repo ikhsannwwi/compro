@@ -24,13 +24,13 @@
 @endsection
 
 @push('head')
-    <div class="container-fluid bg-primary py-5 bg-header" style="margin-bottom: 90px;">
+    <div class="container-fluid bg-main py-5 bg-header" style="margin-bottom: 90px;">
         <div class="row py-5">
             <div class="col-12 pt-lg-5 mt-lg-5 text-center">
                 <h1 class="display-4 text-white animated zoomIn">Services</h1>
                 <a href="{{route('web.index')}}" class="h5 text-white">Home</a>
                 <i class="far fa-circle text-white px-2"></i>
-                <a href="javscript:void(0)" class="h5 text-primary">Services</a>
+                <a href="javscript:void(0)" class="h5 text-main">Services</a>
             </div>
         </div>
     </div>
@@ -41,7 +41,7 @@
     <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container py-5">
             <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
-                <h5 class="fw-bold text-primary text-uppercase">Our Services</h5>
+                <h5 class="fw-bold text-main text-uppercase">Our Services</h5>
                 <h1 class="mb-0" id="serviceTitleSection">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h1>
             </div>
             <div class="row g-5" id="serviceSection">
@@ -54,7 +54,7 @@
                         <h4 class="mb-3">Fusce sem elit</h4>
                         <p class="m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                         </p>
-                        <a class="btn btn-lg btn-primary rounded" href="">
+                        <a class="btn btn-lg btn-main rounded" href="">
                             <i class="bi bi-arrow-right"></i>
                         </a>
                     </div>
@@ -68,7 +68,7 @@
                         <h4 class="mb-3">tincidunt ac ultricies eget</h4>
                         <p class="m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                         </p>
-                        <a class="btn btn-lg btn-primary rounded" href="">
+                        <a class="btn btn-lg btn-main rounded" href="">
                             <i class="bi bi-arrow-right"></i>
                         </a>
                     </div>
@@ -82,7 +82,7 @@
                         <h4 class="mb-3">porttitor quis nisi</h4>
                         <p class="m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                         </p>
-                        <a class="btn btn-lg btn-primary rounded" href="">
+                        <a class="btn btn-lg btn-main rounded" href="">
                             <i class="bi bi-arrow-right"></i>
                         </a>
                     </div>
@@ -96,7 +96,7 @@
                         <h4 class="mb-3">Fusce sem elit</h4>
                         <p class="m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                         </p>
-                        <a class="btn btn-lg btn-primary rounded" href="">
+                        <a class="btn btn-lg btn-main rounded" href="">
                             <i class="bi bi-arrow-right"></i>
                         </a>
                     </div>
@@ -110,14 +110,14 @@
                         <h4 class="mb-3">tincidunt ac ultricies eget</h4>
                         <p class="m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                         </p>
-                        <a class="btn btn-lg btn-primary rounded" href="">
+                        <a class="btn btn-lg btn-main rounded" href="">
                             <i class="bi bi-arrow-right"></i>
                         </a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.9s">
                     <div
-                        class="position-relative bg-primary rounded h-100 d-flex flex-column align-items-center justify-content-center text-center p-5">
+                        class="position-relative bg-main rounded h-100 d-flex flex-column align-items-center justify-content-center text-center p-5">
                         <h3 class="text-white mb-3">Call Us For Quote</h3>
                         <p class="text-white mb-3">Vivamus enim erat, sodales quis sagittis non, hendrerit sed ligula.
                             Proin nec ex sapien.</p>
@@ -134,7 +134,7 @@
     <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container py-5">
             <div class="section-title text-center position-relative pb-3 mb-4 mx-auto" style="max-width: 600px;">
-                <h5 class="fw-bold text-primary text-uppercase">Testimonial</h5>
+                <h5 class="fw-bold text-main text-uppercase">Testimonial</h5>
                 <h1 class="mb-0" id="testimonialTitleSection">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 </h1>
             </div>
@@ -144,7 +144,7 @@
                         <img class="img-fluid rounded" src="{{ img_src('1-1 360.webp', 'default') }}"
                             style="width: 60px; height: 60px;">
                         <div class="ps-4">
-                            <h4 class="text-primary mb-1">Lorem ipsum</h4>
+                            <h4 class="text-main mb-1">Lorem ipsum</h4>
                             <small class="text-uppercase">dolor sit amet</small>
                         </div>
                     </div>
@@ -158,7 +158,7 @@
                         <img class="img-fluid rounded" src="{{ img_src('1-1 360.webp', 'default') }}"
                             style="width: 60px; height: 60px;">
                         <div class="ps-4">
-                            <h4 class="text-primary mb-1">Lorem ipsum</h4>
+                            <h4 class="text-main mb-1">Lorem ipsum</h4>
                             <small class="text-uppercase">dolor sit amet</small>
                         </div>
                     </div>
@@ -172,7 +172,7 @@
                         <img class="img-fluid rounded" src="{{ img_src('1-1 360.webp', 'default') }}"
                             style="width: 60px; height: 60px;">
                         <div class="ps-4">
-                            <h4 class="text-primary mb-1">Lorem ipsum</h4>
+                            <h4 class="text-main mb-1">Lorem ipsum</h4>
                             <small class="text-uppercase">dolor sit amet</small>
                         </div>
                     </div>
@@ -186,7 +186,7 @@
                         <img class="img-fluid rounded" src="{{ img_src('1-1 360.webp', 'default') }}"
                             style="width: 60px; height: 60px;">
                         <div class="ps-4">
-                            <h4 class="text-primary mb-1">Lorem ipsum</h4>
+                            <h4 class="text-main mb-1">Lorem ipsum</h4>
                             <small class="text-uppercase">dolor sit amet</small>
                         </div>
                     </div>
@@ -231,7 +231,7 @@
                                 `<h4 class="mb-3">` + serviceJsonDecode.title + `</h4>` +
                                 `<p class="m-0">` + serviceJsonDecode.body +
                                 `</p>` +
-                                `<a class="btn btn-lg btn-primary rounded" href="{{ route('web.service') }}">` +
+                                `<a class="btn btn-lg btn-main rounded" href="{{ route('web.service') }}">` +
                                 `<i class="bi bi-arrow-right"></i>` +
                                 `</a>` +
                                 `</div>` +
@@ -245,7 +245,7 @@
                         serviceHtml +=
                         `<div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.9s">`+
                             `<div`+
-                                ` class="position-relative bg-primary rounded h-100 d-flex flex-column align-items-center justify-content-center text-center p-5">`+
+                                ` class="position-relative bg-main rounded h-100 d-flex flex-column align-items-center justify-content-center text-center p-5">`+
                                 `<h3 class="text-white mb-3">Telepon untuk Penawaran</h3>`+
                                 `<p class="text-white mb-3">`+freeqoute.deskripsi+`</p>`+
                                 `<h2 class="text-white mb-0">`+contact.telepon+`</h2>`+
@@ -286,7 +286,7 @@
                                 `"` +
                                 `style="width: 60px; height: 60px;">` +
                                 `<div class="ps-4">` +
-                                `<h4 class="text-primary mb-1">` + data.nama + `</h4>` +
+                                `<h4 class="text-main mb-1">` + data.nama + `</h4>` +
                                 `<small class="text-uppercase">__________</small>` +
                                 `</div>` +
                                 `</div>` +

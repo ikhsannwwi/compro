@@ -38,7 +38,7 @@
                             <div class="form-group mandatory">
                                 <label for="inputFooterAbout" class="form-label">About Us</label>
                                 <textarea name="about_frontpage_footer" class="form-control" id="inputFooterAbout" placeholder="Masukan About Us" cols="30"
-                                    rows="100" autocomplete="off" data-parsley-required="true">{{ array_key_exists('about_frontpage_footer', $settings) ? $settings['about_frontpage_footer'] : '' }}</textarea>
+                                    rows="100" autocomplete="off">{{ array_key_exists('about_frontpage_footer', $settings) ? $settings['about_frontpage_footer'] : '' }}</textarea>
                             </div>
                         </div>
                     </div>
@@ -66,7 +66,7 @@
                                                     <input type="text" name="nama_link_{{ $i }}"
                                                         value="{{ $row->nama_link }}" class="form-control"
                                                         id="inputNamaLink_{{ $i }}" data-parsley-required="true"
-                                                        placeholder="Masukan Nama Sosial Media" autocomplete="off">
+                                                        placeholder="Masukan Nama Web/App" autocomplete="off">
                                                 </div>
                                             </div>
                                             <div class="col-md-6 col-11">
@@ -76,7 +76,7 @@
                                                     <input type="text" name="url_link_{{ $i }}"
                                                         value="{{ $row->url_link }}" class="form-control"
                                                         id="inputLinkUrl_{{ $i }}" data-parsley-required="true"
-                                                        placeholder="Masukan Icon Sosial Media (contoh 'fa fa-instagram')" autocomplete="off">
+                                                        placeholder="ex = 'https://example.com'" autocomplete="off">
                                                 </div>
                                             </div>
                                             <div class="col-md-1 col-1">
@@ -107,7 +107,7 @@
                                 </span>
                             </button>
                             <button type="reset" class="btn btn-secondary mx-1 mb-1">Reset</button>
-                            <a href="{{ route('admin.settings') }}" class="btn btn-danger mx-1 mb-1">Cancel</a>
+                            <a href="{{ route('admin.settings.frontpage') }}" class="btn btn-danger mx-1 mb-1">Cancel</a>
                         </div>
                     </div>
                 </form>
@@ -120,14 +120,14 @@
             <div class="form-group">
                 <label for="inputNamaLink_0" class="form-label">Nama Link</label>
                 <input type="text" name="nama_link_0" class="form-control" id="inputNamaLink_0" data-parsley-required="true"
-                    placeholder="Masukan Nama Sosial Media" autocomplete="off">
+                    placeholder="Masukan Nama Web/App" autocomplete="off">
             </div>
         </div>
         <div class="col-md-6 col-11">
             <div class="form-group">
                 <label for="inputLinkUrl_0" class="form-label">Url Link</label>
                 <input type="text" name="url_link_0" class="form-control" id="inputLinkUrl_0" data-parsley-required="true"
-                    placeholder="contoh = 'fa fa-instagram'" autocomplete="off">
+                    placeholder="ex = 'https://example.com'" autocomplete="off">
             </div>
         </div>
         <div class="col-md-1 col-1">

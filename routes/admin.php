@@ -117,9 +117,13 @@ Route::prefix('admin')->group(function () {
         Route::put('settings/frontpage/general/update', [SettingController::class, 'frontpage_general_update'])->name('admin.settings.frontpage.general.update');
         Route::get('settings/frontpage/general/deleteSosmed', [SettingController::class, 'frontpage_general_deleteSosmed'])->name('admin.settings.frontpage.general.deleteSosmed');
         
-        //Setting Frontpage Homepage
-        Route::get('settings/frontpage/homepage', [SettingController::class, 'frontpage_homepage_index'])->name('admin.settings.frontpage.homepage');
-        Route::put('settings/frontpage/homepage/update', [SettingController::class, 'frontpage_homepage_update'])->name('admin.settings.frontpage.homepage.update');
+        //Setting Frontpage Color
+        Route::get('settings/frontpage/color', [SettingController::class, 'frontpage_color_index'])->name('admin.settings.frontpage.color');
+        Route::put('settings/frontpage/color/update', [SettingController::class, 'frontpage_color_update'])->name('admin.settings.frontpage.color.update');
+
+        //Setting Admin Color
+        Route::get('settings/admin/color', [SettingController::class, 'admin_color_index'])->name('admin.settings.admin.color');
+        Route::put('settings/admin/color/update', [SettingController::class, 'admin_color_update'])->name('admin.settings.admin.color.update');
 
         //Modul dan Modul Akses
         Route::get('module', [ModuleController::class, 'index'])->name('admin.module');

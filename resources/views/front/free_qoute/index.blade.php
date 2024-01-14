@@ -24,13 +24,13 @@
 @endsection
 
 @push('head')
-    <div class="container-fluid bg-primary py-5 bg-header" style="margin-bottom: 90px;">
+    <div class="container-fluid bg-main py-5 bg-header" style="margin-bottom: 90px;">
         <div class="row py-5">
             <div class="col-12 pt-lg-5 mt-lg-5 text-center">
                 <h1 class="display-4 text-white animated zoomIn">Free Quote</h1>
                 <a href="{{ route('web.index') }}" class="h5 text-white">Home</a>
                 <i class="far fa-circle text-white px-2"></i>
-                <a href="javscript:void(0)" class="h5 text-primary">Free Quote</a>
+                <a href="javscript:void(0)" class="h5 text-main">Free Quote</a>
             </div>
         </div>
     </div>
@@ -43,17 +43,17 @@
             <div class="row g-5">
                 <div class="col-lg-7">
                     <div class="section-title position-relative pb-3 mb-5">
-                        <h5 class="fw-bold text-primary text-uppercase">Request A Quote</h5>
+                        <h5 class="fw-bold text-main text-uppercase">Request A Quote</h5>
                         <h1 class="mb-0" id="titleFreeQoute">Class aptent taciti sociosqu ad litora torquent per conubia
                             nostra, per inceptos himenaeos. Ut lobortis aliquam consequat.</h1>
                     </div>
                     <div class="row gx-3" id="featureFreeQouteSection">
                         <div class="col-sm-6 wow zoomIn" data-wow-delay="0.2s">
-                            <h5 class="mb-4"><i class="fa fa-reply text-primary me-3"></i>Lorem ipsum dolor sit amet
+                            <h5 class="mb-4"><i class="fa fa-reply text-main me-3"></i>Lorem ipsum dolor sit amet
                             </h5>
                         </div>
                         <div class="col-sm-6 wow zoomIn" data-wow-delay="0.4s">
-                            <h5 class="mb-4"><i class="fa fa-phone-alt text-primary me-3"></i>Lorem ipsum dolor sit amet
+                            <h5 class="mb-4"><i class="fa fa-phone-alt text-main me-3"></i>Lorem ipsum dolor sit amet
                             </h5>
                         </div>
                     </div>
@@ -63,18 +63,18 @@
                         finibus viverra scelerisque, felis arcu pretium augue, maximus sollicitudin elit augue quis augue.
                     </p>
                     <div class="d-flex align-items-center mt-2 wow zoomIn" data-wow-delay="0.6s">
-                        <div class="bg-primary d-flex align-items-center justify-content-center rounded"
+                        <div class="bg-main d-flex align-items-center justify-content-center rounded"
                             style="width: 60px; height: 60px;">
                             <i class="fa fa-phone-alt text-white"></i>
                         </div>
                         <div class="ps-4">
                             <h5 class="mb-2">Call to ask any question</h5>
-                            <h4 class="text-primary mb-0" id="teleponFreeQoute">+012 345 6789</h4>
+                            <h4 class="text-main mb-0" id="teleponFreeQoute">+012 345 6789</h4>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-5">
-                    <div class="bg-primary rounded h-100 d-flex align-items-center p-5 wow zoomIn" data-wow-delay="0.9s">
+                    <div class="bg-main rounded h-100 d-flex align-items-center p-5 wow zoomIn" data-wow-delay="0.9s">
                         <form>
                             <div class="col-lg-7" id="form-messages">
                                 <!-- Tempat untuk menampilkan pesan berhasil atau gagal -->
@@ -145,7 +145,7 @@
                                     ourFeatureHtmlUp +=
                                         `<div class="col-sm-6 wow zoomIn" data-wow-delay="0.2s">` +
                                         `<h5 class="mb-4"><i class="` + ourFeatureJsonDecode
-                                        .icon + ` text-primary me-3"></i>` + ourFeatureJsonDecode
+                                        .icon + ` text-main me-3"></i>` + ourFeatureJsonDecode
                                         .title +
                                         `</h5>` +
                                         `</div>`;

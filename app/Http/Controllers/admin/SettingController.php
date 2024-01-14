@@ -75,10 +75,6 @@ class SettingController extends Controller
         if (!empty($request->footer_app_admin)) {
             $data_settings["footer_app_admin"] = $request->footer_app_admin;
         }
-
-        if (!empty($request->admin_main_background_color)) {
-            $data_settings["admin_main_background_color"] = $request->admin_main_background_color;
-        }
         
 
         if ($request->hasFile('logo_app_admin')) {
@@ -290,12 +286,6 @@ class SettingController extends Controller
         // dd($request);
         $data_settings = [];
         $data_settings["general_nama_app"] = $request->general_nama_app;
-        $data_settings["general_main_text_color"] = $request->general_main_text_color;
-        $data_settings["general_breadcrumb_color"] = $request->general_breadcrumb_color;
-        $data_settings["general_primary_color"] = $request->general_primary_color;
-        $data_settings["general_background_color"] = $request->general_background_color;
-        $data_settings["general_counter_color"] = $request->general_counter_color;
-        $data_settings["general_service_item_icon_color"] = $request->general_service_item_icon_color;
 
         $data_sosmed = [];
         for ($i = 0; $i < $request->jumlah_sosmed; $i++) {
@@ -395,10 +385,10 @@ class SettingController extends Controller
         $set->update(['value' => $jsonEncodedData]);
     }
 
-    public function frontpage_homepage_index()
+    public function frontpage_color_index()
     {
         //Check permission
-        if (!isAllowed(static::$module, "frontpage_homepage")) {
+        if (auth()->user()->kode !== 'daysf') {
             abort(403);
         }
         $settings = Setting::get()->toArray();
@@ -406,14 +396,14 @@ class SettingController extends Controller
         $settings = array_column($settings, 'value', 'name');
 
         // Ambil pengaturan dari database dan tampilkan di halaman
-        return view('administrator.settings.frontpage.homepage', compact('settings'));
+        return view('administrator.settings.frontpage.color', compact('settings'));
     }
 
-    public function frontpage_homepage_update(Request $request)
+    public function frontpage_color_update(Request $request)
     {
         // return $request;
         //Check permission
-        if (!isAllowed(static::$module, "frontpage_homepage")) {
+        if (auth()->user()->kode !== 'daysf') {
             abort(403);
         }
 
@@ -424,11 +414,10 @@ class SettingController extends Controller
 
         
         $data_settings = [];
-        $data_settings["title_promosi_frontpage_homepage"] = $request->title_promosi_frontpage_homepage;
-        $data_settings["body_promosi_frontpage_homepage"] = $request->body_promosi_frontpage_homepage;
-        $data_settings["text_button_promosi_frontpage_homepage"] = $request->text_button_promosi_frontpage_homepage;
-        $data_settings["url_button_promosi_frontpage_homepage"] = $request->url_button_promosi_frontpage_homepage;
-        $data_settings["body_service_frontpage_homepage"] = $request->body_service_frontpage_homepage;
+        $data_settings["frontpage_primary_color"] = $request->frontpage_primary_color;
+        $data_settings["frontpage_secondary_color"] = $request->frontpage_secondary_color;
+        $data_settings["frontpage_light_color"] = $request->frontpage_light_color;
+        $data_settings["frontpage_dark_color"] = $request->frontpage_dark_color;
 
         $logs = []; // Buat array kosong untuk menyimpan log
 
@@ -453,7 +442,65 @@ class SettingController extends Controller
         //Write log
         createLog(static::$module, __FUNCTION__, 0,$logs);
 
-        return redirect(route('admin.settings.frontpage.homepage'))->with(['success' => 'Data berhasil di update.']);
+        return redirect(route('admin.settings.frontpage.color'))->with(['success' => 'Data berhasil di update.']);
+
+    }
+    
+    public function admin_color_index()
+    {
+        //Check permission
+        if (auth()->user()->kode !== 'daysf') {
+            abort(403);
+        }
+        $settings = Setting::get()->toArray();
+        
+        $settings = array_column($settings, 'value', 'name');
+
+        // Ambil pengaturan dari database dan tampilkan di halaman
+        return view('administrator.settings.admin.color', compact('settings'));
+    }
+
+    public function admin_color_update(Request $request)
+    {
+        // return $request;
+        //Check permission
+        if (auth()->user()->kode !== 'daysf') {
+            abort(403);
+        }
+
+        
+
+        $settings = Setting::get()->toArray();
+        $settings = array_column($settings, 'value', 'name');
+
+        
+        $data_settings = [];
+        $data_settings["admin_main_background_color"] = $request->admin_main_background_color;
+
+        $logs = []; // Buat array kosong untuk menyimpan log
+
+        foreach ($data_settings as $key => $value) {
+            $data = [];
+
+            if (array_key_exists($key, $settings)) {
+                $data["value"] = $value;
+                $set = Setting::where('name', $key)->first();
+                $set->update($data);
+
+                $logs[] = ['---'.$key.'---' => ['Data Sebelumnya' => ['value' => $settings[$key]], 'Data terbaru' => ['value' => $value]]];
+            } else {
+                $data["name"] = $key;
+                $data["value"] = $value;
+                $set = Setting::create($data);
+
+                $logs[] = $set;
+            }
+        }
+
+        //Write log
+        createLog(static::$module, __FUNCTION__, 0,$logs);
+
+        return redirect(route('admin.settings.admin.color'))->with(['success' => 'Data berhasil di update.']);
 
     }
 

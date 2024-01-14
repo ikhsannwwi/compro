@@ -86,25 +86,6 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-md-6 col-12">
-                            <div class="form-group mandatory">
-                                <label for="main-background-color" class="form-label">main-background-color</label>
-                                <div class="input-group colorpickerinput">
-                                    <input type="text" class="form-control" name="admin_main_background_color"
-                                        value="{{ array_key_exists('admin_main_background_color', $settings) ? $settings['admin_main_background_color'] : '' }}"
-                                        id="main-background-color" placeholder="Masukan Kode Warna" autocomplete="off"
-                                        data-parsley-required="true">
-                                    <div class="input-group-append">
-                                        <div class="input-group-text">
-                                            <i class="fas fa-fill-drip"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
                         <div class="col-12 d-flex justify-content-end">
                             <button type="submit" id="formSubmit" class="btn btn-primary mx-1 mb-1">
                                 <span class="indicator-label">Submit</span>
@@ -191,12 +172,6 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
-
-            $(".colorpickerinput").colorpicker({
-                format: 'hex',
-                component: '.input-group-append',
-            });
-
             $("#logoAppAdminInputFile").fileinput({
                 showUpload: false, // Hilangkan tombol "Upload"
                 showRemove: false, // Hilangkan tombol "Remove"

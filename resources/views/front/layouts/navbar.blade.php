@@ -33,8 +33,8 @@
             <a href="{{ route('web.contact') }}"
                 class="nav-item nav-link {{ Route::is('web.contact*') ? 'active' : '' }}">Contact</a>
         </div>
-        <butaton type="button" class="btn text-primary ms-3" data-bs-toggle="modal" data-bs-target="#searchModal"><i
+        <butaton type="button" class="btn text-main ms-3" data-bs-toggle="modal" data-bs-target="#searchModal"><i
                 class="fa fa-search"></i></butaton>
-        <a href="{{ route('admin.login') }}" class="btn btn-primary py-2 px-4 ms-3">Login</a>
+        <a href="{{ route('admin.login') }}" class="btn btn-main py-2 px-4 ms-3">Login</a>
     </div>
 </nav>

@@ -26,6 +26,12 @@ class HomeController extends Controller
         $service = Service::where('name', '!=', 'title')->get();
         $title = Service::where('name', 'title')->first();
 
+        if (!$title) {
+            $title = '';
+        } else {
+            $title = $title->value;
+        }
+
         $freeqoute = FreeQoute::get()->toArray();
         $freeqoute = array_column($freeqoute, 'value', 'name');
 
@@ -35,7 +41,7 @@ class HomeController extends Controller
             'data' => $service,
             'freeqoute' => $freeqoute,
             'contact' => $contact,
-            'title' => $title->value,
+            'title' => $title,
         ], 200);
     }
     
@@ -45,6 +51,18 @@ class HomeController extends Controller
         return response()->json([
             'data' => $data,
             'path' => url('/') . '/administrator/assets/media/blog/',
+        ], 200);
+    }
+
+    public function count(){
+        $Testimonial = Testimonial::all();
+        $Blog = Blog::where('status', 1)->get();
+        $Client = Client::all();
+
+        return response()->json([
+            'testimonial' => $Testimonial->count(),
+            'blog' => $Blog->count(),
+            'client' => $Client->count(),
         ], 200);
     }
     

@@ -114,114 +114,6 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-md-6 col-12">
-                            <div class="form-group mandatory">
-                                <label for="main-text-color" class="form-label">main-text-color</label>
-                                <div class="input-group colorpickerinput">
-                                    <input type="text" class="form-control" name="general_main_text_color"
-                                        value="{{ array_key_exists('general_main_text_color', $settings) ? $settings['general_main_text_color'] : '' }}"
-                                        id="main-text-color" placeholder="Masukan Kode Warna" autocomplete="off">
-                                    <div class="input-group-append">
-                                        <div class="input-group-text">
-                                            <i class="fas fa-fill-drip"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-6 col-12">
-                            <div class="form-group mandatory">
-                                <label for="breadcrumb-color" class="form-label">breadcrumb-color</label>
-                                <div class="input-group colorpickerinput">
-                                    <input type="text" class="form-control" name="general_breadcrumb_color"
-                                        value="{{ array_key_exists('general_breadcrumb_color', $settings) ? $settings['general_breadcrumb_color'] : '' }}"
-                                        id="breadcrumb-color" placeholder="Masukan Kode Warna" autocomplete="off">
-                                    <div class="input-group-append">
-                                        <div class="input-group-text">
-                                            <i class="fas fa-fill-drip"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-6 col-12">
-                            <div class="form-group mandatory">
-                                <label for="primary-color" class="form-label">primary-color</label>
-                                <div class="input-group colorpickerinput">
-                                    <input type="text" class="form-control" name="general_primary_color"
-                                        value="{{ array_key_exists('general_primary_color', $settings) ? $settings['general_primary_color'] : '' }}"
-                                        id="primary-color" placeholder="Masukan Kode Warna" autocomplete="off">
-                                    <div class="input-group-append">
-                                        <div class="input-group-text">
-                                            <i class="fas fa-fill-drip"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-6 col-12">
-                            <div class="form-group mandatory">
-                                <label for="background-color" class="form-label">background-color</label>
-                                <div class="input-group colorpickerinput">
-                                    <input type="text" class="form-control" name="general_background_color"
-                                        value="{{ array_key_exists('general_background_color', $settings) ? $settings['general_background_color'] : '' }}"
-                                        id="background-color" placeholder="Masukan Kode Warna" autocomplete="off">
-                                    <div class="input-group-append">
-                                        <div class="input-group-text">
-                                            <i class="fas fa-fill-drip"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-6 col-12">
-                            <div class="form-group mandatory">
-                                <label for="counter-color" class="form-label">counter-color</label>
-                                <div class="input-group colorpickerinput">
-                                    <input type="text" class="form-control" name="general_counter_color"
-                                        value="{{ array_key_exists('general_counter_color', $settings) ? $settings['general_counter_color'] : '' }}"
-                                        id="counter-color" placeholder="Masukan Kode Warna" autocomplete="off">
-                                    <div class="input-group-append">
-                                        <div class="input-group-text">
-                                            <i class="fas fa-fill-drip"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-6 col-12">
-                            <div class="form-group mandatory">
-                                <label for="service-item-icon-color" class="form-label">service-item-icon-color</label>
-                                <div class="input-group colorpickerinput">
-                                    <input type="text" class="form-control" name="general_service_item_icon_color"
-                                        value="{{ array_key_exists('general_service_item_icon_color', $settings) ? $settings['general_service_item_icon_color'] : '' }}"
-                                        id="service-item-icon-color" placeholder="Masukan Kode Warna" autocomplete="off">
-                                    <div class="input-group-append">
-                                        <div class="input-group-text">
-                                            <i class="fas fa-fill-drip"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
                         <div class="col-12 d-flex justify-content-end">
                             <button type="submit" id="formSubmit" class="btn btn-primary mx-1 mb-1">
                                 <span class="indicator-label">Submit</span>
@@ -231,7 +123,7 @@
                                 </span>
                             </button>
                             <button type="reset" class="btn btn-secondary mx-1 mb-1">Reset</button>
-                            <a href="{{ route('admin.settings') }}" class="btn btn-danger mx-1 mb-1">Cancel</a>
+                            <a href="{{ route('admin.settings.frontpage') }}" class="btn btn-danger mx-1 mb-1">Cancel</a>
                         </div>
                     </div>
                 </form>
@@ -452,10 +344,7 @@
     <script type="text/javascript">
         $(document).ready(function() {
 
-            $(".colorpickerinput").colorpicker({
-                format: 'hex',
-                component: '.input-group-append',
-            });
+            
 
             //validate parsley form
             const form = document.getElementById("form");

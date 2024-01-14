@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\admin\Client;
 use App\Models\admin\Contact;
 use App\Models\admin\Setting;
+use App\Models\admin\Statistic;
 use Illuminate\Support\ServiceProvider;
 
 class DataServiceProvider extends ServiceProvider
@@ -64,6 +65,14 @@ class DataServiceProvider extends ServiceProvider
             $client = Client::all();
         
             $view->with('client', $client);
+        });
+
+        view()->composer([
+            'front.layouts.footer',
+        ], function ($view) {
+            $Statistic = Statistic::orderBy('visit_time', 'desc')->get();
+        
+            $view->with('Statistic', $Statistic);
         });
     }
 }

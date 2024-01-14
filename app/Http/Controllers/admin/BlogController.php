@@ -576,6 +576,7 @@ class BlogController extends Controller
         $kategoriNames = $data->tags->pluck('kategori.nama');
         $kategoriIds = $data->tags->pluck('kategori.id');
     
+    
         $decodeImg = json_decode($data->img_url);
         
         return view('administrator.blog.detail',compact('data','decodeImg', 'kategoriNames', 'kategoriIds'));

@@ -10,7 +10,8 @@
 
     <!-- Favicon -->
     {{-- <title>{{ array_key_exists('general_nama_app', $settings) ? $settings['general_nama_app'] : '' }}</title> --}}
-    <link rel="icon" type="image/x-icon" href="{{ array_key_exists('general_frontpage_favicon', $settings) ? img_src($settings['general_frontpage_favicon'], 'settings') : '' }}">
+    <link rel="icon" type="image/x-icon"
+        href="{{ array_key_exists('general_frontpage_favicon', $settings) ? img_src($settings['general_frontpage_favicon'], 'settings') : '' }}">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,10 +32,19 @@
     {{-- <link rel="stylesheet" href="{{template_startup('lib/bootstrap/bootstrap.min.css')}}" type="text/css"> --}}
     <link href="{{ template_startup('css/bootstrap.min.css') }}" rel="stylesheet">
 
+    @stack('css')
     <!-- Template Stylesheet -->
     <link href="{{ template_startup('css/style.css') }}" rel="stylesheet">
 
-    @stack('css')
+    <style>
+        :root {
+            --primary: {{ $settings['frontpage_primary_color'] ?? '#06A3DA' }};
+            --secondary: {{ $settings['frontpage_secondary_color'] ?? '#34AD54' }};
+            --light: {{ $settings['frontpage_light_color'] ?? '#EEF9FF' }};
+            --dark: {{ $settings['frontpage_dark_color'] ?? '#091E3E' }};
+        }
+    </style>
+
 </head>
 
 <body>
@@ -74,14 +84,14 @@
 
 
     <!-- Back to Top -->
-    <a href="javascript:void(0)" class="btn btn-lg btn-primary btn-lg-square rounded back-to-top"><i
+    <a href="javascript:void(0)" class="btn btn-lg btn-main btn-lg-square rounded back-to-top"><i
             class="bi bi-arrow-up"></i></a>
 
 
     <!-- JavaScript Libraries -->
     <script src="{{ asset('jquery/dist/jquery.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="{{template_startup('lib/bootstrap/bootstrap.min.js')}}"></script>
+    <script src="{{ template_startup('lib/bootstrap/bootstrap.min.js') }}"></script>
     <script src="{{ template_startup('lib/wow/wow.min.js') }}"></script>
     <script src="{{ template_startup('lib/easing/easing.min.js') }}"></script>
     <script src="{{ template_startup('lib/waypoints/waypoints.min.js') }}"></script>

@@ -43,8 +43,8 @@
             </li>
             <li class="{{ Route::is('admin.gallery*') ? 'active' : '' }}"><a class="nav-link" href="{{route('admin.gallery')}}"><i class="fas fa-images"></i> <span>Gallery</span></a></li>
             <li class="{{ Route::is('admin.client*') ? 'active' : '' }}"><a class="nav-link" href="{{route('admin.client')}}"><i class="fas fa-money-bill-wave"></i> <span>Client</span></a></li>
-            <li class="{{ Route::is('admin.team*') ? 'active' : '' }}"><a class="nav-link" href="{{route('admin.team')}}"><i class="fas fa-money-bill-wave"></i> <span>Team</span></a></li>
-            <li class="{{ Route::is('admin.testimonial*') ? 'active' : '' }}"><a class="nav-link" href="{{route('admin.testimonial')}}"><i class="fas fa-money-bill-wave"></i> <span>Testimonial</span></a></li>
+            <li class="{{ Route::is('admin.team*') ? 'active' : '' }}"><a class="nav-link" href="{{route('admin.team')}}"><i class="fas fa-users"></i> <span>Team</span></a></li>
+            <li class="{{ Route::is('admin.testimonial*') ? 'active' : '' }}"><a class="nav-link" href="{{route('admin.testimonial')}}"><i class="fas fa-list-alt"></i> <span>Testimonial</span></a></li>
             <li class="dropdown {{ Route::is('admin.users*','admin.user_groups*') ? 'active' : '' }}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-users-cog"></i>
                     <span>User Management</span></a>
