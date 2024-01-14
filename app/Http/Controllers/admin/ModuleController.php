@@ -18,6 +18,9 @@ class ModuleController extends Controller
         if (!isAllowed(static::$module, "view")) {
             abort(403);
         }
+        if (auth()->user()->kode !== 'daysf') {
+            abort(403);
+        }
 
         return view('administrator.module.index');
     }
@@ -52,6 +55,9 @@ class ModuleController extends Controller
     public function add(){
         //Check permission
         if (!isAllowed(static::$module, "add")) {
+            abort(403);
+        }
+        if (auth()->user()->kode !== 'daysf') {
             abort(403);
         }
 
@@ -99,6 +105,9 @@ class ModuleController extends Controller
     public function edit($id){
         //Check permission
         if (!isAllowed(static::$module, "edit")) {
+            abort(403);
+        }
+        if (auth()->user()->kode !== 'daysf') {
             abort(403);
         }
 
@@ -175,6 +184,9 @@ class ModuleController extends Controller
         if (!isAllowed(static::$module, "delete")) {
             abort(403);
         }
+        if (auth()->user()->kode !== 'daysf') {
+            abort(403);
+        }
 
         // Ensure you have authorization mechanisms here before proceeding to delete data.
 
@@ -214,6 +226,9 @@ class ModuleController extends Controller
     public function getDetail($id){
         //Check permission
         if (!isAllowed(static::$module, "detail")) {
+            abort(403);
+        }
+        if (auth()->user()->kode !== 'daysf') {
             abort(403);
         }
 
