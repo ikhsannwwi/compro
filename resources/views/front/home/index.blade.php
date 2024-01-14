@@ -171,7 +171,7 @@
         <div class="container py-5">
             <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
                 <h5 class="fw-bold text-main text-uppercase">Why Choose Us</h5>
-                <h1 class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h1>
+                <h1 class="mb-0">Elevating Excellence, Embracing Innovation.</h1>
             </div>
             <div class="row g-5" id="ourFeatureSection">
                 <div class="col-lg-4">
@@ -401,7 +401,7 @@
         <div class="container py-5">
             <div class="section-title text-center position-relative pb-3 mb-4 mx-auto" style="max-width: 600px;">
                 <h5 class="fw-bold text-main text-uppercase">Testimonial</h5>
-                <h1 class="mb-0" id="testimonialTitleSection">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                <h1 class="mb-0" id="testimonialTitleSection">Capturing the Essence of Exceptional Experiences.
                 </h1>
             </div>
             <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.6s" id="testimonialSection">
@@ -472,7 +472,7 @@
         <div class="container py-5">
             <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
                 <h5 class="fw-bold text-main text-uppercase">Team Members</h5>
-                <h1 class="mb-0">Donec nec ipsum non est tristique tristique sed ac justo.</h1>
+                <h1 class="mb-0">Uniting Strengths for Success.</h1>
             </div>
             <div class="row g-5" id="teamSection">
                 <div class="col-lg-4 wow slideInUp" data-wow-delay="0.3s">
