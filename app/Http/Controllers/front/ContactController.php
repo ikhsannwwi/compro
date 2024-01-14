@@ -20,8 +20,11 @@ class ContactController extends Controller
         $settings = Setting::get()->toArray();
         $settings = array_column($settings, 'value', 'name');
 
+        // Set a default value if 'general_nama_app' key is not present
+        $generalNamaApp = isset($settings['general_nama_app']) ? $settings['general_nama_app'] : 'Compro';
+
         $mailData = [
-            'title' => '['. $settings['general_nama_app'] .'] Pesan baru dari '. $request->email,
+            'title' => '['. ($generalNamaApp ? $generalNamaApp : 'Compro') .'] Pesan baru dari '. $request->email,
             'nama' => $request->nama,
             'email' => $request->email,
             'subject' => $request->subject,
@@ -31,7 +34,7 @@ class ContactController extends Controller
         $contact = Contact::get()->toArray();
         $contact = array_column($contact, 'value', 'name');
 
-        $recipientEmail = $contact['email'];
+        $recipientEmail = isset($contact['email']) ? $contact['email'] : 'ikhsannawawi99@gmail.com';
 
         try {
             Mail::to($recipientEmail)->send(new ContactMail($mailData));

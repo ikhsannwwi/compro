@@ -48,7 +48,7 @@
                     showModule('contact', $permissions) ||
                     showModule('free_qoute', $permissions))
                 <li
-                    class="dropdown {{ Route::is('admin.service*', 'admin.about*', 'admin.banner*', 'admin.contact*', 'admin.our_feature*') ? 'active' : '' }}">
+                    class="dropdown {{ Route::is('admin.service*', 'admin.about*', 'admin.banner*', 'admin.contact*', 'admin.our_feature*', 'admin.free_qoute*') ? 'active' : '' }}">
                     <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
                             class="fas fa-database"></i>
                         <span>Data Master</span></a>
@@ -140,13 +140,13 @@
                     </ul>
                 </li>
             @endif
-            @if (showModule('log_systems', $permissions) || showModule('statistic', $permissions))
+            @if (showModule('log_system', $permissions) || showModule('statistic', $permissions))
                 <li class="dropdown {{ Route::is('admin.logSystems*', 'admin.statistic*') ? 'active' : '' }}">
                     <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
                             class="fas fa-bezier-curve"></i>
                         <span>Systems</span></a>
                     <ul class="dropdown-menu">
-                        @if (showModule('log_systems', $permissions))
+                        @if (showModule('log_system', $permissions))
                             <li class="{{ Route::is('admin.logSystems*') ? 'active' : '' }}"><a class="nav-link"
                                     href="{{ route('admin.logSystems') }}">Logs</a></li>
                         @endif

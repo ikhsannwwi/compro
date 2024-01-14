@@ -38,6 +38,12 @@ use App\Http\Controllers\admin\KomentarBlogController;
 
 // ------------------------------------------  Admin -----------------------------------------------------------------
 Route::prefix('admin')->group(function () {
+    //Reset Password
+    Route::get('profile/password/request', [ProfileController::class, 'request'])->name('admin.profile.password.request');
+    Route::post('profile/password/request', [ProfileController::class, 'email'])->name('admin.profile.password.email');
+    Route::get('profile/password/reset/{token}', [ProfileController::class, 'resetPassword'])->name('admin.profile.password.reset');
+    Route::post('profile/password/reset/{token}', [ProfileController::class, 'updatePassword'])->name('admin.profile.password.update');
+    
     Route::post('login/checkEmail', [AuthController::class, 'checkEmail'])->name('admin.login.checkEmail');
     Route::post('login/checkPassword', [AuthController::class, 'checkPassword'])->name('admin.login.checkPassword');
     Route::get('login', [AuthController::class, 'login'])->name('admin.login');

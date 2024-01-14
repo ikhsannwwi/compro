@@ -35,7 +35,11 @@ class DataServiceProvider extends ServiceProvider
             'front.home.index',
             'front.free_qoute.mail.template',
             'front.contact.mail.template',
+            'administrator.profile.reset_password.template',
             'administrator.layouts.main',
+            'administrator.authentication.main',
+            'administrator.authentication.header',
+            'administrator.authentication.footer',
             'administrator.authentication.main',
             'administrator.authentication.login',
             'administrator.logs.export'
@@ -52,6 +56,7 @@ class DataServiceProvider extends ServiceProvider
             'front.contact.index',
             'front.free_qoute.mail.template',
             'front.contact.mail.template',
+            'administrator.profile.reset_password.template',
         ], function ($view) {
             $contact = Contact::get()->toArray();
         

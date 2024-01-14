@@ -2,12 +2,19 @@
 
 namespace App\Http\Controllers\admin;
 
-use DataTables;
+use DB;
 use File;
+use DataTables;
 use App\Models\admin\User;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\admin\Profile;
+use App\Models\admin\Setting;
+use App\Mail\ResetPasswordMail;
+use App\Models\admin\ResetPassword;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Intervention\Image\Facades\Image;
 
 class ProfileController extends Controller
@@ -55,7 +62,6 @@ class ProfileController extends Controller
     
         return view('administrator.profile.index', compact('data','sosmed'));
     }
-    
 
     public function getData(Request $request){
         $data = Profile::with('user')->get();
@@ -155,10 +161,6 @@ class ProfileController extends Controller
 
         return redirect()->route('admin.profile',$kode)->with('success', 'Data berhasil diupdate.');
     }
-
-
-
-
     
     public function getDetail($kode){
 
@@ -190,5 +192,87 @@ class ProfileController extends Controller
                 ]);
             }
         }
+    }
+
+    public function request(){
+        return view('administrator.profile.reset_password.index');
+    }
+
+    public function email(Request $request){
+        $request->validate([
+            'email' => 'required|email|exists:users,email',
+        ]);
+
+        $email = $request->input('email');
+        $token = Str::random(64);
+
+        try {
+            DB::beginTransaction();
+            DB::table('password_resets')->updateOrInsert(
+                ['email' => $email],
+                ['token' => $token, 'created_at' => now()]
+            );
+    
+            $user = User::where('email', $email)->first();
+    
+            $settings = Setting::get()->toArray();
+            $settings = array_column($settings, 'value', 'name');
+    
+            // Set a default value if 'general_nama_app' key is not present
+            $generalNamaApp = isset($settings['general_nama_app']) ? $settings['general_nama_app'] : 'Compro';
+            
+            $mailData = [
+                'title' => '['. ($generalNamaApp ? $generalNamaApp : 'Compro') .'] Reset Password',
+                'email' => $email,
+                'token' => $token,
+                'username' => $user->name,
+                'resetLink' => route('admin.profile.password.reset', $token),
+            ];
+            DB::commit();
+            Mail::to($email)->send(new ResetPasswordMail($mailData));
+            return redirect(route('admin.profile.password.request'))->with('success', 'Tautan berhasil dikirim melalui email');
+        } catch (\Throwable $th) {
+            DB::rollback();
+            return back()->with('error', $th->getMessage());
+        }
+    }
+
+    public function resetPassword($token){
+        $resetPassword = ResetPassword::where('token', $token)->first();
+
+        if (!$resetPassword) {
+            abort(404);
+        }
+
+        return view('administrator.profile.reset_password.reset', compact('resetPassword'));
+    }
+
+    public function updatePassword(Request $request, $token){
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|min:8',
+            'konfirmasi_password' => 'required|min:8|same:password',
+        ]);
+
+        $resetPassword = ResetPassword::where('token', $token)
+                                  ->where('email', $request->input('email'))
+                                  ->first();
+
+        if (!$resetPassword) {
+            return redirect(route('admin.profile.password.reset', $token))->with('error', 'Email tidak sesuai');
+        }
+        
+        $user = User::where('email',$request->email)->first();
+        $user->update([
+            'password' => Hash::make($request->password),
+            'remember_token' => Str::random(60),
+        ]);
+
+        // Hapus token dari tabel reset password
+        ResetPassword::where('token', $token)
+            ->where('email', $request->input('email'))
+            ->delete();
+
+        return redirect()->route('admin.login')->with('success', 'Password has been reset successfully.');
     }
 }

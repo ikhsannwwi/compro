@@ -2,7 +2,7 @@
     <div class="col-lg-3 col-md-6 col-sm-6 col-12">
         <div class="card card-statistic-1">
             <div class="card-icon bg-primary">
-                <i class="far fa-user"></i>
+                <i class="far fa-newspaper"></i>
             </div>
             <div class="card-wrap">
                 <div class="card-header">
@@ -17,7 +17,7 @@
     <div class="col-lg-3 col-md-6 col-sm-6 col-12">
         <div class="card card-statistic-1">
             <div class="card-icon bg-danger">
-                <i class="far fa-newspaper"></i>
+                <i class="far fa-user"></i>
             </div>
             <div class="card-wrap">
                 <div class="card-header">
@@ -248,7 +248,8 @@
                         <div class="font-weight-bold mb-1">{{ $browser }}</div>
                         <div class="progress" data-height="3" style="height: 3px;">
                             <div class="progress-bar" role="progressbar" data-width="{{ $percentage }}%"
-                                aria-valuenow="{{ $percentage }}" aria-valuemin="0" aria-valuemax="100" style="width: {{$percentage}}%;"></div>
+                                aria-valuenow="{{ $percentage }}" aria-valuemin="0" aria-valuemax="100"
+                                style="width: {{ $percentage }}%;"></div>
                         </div>
                     </div>
                 @endforeach

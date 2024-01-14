@@ -123,15 +123,15 @@
                     </div>
                     <div class="row">
                         <div class="col-12 d-flex justify-content-end">
-                            <button type="submit" id="formSubmit" class="btn btn-primary me-1 mb-1">
+                            <button type="submit" id="formSubmit" class="btn btn-primary mx-1 mb-1">
                                 <span class="indicator-label">Submit</span>
                                 <span class="indicator-progress" style="display: none;">
                                     Tunggu Sebentar...
                                     <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
                                 </span>
                             </button>
-                            <button type="reset" class="btn btn-light-secondary me-1 mb-1">Reset</button>
-                            <a href="{{ route('admin.user_groups') }}" class="btn btn-danger me-1 mb-1">Cancel</a>
+                            <button type="reset" class="btn btn-secondary mx-1 mb-1">Reset</button>
+                            <a href="{{ route('admin.user_groups') }}" class="btn btn-danger mx-1 mb-1">Cancel</a>
                         </div>
                     </div>
                 </form>
