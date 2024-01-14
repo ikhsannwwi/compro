@@ -2,7 +2,7 @@
     $url = request()->url();
 @endphp
 
-@if (str_contains($url, '/admin'))
+@if (str_contains($url, '/admin/'))
     @php
         $where = 'errors::minimal';
     @endphp

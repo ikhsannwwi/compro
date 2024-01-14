@@ -158,6 +158,9 @@ function createLog($module, $action, $data_id,$data)
 
 function isAllowed($modul, $modul_akses)
 {
+	if (!auth()->user()) {
+		return false;
+	}
 	$data_user = User::find(auth()->user()->id);
 	$grup_pengguna_id = $data_user->user_group_id;
 	$permission = getPermissionGroup($grup_pengguna_id);
@@ -266,6 +269,9 @@ function getPermissionGroup2($x)
 
 function getPermissionModuleGroup()
 {
+	if (!auth()->user()) {
+		return $permission = [];
+	}
 	$data_user = User::find(auth()->user()->id);
 	$grup_pengguna_id = $data_user->user_group_id;
 	$data_akses = ModuleAccess::select(DB::raw('
@@ -301,6 +307,9 @@ function getPermissionModuleGroup()
 
 function showModule($module, $permission_module)
 {
+	if (!auth()->user()) {
+		return false;
+	}
 	$data_user = User::find(auth()->user()->id);
 	$grup_pengguna_id = $data_user->user_group_id;
 	if ($grup_pengguna_id == 0) {
