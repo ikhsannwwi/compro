@@ -39,6 +39,7 @@ Route::get('/getTestimonial', [HomeController::class, 'getTestimonial'])->name('
 Route::get('/getBlog', [HomeController::class, 'getBlog'])->name('web.getBlog');
 Route::get('/getClient', [HomeController::class, 'getClient'])->name('web.getClient');
 Route::get('/getTeam', [HomeController::class, 'getTeam'])->name('web.getTeam');
+Route::get('/getGalleryAbout', [HomeController::class, 'getGalleryAbout'])->name('web.getGalleryAbout');
 Route::get('/serverside/count', [HomeController::class, 'count'])->name('web.serverside.count');
 
 Route::get('/about', [AboutController::class, 'index'])->name('web.about');

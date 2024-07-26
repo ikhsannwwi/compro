@@ -160,4 +160,13 @@ class HomeController extends Controller
             'path' => url('/') . '/administrator/assets/media/team/',
         ], 200);
     }
+
+    public function getGalleryAbout(){
+        $data = Gallery::all();
+
+        return response()->json([
+            'data' => $data,
+            'path' => url('/') . '/administrator/assets/media/gallery/',
+        ], 200);
+    }
 }

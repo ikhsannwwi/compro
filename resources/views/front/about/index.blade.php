@@ -166,6 +166,40 @@
         </div>
     </div>
     <!-- Team End -->
+
+    <!-- Team Start -->
+    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
+            <h5 class="fw-bold text-main text-uppercase">Our Gallery</h5>
+            <h1 class="mb-0">Explore Our Professional Works and Projects</h1>
+            </div>
+            <div class="row g-5" id="gallerySection">
+                <div class="col-lg-4 wow slideInUp" data-wow-delay="0.3s">
+                    <div class="team-item bg-light rounded overflow-hidden">
+                        <div class="team-img position-relative overflow-hidden">
+                            <img class="img-fluid w-100" src="{{ img_src('1-1 480.webp', 'default') }}" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 wow slideInUp" data-wow-delay="0.6s">
+                    <div class="team-item bg-light rounded overflow-hidden">
+                        <div class="team-img position-relative overflow-hidden">
+                            <img class="img-fluid w-100" src="{{ img_src('1-1 480.webp', 'default') }}" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 wow slideInUp" data-wow-delay="0.9s">
+                    <div class="team-item bg-light rounded overflow-hidden">
+                        <div class="team-img position-relative overflow-hidden">
+                            <img class="img-fluid w-100" src="{{ img_src('1-1 480.webp', 'default') }}" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Team End -->
 @endsection
 
 @push('js')
@@ -312,6 +346,48 @@
                     )
                 }
             });
+
+            // Gallery
+            $.ajax({
+                type: "GET",
+                url: "{{ route('web.getGalleryAbout') }}",
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    "_method": "GET",
+                },
+                success: function(respon) {
+                    let galleryHtml = '';
+
+                    for (let i = 0; i < respon.data.length; i++) {
+                        const data = respon.data[i];
+                        const imgUrls = JSON.parse(data.img_url);
+
+                        if (Array.isArray(imgUrls) && imgUrls.length >= 2) {
+                            imgUrls.forEach(imgUrl => {
+                                galleryHtml += `
+                                    <div class="col-lg-4 wow slideInUp" data-wow-delay="0.6s">
+                                        <div class="team-item bg-light rounded overflow-hidden">
+                                            <div class="team-img position-relative overflow-hidden">
+                                                <img class="img-fluid w-100" src="${respon.path + imgUrl}" alt="">
+                                            </div>
+                                        </div>
+                                    </div>`;
+                            });
+                        } else {
+                            galleryHtml += `
+                                <div class="col-lg-4 wow slideInUp" data-wow-delay="0.6s">
+                                    <div class="team-item bg-light rounded overflow-hidden">
+                                        <div class="team-img position-relative overflow-hidden">
+                                            <img class="img-fluid w-100" src="${respon.path + (Array.isArray(imgUrls) ? imgUrls[0] : imgUrls)}" alt="">
+                                        </div>
+                                    </div>
+                                </div>`;
+                        }
+                    }
+                    $('#gallerySection').html(galleryHtml);
+                }
+            });
+
         });
     </script>
 @endpush
